@@ -19,7 +19,7 @@ class NutritionixService {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        //request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
         request.addValue(appId, forHTTPHeaderField: "x-app-id")
         request.addValue(apiKey, forHTTPHeaderField: "x-app-key")
         
@@ -47,6 +47,48 @@ class NutritionixService {
                 print("Error converting data to string")
             }
         }.resume()
+    }
+    
+    func searchInstant2(query: String, completion: @escaping (FoodItems?) -> Void) {
+        
+        let url = URL(string: "https://trackapi.nutritionix.com/v2/search/instant/?query=\(query)")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+
+        request.addValue(appId, forHTTPHeaderField: "x-app-id")
+        request.addValue(apiKey, forHTTPHeaderField: "x-app-key")
+        
+        // for development set to 0
+        request.addValue("0", forHTTPHeaderField: "x-remote-user-id")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+        
+            if let error = error {
+                print("Error: \(error)")
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                print("No data received")
+                completion(nil)
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                
+                let result = try decoder.decode(FoodItems.self, from: data)
+                completion(result)
+            } catch {
+                print("Error decoding JSON: \(error)")
+                completion(nil)
+            }
+            
+        }.resume()
+        
     }
     
 }
