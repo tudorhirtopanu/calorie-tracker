@@ -21,7 +21,7 @@ struct HomeView: View {
                 }
             
             Button(action: {
-                print(textField)
+                NutritionixService.shared.searchInstant(query: textField)
             }, label: {
                 Text("Search")
             })
