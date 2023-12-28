@@ -11,6 +11,8 @@ struct HomeView: View {
     
     @State private var textField: String = ""
     
+    @State private var foodItems: FoodItems?
+    
     var body: some View {
         VStack(alignment: .leading) {
             TextField("Search for food ...", text: $textField)
@@ -21,11 +23,29 @@ struct HomeView: View {
                 }
             
             Button(action: {
-                NutritionixService.shared.searchInstant(query: textField)
+                NutritionixService.shared.searchInstant2(query: textField) { result in
+                    self.foodItems = result
+                }
             }, label: {
                 Text("Search")
             })
             .padding(.top, 10)
+            
+            // TODO: Create reusable view for each food item
+            if let foodItems = foodItems {
+                List {
+                    ForEach(foodItems.common ?? [], id: \.tagId) { commonItem in
+                        HStack {
+                            Text(commonItem.foodName)
+                            
+                        }
+                    }
+                    
+                    ForEach(foodItems.branded ?? [], id: \.nixItemId) { brandedItem in
+                        Text(brandedItem.foodName)
+                    }
+                }
+            }
             
         }
         .padding(.horizontal)
