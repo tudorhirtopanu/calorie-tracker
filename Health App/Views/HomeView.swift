@@ -14,38 +14,66 @@ struct HomeView: View {
     @State private var foodItems: FoodItems?
     
     var body: some View {
-        VStack(alignment: .leading) {
-            TextField("Search for food ...", text: $textField)
-                .padding(15)
-                .overlay {
+        ZStack {
+                        
+            VStack(alignment: .leading) {
+                ZStack {
+                    
                     RoundedRectangle(cornerSize: CGSize( width: 10, height: 10))
-                        .stroke(Color.gray, lineWidth: 1)
+                        .foregroundStyle(Color.gray.opacity(0.15))
+                        .frame(height: 40)
+                    
+                    HStack {
+                        
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(Color.gray)
+                        TextField("Search for food ...", text: $textField)
+                    }
+                    .padding(8)
                 }
-            
-            Button(action: {
-                NutritionixService.shared.searchInstant2(query: textField) { result in
-                    self.foodItems = result
-                }
-                NutritionixService.shared.searchInstant(query: textField)
-            }, label: {
-                Text("Search")
-            })
-            .padding(.top, 10)
-            
-            if let foodItems = foodItems {
-                List {
-                    ForEach(foodItems.common ?? [], id: \.foodName) { commonItem in
-                        FoodItemRow(foodName: commonItem.foodName, imageURL: commonItem.photo.thumb)
+                
+                Button(action: {
+                    NutritionixService.shared.searchInstant2(query: textField) { result in
+                        self.foodItems = result
+                    }
+                   
+                }, label: {
+                    Text("Search")
+                })
+                .padding([.top, .bottom], 10)
+                
+                Spacer()
+                
+                if let foodItems = foodItems {
+                    
+                    ScrollView {
+                        LazyVGrid(columns:[GridItem(), GridItem()]) {
+                            ForEach(foodItems.common ?? [], id: \.foodName) { commonItem in
+                                FoodItemRow(foodName: commonItem.foodName, imageURL: commonItem.photo.thumb)
+                                    .padding(.bottom,10)
+                            }
+                            
+                            ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
+                                FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
+                                    .padding(.bottom, 10)
+                            }
+                        }
                     }
                     
-                    ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
-                        FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
-                    }
+                   // List {
+    //                    ForEach(foodItems.common ?? [], id: \.foodName) { commonItem in
+    //                        FoodItemRow(foodName: commonItem.foodName, imageURL: commonItem.photo.thumb)
+    //                    }
+                        
+    //                    ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
+    //                        FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
+    //                    }
+                   // }
                 }
+                
             }
-            
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
     }
 }
 
