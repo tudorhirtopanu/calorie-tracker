@@ -18,7 +18,11 @@ struct FoodDetailView: View {
         }
         .onAppear{
             Task {
-                await NutritionixService.shared.fetchItemInfo(itemId: itemId)
+                let specificItem = try await NutritionixService.shared.fetchItemInfo(itemId: itemId)
+                
+                print(specificItem.food_name)
+                print("calories: "+String(specificItem.nf_calories))
+                print("per grams: "+String(specificItem.serving_weight_grams))
             }
             print("passed in "+text)
         }
