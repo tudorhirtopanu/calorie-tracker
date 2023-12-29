@@ -26,23 +26,20 @@ struct HomeView: View {
                 NutritionixService.shared.searchInstant2(query: textField) { result in
                     self.foodItems = result
                 }
+                NutritionixService.shared.searchInstant(query: textField)
             }, label: {
                 Text("Search")
             })
             .padding(.top, 10)
             
-            // TODO: Create reusable view for each food item
             if let foodItems = foodItems {
                 List {
-                    ForEach(foodItems.common ?? [], id: \.tagId) { commonItem in
-                        HStack {
-                            Text(commonItem.foodName)
-                            
-                        }
+                    ForEach(foodItems.common ?? [], id: \.foodName) { commonItem in
+                        FoodItemRow(foodName: commonItem.foodName, imageURL: commonItem.photo.thumb)
                     }
                     
-                    ForEach(foodItems.branded ?? [], id: \.nixItemId) { brandedItem in
-                        Text(brandedItem.foodName)
+                    ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
+                        FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
                     }
                 }
             }
