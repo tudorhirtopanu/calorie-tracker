@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct FoodSearchView: View {
     
     @State private var textField: String = ""
     
@@ -78,5 +78,5 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    FoodSearchView()
 }
