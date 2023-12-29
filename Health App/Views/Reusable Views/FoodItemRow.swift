@@ -34,6 +34,12 @@ struct FoodItemRow: View {
         
         ZStack {
             
+            RoundedRectangle(cornerSize: CGSize( width: 10, height: 10))
+                .stroke(Color.gray.opacity(0.15), lineWidth: 2)
+                .foregroundStyle(Color.gray.opacity(0.15))
+                
+                
+            
             VStack {
                 
                 if let image = image {
@@ -66,7 +72,7 @@ struct FoodItemRow: View {
                     .multilineTextAlignment(.center)
                     .padding(.leading, 5)
                 
-                Spacer()
+                
                 
             }
             .onAppear{
@@ -74,8 +80,8 @@ struct FoodItemRow: View {
                     await image = loadImage(url:imageURL)
                 }
             }
-        .frame(width: 120, height: 180)
-        }
+        
+        }.frame(width: 150, height: 180)
     }
 }
 
