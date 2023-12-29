@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct DailyDiaryView: View {
+        
     var body: some View {
-        Text("Daily Diary")
+        VStack {
+            Text("Daily Diary")
+        }
     }
 }
 
