@@ -39,7 +39,7 @@ struct BrandedItem: Codable {
 }
 
 struct Photo: Codable {
-    let thumb: String
+    let thumb: URL
     let highres: String?
     let isUserUploaded: Bool?
 }
