@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct FoodItems:Codable {
+struct NixFoodItems:Codable {
     let common:[CommonItem]?
     let branded:[BrandedItem]?
 }
