@@ -11,7 +11,7 @@ struct FoodSearchView: View {
     
     @State private var textField: String = ""
     
-    @State private var foodItems: FoodItems?
+    @State private var foodItems: NixFoodItems?
     @State private var isPresented:Bool = false
     @State private var selectedFoodItemText: String = ""
 
