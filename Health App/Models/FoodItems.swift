@@ -29,7 +29,7 @@ struct BrandedItem: Codable {
     let nixBrandId:String
     let brandNameItemName:String
     let servingQty:Double
-    let nfCalories:Int
+    let nfCalories:Double
     let photo:Photo
     let brandName:String
     let region:Int
