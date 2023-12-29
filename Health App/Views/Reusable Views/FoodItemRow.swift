@@ -32,40 +32,49 @@ struct FoodItemRow: View {
     
     var body: some View {
         
-        HStack {
+        ZStack {
             
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 40, height: 40)
-            } else {
+            VStack {
                 
-                ZStack {
-                    Color.gray
-                        .frame(width: 40, height: 40)
-                        .opacity(0.35)
-                        .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
-                    
-                    Image(systemName: "photo")
+                if let image = image {
+                    Image(uiImage: image)
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 35)
-                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 100)
+                } else {
+                    
+                    ZStack {
+                        Color.gray
+                            .frame(width: 100, height: 100)
+                            .opacity(0.35)
+                            .clipShape(RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+                        
+                        Image(systemName: "photo")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35)
+                            .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    }
+                    
                 }
                 
+                
+                Text(foodName)
+                    //.font(.body)
+                    .font(Font.system(size: 14))
+                    .fontWeight(.medium)
+                    .multilineTextAlignment(.center)
+                    .padding(.leading, 5)
+                
+                Spacer()
+                
             }
-            
-            
-            Text(foodName)
-                .font(.headline)
-                .padding(.leading, 5)
-            
-        }
-        .onAppear{
-            Task {
-                await image = loadImage(url:imageURL)
+            .onAppear{
+                Task {
+                    await image = loadImage(url:imageURL)
+                }
             }
+        .frame(width: 120, height: 180)
         }
     }
 }
@@ -73,7 +82,5 @@ struct FoodItemRow: View {
 // URL(string: "https://nix-tag-images.s3.amazonaws.com/1060_thumb.jpg")
 
 #Preview {
-    List {
-        FoodItemRow(foodName: "Pizza", imageURL:URL(string: "https://nix-tag-images.s3.amazonaws.com/1060_thumb.jpg")!)
-    }
+        FoodItemRow(foodName: "Pizza SDFKJNBKJSDFKJ", imageURL:URL(string: "https://nix-tag-images.s3.amazonaws.com/1060_thumb.jpg")!)
 }
