@@ -49,7 +49,7 @@ class NutritionixService {
         }.resume()
     }
     
-    func fetchItemInfo(itemId:String) async {
+    func fetchItemInfo(itemId: String) async throws -> NixFoods {
         let url = URL(string: "https://trackapi.nutritionix.com/v2/search/item/?nix_item_id=\(itemId)")!
         
         var request = URLRequest(url: url)
@@ -57,35 +57,25 @@ class NutritionixService {
 
         request.addValue(appId, forHTTPHeaderField: "x-app-id")
         request.addValue(apiKey, forHTTPHeaderField: "x-app-key")
-        
-        // for development set to 0
         request.addValue("0", forHTTPHeaderField: "x-remote-user-id")
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                print("Error: \(error)")
-                return
+        do {
+            let (data, _) = try await URLSession.shared.data(for: request)
+            
+            let decoder = JSONDecoder()
+            let nutrition = try decoder.decode(NixNutrition.self, from: data)
+            
+            guard let specificItem = nutrition.foods.first else {
+                throw NSError(domain: "Specific item not found", code: 0, userInfo: nil)
             }
             
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-            
-            if let httpResponse = response as? HTTPURLResponse {
-                print("HTTP Status Code: \(httpResponse.statusCode)")
-            }
-            
-            if let jsonString = String(data: data, encoding: .utf8) {
-                print("Raw JSON Response: \(jsonString)")
-            } else {
-                print("Error converting data to string")
-            }
-        }.resume()
-        
+            return specificItem
+        } catch {
+            throw error
+        }
     }
     
-    func searchInstant2(query: String, completion: @escaping (FoodItems?) -> Void) {
+    func searchInstant2(query: String, completion: @escaping (NixFoodItems?) -> Void) {
         
         let url = URL(string: "https://trackapi.nutritionix.com/v2/search/instant/?query=\(query)")!
         
@@ -116,7 +106,7 @@ class NutritionixService {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 
-                let result = try decoder.decode(FoodItems.self, from: data)
+                let result = try decoder.decode(NixFoodItems.self, from: data)
                 completion(result)
             } catch {
                 print("Error decoding JSON: \(error)")
