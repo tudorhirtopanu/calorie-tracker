@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct FoodDetailView: View {
+    
+    @State var text:String
+    @State var itemId:String
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text(text)
+        }
+        .onAppear{
+            Task {
+                await NutritionixService.shared.fetchItemInfo(itemId: itemId)
+            }
+            print("passed in "+text)
+        }
     }
 }
 
-#Preview {
-    FoodDetailView()
-}
+//#Preview {
+//    FoodDetailView(text: "TEST")
+//}
