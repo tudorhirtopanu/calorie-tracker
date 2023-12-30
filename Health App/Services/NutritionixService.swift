@@ -62,6 +62,10 @@ class NutritionixService {
         do {
             let (data, _) = try await URLSession.shared.data(for: request)
             
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("JSON String: \(jsonString)")
+            }
+            
             let decoder = JSONDecoder()
             let nutrition = try decoder.decode(NixNutrition.self, from: data)
             
@@ -71,6 +75,7 @@ class NutritionixService {
             
             return specificItem
         } catch {
+            print("Error fetching item info: \(error)")
             throw error
         }
     }
@@ -116,5 +121,7 @@ class NutritionixService {
         }.resume()
         
     }
+    
+    
     
 }

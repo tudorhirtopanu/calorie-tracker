@@ -8,17 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060112B3DE0CB00E2AC3F /* Health_App.swift */; };
-		8B7060142B3DE0CB00E2AC3F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060132B3DE0CB00E2AC3F /* ContentView.swift */; };
+		8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */; };
 		8B7060162B3DE0CE00E2AC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */; };
 		8B7060192B3DE0CE00E2AC3F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060182B3DE0CE00E2AC3F /* Preview Assets.xcassets */; };
+		8B7060232B3DFA7D00E2AC3F /* NutritionixService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060222B3DFA7D00E2AC3F /* NutritionixService.swift */; };
+		8B7060252B3DFC4300E2AC3F /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060242B3DFC4300E2AC3F /* Secrets.swift */; };
+		8B70602C2B3E1FDD00E2AC3F /* NixFoodItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70602B2B3E1FDD00E2AC3F /* NixFoodItems.swift */; };
+		8B70602F2B3ED0BA00E2AC3F /* FoodItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70602E2B3ED0BA00E2AC3F /* FoodItemRow.swift */; };
+		8B7060312B3F0F0F00E2AC3F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060302B3F0F0F00E2AC3F /* RootView.swift */; };
+		8B7060332B3F119D00E2AC3F /* DailyDiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060322B3F119D00E2AC3F /* DailyDiaryView.swift */; };
+		8B7060372B3F298600E2AC3F /* FatSecretService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060362B3F298600E2AC3F /* FatSecretService.swift */; };
+		8B7060392B3F2E9F00E2AC3F /* TokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060382B3F2E9F00E2AC3F /* TokenResponse.swift */; };
+		8B70603B2B3F6DAB00E2AC3F /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70603A2B3F6DAB00E2AC3F /* Food.swift */; };
+		8B70603D2B3F724600E2AC3F /* FoodDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70603C2B3F724600E2AC3F /* FoodDetailView.swift */; };
+		8B70603F2B3F844D00E2AC3F /* NixNutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */; };
+		8B7060412B408E4000E2AC3F /* CreateCustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */; };
+		8B7060432B40AFE700E2AC3F /* SubmitFoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8B70600E2B3DE0CB00E2AC3F /* Health App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7060112B3DE0CB00E2AC3F /* Health_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_App.swift; sourceTree = "<group>"; };
-		8B7060132B3DE0CB00E2AC3F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
 		8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8B7060182B3DE0CE00E2AC3F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B7060222B3DFA7D00E2AC3F /* NutritionixService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionixService.swift; sourceTree = "<group>"; };
+		8B7060242B3DFC4300E2AC3F /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		8B70602B2B3E1FDD00E2AC3F /* NixFoodItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NixFoodItems.swift; sourceTree = "<group>"; };
+		8B70602E2B3ED0BA00E2AC3F /* FoodItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemRow.swift; sourceTree = "<group>"; };
+		8B7060302B3F0F0F00E2AC3F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8B7060322B3F119D00E2AC3F /* DailyDiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDiaryView.swift; sourceTree = "<group>"; };
+		8B7060362B3F298600E2AC3F /* FatSecretService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatSecretService.swift; sourceTree = "<group>"; };
+		8B7060382B3F2E9F00E2AC3F /* TokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenResponse.swift; sourceTree = "<group>"; };
+		8B70603A2B3F6DAB00E2AC3F /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		8B70603C2B3F724600E2AC3F /* FoodDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailView.swift; sourceTree = "<group>"; };
+		8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NixNutrition.swift; sourceTree = "<group>"; };
+		8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFoodView.swift; sourceTree = "<group>"; };
+		8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitFoodButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +78,13 @@
 			isa = PBXGroup;
 			children = (
 				8B7060112B3DE0CB00E2AC3F /* Health_App.swift */,
-				8B7060132B3DE0CB00E2AC3F /* ContentView.swift */,
+				8B70601F2B3DFA3F00E2AC3F /* Views */,
+				8B7060202B3DFA4300E2AC3F /* ViewModels */,
+				8B7060212B3DFA4B00E2AC3F /* Models */,
+				8B70602A2B3E1F2700E2AC3F /* Services */,
 				8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */,
 				8B7060172B3DE0CE00E2AC3F /* Preview Content */,
+				8B7060242B3DFC4300E2AC3F /* Secrets.swift */,
 			);
 			path = "Health App";
 			sourceTree = "<group>";
@@ -65,6 +95,55 @@
 				8B7060182B3DE0CE00E2AC3F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B70601F2B3DFA3F00E2AC3F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B7060302B3F0F0F00E2AC3F /* RootView.swift */,
+				8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */,
+				8B7060322B3F119D00E2AC3F /* DailyDiaryView.swift */,
+				8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */,
+				8B70602D2B3ED06F00E2AC3F /* Reusable Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8B7060202B3DFA4300E2AC3F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8B7060212B3DFA4B00E2AC3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B70603A2B3F6DAB00E2AC3F /* Food.swift */,
+				8B70602B2B3E1FDD00E2AC3F /* NixFoodItems.swift */,
+				8B7060382B3F2E9F00E2AC3F /* TokenResponse.swift */,
+				8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8B70602A2B3E1F2700E2AC3F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8B7060222B3DFA7D00E2AC3F /* NutritionixService.swift */,
+				8B7060362B3F298600E2AC3F /* FatSecretService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8B70602D2B3ED06F00E2AC3F /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B70603C2B3F724600E2AC3F /* FoodDetailView.swift */,
+				8B70602E2B3ED0BA00E2AC3F /* FoodItemRow.swift */,
+				8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */,
+			);
+			path = "Reusable Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +216,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B7060142B3DE0CB00E2AC3F /* ContentView.swift in Sources */,
+				8B70603B2B3F6DAB00E2AC3F /* Food.swift in Sources */,
+				8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */,
+				8B7060372B3F298600E2AC3F /* FatSecretService.swift in Sources */,
+				8B7060252B3DFC4300E2AC3F /* Secrets.swift in Sources */,
 				8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */,
+				8B7060412B408E4000E2AC3F /* CreateCustomFoodView.swift in Sources */,
+				8B70603D2B3F724600E2AC3F /* FoodDetailView.swift in Sources */,
+				8B7060432B40AFE700E2AC3F /* SubmitFoodButton.swift in Sources */,
+				8B7060392B3F2E9F00E2AC3F /* TokenResponse.swift in Sources */,
+				8B70602C2B3E1FDD00E2AC3F /* NixFoodItems.swift in Sources */,
+				8B7060312B3F0F0F00E2AC3F /* RootView.swift in Sources */,
+				8B7060232B3DFA7D00E2AC3F /* NutritionixService.swift in Sources */,
+				8B7060332B3F119D00E2AC3F /* DailyDiaryView.swift in Sources */,
+				8B70602F2B3ED0BA00E2AC3F /* FoodItemRow.swift in Sources */,
+				8B70603F2B3F844D00E2AC3F /* NixNutrition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +372,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +402,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

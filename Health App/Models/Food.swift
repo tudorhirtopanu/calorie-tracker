@@ -9,9 +9,17 @@ import Foundation
 
 struct Food {
     let name:String
+    let image:String
+    let servingWeight:Int
     let calories:Int
     let protein:Int
     let carbs:Int
     let fat:Int
-    let sugars:Int
 }
+
+// MARK: Cache item data needed :
+/*
+ - item name
+ - item brand?
+ - calories per 100g
+ */
