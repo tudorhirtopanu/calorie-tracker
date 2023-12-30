@@ -6,3 +6,23 @@
 //
 
 import Foundation
+import SwiftData
+
+@Model
+class FoodDataItem: Identifiable {
+    
+    var id:String
+    var name:String
+    var foodOccasion:Int
+    var calories:Int
+    var protein:Int
+    
+    init(name: String, foodOccasion:Int, calories:Int, protein:Int) {
+        self.id = UUID().uuidString
+        self.name = name
+        self.foodOccasion = foodOccasion
+        self.calories = calories
+        self.protein = protein
+    }
+    
+}
