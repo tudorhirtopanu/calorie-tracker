@@ -6,11 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SubmitFoodButton: View {
     
+    @Environment(\.modelContext) private var context
+    
     @State var mealTitle:String
     @State var iconWidth:CGFloat
+    
+    var foodName:String
+    var foodOccasion:Int
+    var calories:Int
+    var protein:Int
     
     var body: some View {
         
@@ -19,6 +27,9 @@ struct SubmitFoodButton: View {
             Button(action: {
                 
                 // Save Data as food item
+               let data = FoodDataItem(name: foodName, foodOccasion: foodOccasion, calories: calories, protein: protein)
+                
+                context.insert(data)
                 
             }, label: {
                 VStack{
@@ -42,5 +53,5 @@ struct SubmitFoodButton: View {
 }
 
 #Preview {
-    SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50)
+    SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: "Pizza", foodOccasion: 1, calories: 220, protein: 20)
 }
