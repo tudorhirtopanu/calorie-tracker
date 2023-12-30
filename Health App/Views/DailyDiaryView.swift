@@ -6,12 +6,23 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DailyDiaryView: View {
         
+    @Query private var items:[FoodDataItem]
+    
     var body: some View {
         VStack {
             Text("Daily Diary")
+            
+            List(items) { item in
+                HStack{
+                    Text(item.name)
+                    Text(String(item.calories))
+                }
+            }
+            
         }
     }
 }
