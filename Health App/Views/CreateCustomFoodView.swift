@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum FoodOccasions {
+    case breakfast
+    case lunch
+    case dinner
+    case snacks
+}
+
 struct CreateCustomFoodView: View {
     
     @State var itemName:String = ""
@@ -31,6 +38,16 @@ struct CreateCustomFoodView: View {
                             .frame(width: 120, alignment: .leading)
                         Spacer()
                         TextField("e.g. 123", text: $itemCal)
+                            .keyboardType(.namePhonePad)
+                            .onReceive(itemCal.publisher.collect()) { characters in
+                                let filtered = characters.filter { $0.isNumber }
+                                if let numericValue = Int(String(filtered)) {
+                                    itemCal = String(numericValue)
+                                } else {
+                                    itemCal = ""
+                                }
+                            }
+                        
                     }
                     
                     HStack {
@@ -38,63 +55,43 @@ struct CreateCustomFoodView: View {
                             .frame(width: 120, alignment: .leading)
                         Spacer()
                         TextField("e.g. 123", text: $itemProtein)
+                            .keyboardType(.namePhonePad)
+                            .onReceive(itemProtein.publisher.collect()) { characters in
+                                let filtered = characters.filter { $0.isNumber }
+                                if let numericValue = Int(String(filtered)) {
+                                    itemProtein = String(numericValue)
+                                } else {
+                                    itemProtein = ""
+                                }
+                            }
                     }
                 }
                 
                 Section("Add to meal occasion"){
                     HStack{
-                        VStack{
-                            Image("Breakfast")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 50, height: 70)
-                            Text("Breakfast")
-                                .font(Font.system(size: 14))
-                            Image(systemName: "plus.circle.fill")
-                                .font(Font.system(size: 18))
-                                .padding([.top, .bottom], 5)
-                        }
-                        .frame(width:80)
-                        VStack{
-                            Image("Lunch")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 70, height: 70)
-                            Text("Lunch")
-                                .font(Font.system(size: 14))
-                            Image(systemName: "plus.circle.fill")
-                                .font(Font.system(size: 18))
-                                .padding([.top, .bottom], 5)
-                        }
-                        .frame(width:80)
-                        VStack{
-                            Image("Dinner")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 70)
-                            Text("Dinner")
-                                .font(Font.system(size: 14))
-                            Image(systemName: "plus.circle.fill")
-                                .font(Font.system(size: 18))
-                                .padding([.top, .bottom], 5)
-                        }
-                        .frame(width:80)
-                        VStack{
-                            Image("Snacks")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 40, height: 70)
-                            Text("Snacks")
-                                .font(Font.system(size: 14))
-                            Image(systemName: "plus.circle.fill")
-                                .font(Font.system(size: 18))
-                                .padding([.top, .bottom], 5)
-                        }
-                        .frame(width:80)
+                        
+                        SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50)
+                        
+                        Divider()
+                                                
+                        SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70)
+                        
+                        Divider()
+                        
+                        SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60)
+                        
+                        Divider()
+                        
+                        SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40)
+                       
                     }
+                    .buttonStyle(BorderlessButtonStyle())
+                    .frame(height: 120)
+                    .padding([.top, .bottom],10)
+                    .disabled(itemName == "" || itemCal == "" || itemProtein == "")
                     
                 }
-                
+                                
                 Button(action: {
                     
                 }, label: {
