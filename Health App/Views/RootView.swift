@@ -9,17 +9,19 @@ import SwiftUI
 
 struct RootView: View {
     var body: some View {
-        TabView{
+        NavigationStack{
+            TabView{
+                DailyDiaryView()
+                    .tabItem {
+                        Label("Food", systemImage: "fork.knife")
+                    }
+                
+                FoodSearchView()
+                    .tabItem {
+                        Label("Search", systemImage: "magnifyingglass")
+                    }
+            }
             
-            DailyDiaryView()
-                .tabItem {
-                    Label("Diary", systemImage: "fork.knife")
-                }
-            
-            FoodSearchView()
-                .tabItem { 
-                    Label("Search", systemImage: "magnifyingglass")
-                }
         }
     }
 }
