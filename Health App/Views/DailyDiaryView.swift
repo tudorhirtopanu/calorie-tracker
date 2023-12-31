@@ -11,10 +11,10 @@ import SwiftData
 struct DailyDiaryView: View {
     
     @State private var textField: String = ""
-    @State private var isOverlayPresented:Bool = false
+    @State private var presentPopover:Bool = false
     
     @FocusState private var searchIsFocused:Bool
-        
+    
     @Query private var items:[FoodDataItem]
     
     @Query(filter: #Predicate<FoodDataItem>{food in
@@ -46,73 +46,54 @@ struct DailyDiaryView: View {
         
         return totalProtein
     }
-
+    
+    @Environment(\.modelContext) private var context
+    
+    @StateObject private var dailyTaskManager = DailyTaskManager()
+    
+    private func deleteFoodData() {
+        
+        do {
+            try context.delete(model: FoodDataItem.self)
+        }
+        catch {
+           print("failed to delete model")
+        }
+        
+    }
+    
     var body: some View {
-
+        
             VStack {
-                /*
-                HStack {
+                
+                ZStack {
                     
-                    ZStack {
+                    RoundedRectangle(cornerSize: CGSize( width: 10, height: 10))
+                        .foregroundStyle(Color.gray.opacity(0.15))
+                        .frame(height: 40)
+                    
+                    HStack {
                         
-                        RoundedRectangle(cornerSize: CGSize( width: 10, height: 10))
-                            .foregroundStyle(Color.gray.opacity(0.15))
-                            .frame(height: 40)
-                        
-                        HStack {
-                            
-                            Image(systemName: "magnifyingglass")
-                                .foregroundStyle(Color.gray)
-                            TextField("Search for food ...", text: $textField)
-                                .focused($searchIsFocused)
-                        }
-                        .padding(8)
+                        Image(systemName: "magnifyingglass")
+                            .foregroundStyle(Color.gray)
+                        TextField("Search for food ...", text: $textField)
+                            .focused($searchIsFocused)
                     }
-                    
-                    NavigationLink(destination: {
-                        CreateCustomFoodView()
-                    }, label: {
-                        VStack {
-                            Image("fork.knife.badge.plus")
-                            Text("Custom")
-                                .font(Font.system(size: 12))
-                        }
-                    })
-                    
+                    .padding(8)
                 }
-                .padding(.bottom, 10)
-                 */
 
-                    HStack{
-                        Text("Meal")
-                            .padding(.leading,10)
-                        Spacer()
-                        Text("KCAL")
-                            .frame(width:50)
-                            .font(Font.system(size: 14))
-                        Text("PROTg")
-                            .frame(width:50)
-                            .font(Font.system(size: 14))
-                    }
-                    
-                    /*
-                    ZStack {
-                        RoundedRectangle(cornerSize: CGSize( width: 50, height: 30))
-                            .foregroundStyle(Color.gray.opacity(0.15))
-                        .frame(height: 35)
-                        
-                        HStack {
-                            Text("BREAKFAST")
-                                .padding(.leading)
-                                .font(Font.system(size: 14))
-                            Spacer()
-                            
-                            
-                        }
-                        
-                    }
-                     */
-                        
+                HStack{
+                    Text("Meal")
+                        .padding(.leading,10)
+                    Spacer()
+                    Text("KCAL")
+                        .frame(width:50)
+                        .font(Font.system(size: 14))
+                    Text("PROTg")
+                        .frame(width:50)
+                        .font(Font.system(size: 14))
+                }
+                
                 ScrollView{
                     
                     HStack {
@@ -166,11 +147,11 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
-                                        
+                    
                     ForEach(lunchItems) { item in
                         
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
-                       
+                        
                     }
                     
                     HStack {
@@ -192,11 +173,11 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
-                                        
+                    
                     ForEach(dinnerItems) { item in
                         
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
-                       
+                        
                     }
                     
                     HStack {
@@ -218,86 +199,103 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
-                                        
+                    
                     ForEach(snackItems) { item in
                         
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
-                       
+                        
                     }
                     
                     
-                                        
+                    
                 }
                 
                 Spacer()
                 
                 Divider()
                 
+                VStack {
+                    HStack{
+                        Text("TOTALS")
+                        
+                        Spacer()
+                        Text("KCAL")
+                            .frame(width:50)
+                            .font(Font.system(size: 14))
+                        Text("PROTg")
+                            .frame(width:50)
+                            .font(Font.system(size: 14))
+                    }
+                    
+                    .padding(.bottom, 10)
+                    .fontWeight(.medium)
+                    
                     VStack {
                         HStack{
-                            Text("TOTALS")
+                            Text("GOAL")
                             
                             Spacer()
-                            Text("KCAL")
+                            Text("3000")
                                 .frame(width:50)
-                                .font(Font.system(size: 14))
-                            Text("PROTg")
+                            Text("135")
                                 .frame(width:50)
-                                .font(Font.system(size: 14))
                         }
-                        .padding(.bottom, 10)
+                        .foregroundStyle(Color.orange)
                         .fontWeight(.medium)
                         
-                            VStack {
-                                HStack{
-                                    Text("GOAL")
-                                    
-                                    Spacer()
-                                    Text("3000")
-                                        .frame(width:50)
-                                    Text("135")
-                                        .frame(width:50)
-                                }
-                                .foregroundStyle(Color.orange)
-                                .fontWeight(.medium)
-                                
-                                HStack{
-                                    Text("FOOD")
-                                    
-                                    Spacer()
-                                    Text(String(calculateCalories(itemArray: items)))
-                                        .frame(width:50)
-                                    Text(String(calculateProtein(itemArray: items)))
-                                        .frame(width:50)
-                                }
-                                .foregroundStyle(Color.green)
-                                .fontWeight(.medium)
-                                
-                                Divider()
-                                
-                                HStack{
-                                    Text("LEFT")
-                                    
-                                    Spacer()
-                                    Text(String(3000 - calculateCalories(itemArray: items)))
-                                        .frame(width:50)
-                                    Text(String(135 - calculateProtein(itemArray: items)))
-                                        .frame(width:50)
-                                }
-                                .foregroundStyle(Color.red)
-                                .fontWeight(.medium)
-                                
-                            }
+                        HStack{
+                            Text("FOOD")
+                            
+                            Spacer()
+                            Text(String(calculateCalories(itemArray: items)))
+                                .frame(width:50)
+                            Text(String(calculateProtein(itemArray: items)))
+                                .frame(width:50)
+                        }
+                        .foregroundStyle(Color.green)
+                        .fontWeight(.medium)
+                        
+                        Divider()
+                        
+                        HStack{
+                            Text("LEFT")
+                            
+                            Spacer()
+                            Text(String(3000 - calculateCalories(itemArray: items)))
+                                .frame(width:50)
+                            Text(String(135 - calculateProtein(itemArray: items)))
+                                .frame(width:50)
+                        }
+                        .foregroundStyle(Color.red)
+                        .fontWeight(.medium)
                         
                     }
-                    .frame(height:100)
-                    .padding([.bottom, .top],10)
+                    
+                }
+                .frame(height:100)
+                .padding([.bottom, .top],10)
             }
             .padding(.horizontal)
+            .onAppear {
+                
+                Task {
+                    
+                    if await dailyTaskManager.performDailyTaskIfNeeded() {
+                        await MainActor.run {
+                            deleteFoodData()
+                        }
+                    }
+                    
+                }
+                
+            }
+                
     }
 }
 
 #Preview {
-    DailyDiaryView()
-        .modelContainer(previewContainer)
+    NavigationStack {
+        DailyDiaryView()
+            .modelContainer(previewContainer)
+    }
 }
