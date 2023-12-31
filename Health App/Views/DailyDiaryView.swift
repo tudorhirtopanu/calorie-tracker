@@ -19,6 +19,7 @@ struct DailyDiaryView: View {
             List(items) { item in
                 HStack{
                     Text(item.name)
+                    Spacer()
                     Text(String(item.calories))
                 }
             }
@@ -29,4 +30,5 @@ struct DailyDiaryView: View {
 
 #Preview {
     DailyDiaryView()
+        .modelContainer(previewContainer)
 }
