@@ -25,4 +25,8 @@ class FoodDataItem: Identifiable {
         self.protein = protein
     }
     
+    static func example() -> FoodDataItem {
+        return FoodDataItem(name: "Big Mac", foodOccasion: 0, calories: 400, protein: 32)
+    }
+    
 }
