@@ -7,19 +7,17 @@
 
 import Foundation
 
-struct Food {
+struct Food:Encodable {
+    let id:Int
     let name:String
-    let image:String
-    let servingWeight:Int
-    let calories:Int
-    let protein:Int
-    let carbs:Int
-    let fat:Int
+    let image:URL?
+    let servingSizes:[ServingSizes]
 }
 
-// MARK: Cache item data needed :
-/*
- - item name
- - item brand?
- - calories per 100g
- */
+struct ServingSizes:Identifiable, Encodable {
+    let id:Int
+    let name:String
+    let weight:Int
+    let calories:Int
+    let protein: Double
+}
