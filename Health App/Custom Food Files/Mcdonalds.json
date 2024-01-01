@@ -1,0 +1,15 @@
+[
+    {
+        "id":0,
+        "name":"Mcdonald's Fries",
+        "image":null
+        "servingSizes":[
+            {
+                "name":"Small",
+                "weight":80,
+                "calories":236,
+                "protein":2.3
+            }
+        ]
+    }
+]
