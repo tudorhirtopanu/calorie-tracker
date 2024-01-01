@@ -13,27 +13,50 @@ struct BrandButton: View {
     var image:String
     var brandName:String
     
+    private struct CustomValue2:Hashable {
+        let test:Int
+    }
+    
+    @EnvironmentObject var nm:NavigationManager
+    
     var body: some View {
         
         /* parameters to pass in
          - file name
          */
         
-        NavigationLink(destination: CustomBrandFoodsView(fileToDecode: fileName),
-                       label: {
-
-                VStack {
-                    Image(image)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width:70, height: 70)
-                    
-                    Text(brandName)
-                        .font(Font.system(size: 18, weight: .medium))
-                        .foregroundStyle(Color.primary)
-                }
-            
+        NavigationLink(value: CustomValue2(test: 1), label: {
+            VStack {
+                Image(image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width:70, height: 70)
+                
+                Text(brandName)
+                    .font(Font.system(size: 18, weight: .medium))
+                    .foregroundStyle(Color.primary)
+            }
         })
+        .navigationDestination(for: CustomValue2.self, destination: { state in
+            CustomBrandFoodsView(fileToDecode: fileName)
+                .environmentObject(nm)
+        })
+        
+//        NavigationLink(destination: CustomBrandFoodsView(fileToDecode: fileName),
+//                       label: {
+//
+//                VStack {
+//                    Image(image)
+//                        .resizable()
+//                        .scaledToFill()
+//                        .frame(width:70, height: 70)
+//                    
+//                    Text(brandName)
+//                        .font(Font.system(size: 18, weight: .medium))
+//                        .foregroundStyle(Color.primary)
+//                }
+//            
+//        })
         
     }
 }

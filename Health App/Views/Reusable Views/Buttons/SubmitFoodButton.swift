@@ -21,6 +21,8 @@ struct SubmitFoodButton: View {
     var calories:Int
     var protein:Double
     
+    @EnvironmentObject var nm:NavigationManager
+    
     var body: some View {
         
         GeometryReader {geo in
@@ -35,6 +37,8 @@ struct SubmitFoodButton: View {
                 context.insert(data)
                 
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                
+                nm.path = NavigationPath()
                                 
             }, label: {
                 VStack{
@@ -59,4 +63,5 @@ struct SubmitFoodButton: View {
 
 #Preview {
     SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: "Pizza", foodOccasion: 1, calories: 220, protein: 20)
+        .environmentObject(NavigationManager())
 }

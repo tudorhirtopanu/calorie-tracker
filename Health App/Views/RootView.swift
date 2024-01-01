@@ -8,15 +8,20 @@
 import SwiftUI
 
 struct RootView: View {
+    
+    @StateObject var nm:NavigationManager = NavigationManager()
+    
     var body: some View {
-        NavigationStack{
+        NavigationStack(path: $nm.path){
             TabView{
                 DailyDiaryView()
+                    .environmentObject(nm)
                     .tabItem {
                         Label("Food", systemImage: "fork.knife")
                     }
                 
                 FoodSearchView()
+                    .environmentObject(nm)
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }

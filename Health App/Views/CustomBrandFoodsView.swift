@@ -12,9 +12,8 @@ struct CustomBrandFoodsView: View {
     @State var selectedFood:[Food] = []
     var fileToDecode:String
     
-    //@Binding var customFoods:CustomFoodsViewModel
-
-    // TODO: Load the json on appear
+    @EnvironmentObject var nm:NavigationManager
+    
     var body: some View {
         VStack {
             List {
@@ -36,9 +35,10 @@ struct CustomBrandFoodsView: View {
                 
                 ForEach(selectedFood){food in
                     
-                    NavigationLink(destination: AddFoodView(foodItem: food), label: {
+                    NavigationLink(destination: AddFoodView(foodItem: food).environmentObject(nm), label: {
                         Text(food.name)
                     })
+                    
                     
                 }
             }
@@ -52,5 +52,6 @@ struct CustomBrandFoodsView: View {
 #Preview {
     NavigationStack {
         CustomBrandFoodsView(fileToDecode: "Mcdonalds")
+            .environmentObject(NavigationManager())
     }
 }

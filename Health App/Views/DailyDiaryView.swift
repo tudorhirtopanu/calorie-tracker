@@ -11,7 +11,7 @@ import SwiftData
 struct DailyDiaryView: View {
     
     @State private var textField: String = ""
-    @State private var presentPopover:Bool = false
+    @State private var isEditEnabled:Bool = false
     
     @FocusState private var searchIsFocused:Bool
     
@@ -44,7 +44,14 @@ struct DailyDiaryView: View {
         
         let totalProtein = itemArray.reduce(0) { $0 + $1.protein }
         
-        return totalProtein
+        let roundedProtein = (totalProtein * 10).rounded() / 10
+        
+        return roundedProtein
+    }
+    
+    private func truncateDouble(number: Double, decimalPlaces: Int) -> Double {
+        let multiplier = pow(10.0, Double(decimalPlaces))
+        return Double(Int(number * multiplier)) / multiplier
     }
     
     @Environment(\.modelContext) private var context
@@ -138,6 +145,7 @@ struct DailyDiaryView: View {
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
                         
                     }
+                    .padding(.top)
                     
                     HStack {
                         Text("Dinner")
@@ -164,6 +172,7 @@ struct DailyDiaryView: View {
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
                         
                     }
+                    .padding(.top)
                     
                     HStack {
                         Text("Snacks")
@@ -190,6 +199,7 @@ struct DailyDiaryView: View {
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
                         
                     }
+                    .padding(.top)
                     
                     
                     
@@ -248,7 +258,7 @@ struct DailyDiaryView: View {
                             Spacer()
                             Text(String(3000 - calculateCalories(itemArray: items)))
                                 .frame(width:50)
-                            Text(String(135 - calculateProtein(itemArray: items)))
+                            Text(String(truncateDouble(number: 135 - calculateProtein(itemArray: items), decimalPlaces: 1)))
                                 .frame(width:50)
                         }
                         .foregroundStyle(Color.red)

@@ -18,6 +18,12 @@ struct FoodSearchView: View {
     
     @FocusState private var searchIsFocused:Bool
     
+    @EnvironmentObject var nm:NavigationManager
+    
+    private struct CustomValue:Hashable {
+        let test:Int
+    }
+    
     var body: some View {
         
         
@@ -40,15 +46,17 @@ struct FoodSearchView: View {
                     .padding(8)
                 }
                 
-                NavigationLink(destination: {
-                    CreateCustomFoodView()
-                }, label: {
+                NavigationLink(value: CustomValue(test: 2), label: {
                     VStack {
                         Image("fork.knife.badge.plus")
                         Text("Custom")
                             .font(Font.system(size: 12))
                     }
                 })
+                .navigationDestination(for: CustomValue.self) { state in
+                    CreateCustomFoodView()
+                                    .environmentObject(nm)
+                }
                 
             }
             
@@ -65,15 +73,6 @@ struct FoodSearchView: View {
             })
             .padding([.top, .bottom], 10)
             
-//            Text("Recent Items")
-//                .font(.caption)
-//                .foregroundStyle(Color.gray)
-            
-//            if foodItems == nil {
-//                Text("No Recent Items")
-//                    .padding(.top, 10)
-//            }
-            
             Text("Popular Brands")
                 .font(.caption)
                 .foregroundStyle(Color.gray)
@@ -83,6 +82,7 @@ struct FoodSearchView: View {
                 
                 HStack{
                     BrandButton(fileName: "Mcdonalds", image: "McdonaldsLogo", brandName: "Mcdonalds")
+                        .environmentObject(nm)
                 }
                 
             }
@@ -123,5 +123,6 @@ struct FoodSearchView: View {
 #Preview {
     NavigationStack{
         FoodSearchView()
+            .environmentObject(NavigationManager())
     }
 }
