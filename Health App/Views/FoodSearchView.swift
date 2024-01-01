@@ -94,14 +94,6 @@ struct FoodSearchView: View {
                 ScrollView {
                     LazyVGrid(columns:[GridItem(), GridItem()]) {
                         
-                        /*
-                         //
-                         //                            ForEach(foodItems.common ?? [], id: \.foodName) { commonItem in
-                         //                                FoodItemRow(foodName: commonItem.foodName, imageURL: commonItem.photo.thumb)
-                         //                                    .padding(.bottom,10)
-                         //                            }
-                         */
-                        
                         ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
                             NavigationLink(destination: FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId),
                                            label: {

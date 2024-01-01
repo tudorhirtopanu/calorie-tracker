@@ -11,6 +11,7 @@ import SwiftData
 struct SubmitFoodButton: View {
     
     @Environment(\.modelContext) private var context
+    @Environment(\.presentationMode) var presentationMode
     
     @State var mealTitle:String
     @State var iconWidth:CGFloat
@@ -33,6 +34,8 @@ struct SubmitFoodButton: View {
                 
                 context.insert(data)
                 
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                                
             }, label: {
                 VStack{
                     Image(mealTitle)
