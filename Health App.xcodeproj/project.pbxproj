@@ -24,6 +24,12 @@
 		8B70603F2B3F844D00E2AC3F /* NixNutrition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */; };
 		8B7060412B408E4000E2AC3F /* CreateCustomFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */; };
 		8B7060432B40AFE700E2AC3F /* SubmitFoodButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */; };
+		8B7060472B40BE2300E2AC3F /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060462B40BE2300E2AC3F /* Config.plist */; };
+		8B7060492B40BEF800E2AC3F /* FoodDataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060482B40BEF800E2AC3F /* FoodDataItem.swift */; };
+		8B70604C2B41A42E00E2AC3F /* previewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70604B2B41A42E00E2AC3F /* previewContainer.swift */; };
+		8B70604E2B41BAF900E2AC3F /* FoodItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70604D2B41BAF900E2AC3F /* FoodItemButton.swift */; };
+		8B7060502B41F71800E2AC3F /* DailyTaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70604F2B41F71800E2AC3F /* DailyTaskManager.swift */; };
+		8B7060542B42FBE500E2AC3F /* Mcdonalds.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060532B42FBE500E2AC3F /* Mcdonalds.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +51,12 @@
 		8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NixNutrition.swift; sourceTree = "<group>"; };
 		8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCustomFoodView.swift; sourceTree = "<group>"; };
 		8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitFoodButton.swift; sourceTree = "<group>"; };
+		8B7060462B40BE2300E2AC3F /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
+		8B7060482B40BEF800E2AC3F /* FoodDataItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataItem.swift; sourceTree = "<group>"; };
+		8B70604B2B41A42E00E2AC3F /* previewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = previewContainer.swift; sourceTree = "<group>"; };
+		8B70604D2B41BAF900E2AC3F /* FoodItemButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodItemButton.swift; sourceTree = "<group>"; };
+		8B70604F2B41F71800E2AC3F /* DailyTaskManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyTaskManager.swift; sourceTree = "<group>"; };
+		8B7060532B42FBE500E2AC3F /* Mcdonalds.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mcdonalds.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +89,15 @@
 		8B7060102B3DE0CB00E2AC3F /* Health App */ = {
 			isa = PBXGroup;
 			children = (
+				8B7060462B40BE2300E2AC3F /* Config.plist */,
 				8B7060112B3DE0CB00E2AC3F /* Health_App.swift */,
 				8B70601F2B3DFA3F00E2AC3F /* Views */,
 				8B7060202B3DFA4300E2AC3F /* ViewModels */,
 				8B7060212B3DFA4B00E2AC3F /* Models */,
 				8B70602A2B3E1F2700E2AC3F /* Services */,
+				8B70604A2B41A3DF00E2AC3F /* Preview Helpers */,
+				8B7060512B421D7B00E2AC3F /* Helpers */,
+				8B7060522B42FBA900E2AC3F /* Custom Food Files */,
 				8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */,
 				8B7060172B3DE0CE00E2AC3F /* Preview Content */,
 				8B7060242B3DFC4300E2AC3F /* Secrets.swift */,
@@ -101,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				8B7060302B3F0F0F00E2AC3F /* RootView.swift */,
-				8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */,
 				8B7060322B3F119D00E2AC3F /* DailyDiaryView.swift */,
+				8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */,
 				8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */,
 				8B70602D2B3ED06F00E2AC3F /* Reusable Views */,
 			);
@@ -123,6 +139,8 @@
 				8B70602B2B3E1FDD00E2AC3F /* NixFoodItems.swift */,
 				8B7060382B3F2E9F00E2AC3F /* TokenResponse.swift */,
 				8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */,
+				8B7060482B40BEF800E2AC3F /* FoodDataItem.swift */,
+				8B70604F2B41F71800E2AC3F /* DailyTaskManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,8 +160,32 @@
 				8B70603C2B3F724600E2AC3F /* FoodDetailView.swift */,
 				8B70602E2B3ED0BA00E2AC3F /* FoodItemRow.swift */,
 				8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */,
+				8B70604D2B41BAF900E2AC3F /* FoodItemButton.swift */,
 			);
 			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		8B70604A2B41A3DF00E2AC3F /* Preview Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8B70604B2B41A42E00E2AC3F /* previewContainer.swift */,
+			);
+			path = "Preview Helpers";
+			sourceTree = "<group>";
+		};
+		8B7060512B421D7B00E2AC3F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8B7060522B42FBA900E2AC3F /* Custom Food Files */ = {
+			isa = PBXGroup;
+			children = (
+				8B7060532B42FBE500E2AC3F /* Mcdonalds.json */,
+			);
+			path = "Custom Food Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,7 +247,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7060192B3DE0CE00E2AC3F /* Preview Assets.xcassets in Resources */,
+				8B7060472B40BE2300E2AC3F /* Config.plist in Resources */,
 				8B7060162B3DE0CE00E2AC3F /* Assets.xcassets in Resources */,
+				8B7060542B42FBE500E2AC3F /* Mcdonalds.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,9 +263,11 @@
 				8B70603B2B3F6DAB00E2AC3F /* Food.swift in Sources */,
 				8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */,
 				8B7060372B3F298600E2AC3F /* FatSecretService.swift in Sources */,
+				8B7060502B41F71800E2AC3F /* DailyTaskManager.swift in Sources */,
 				8B7060252B3DFC4300E2AC3F /* Secrets.swift in Sources */,
 				8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */,
 				8B7060412B408E4000E2AC3F /* CreateCustomFoodView.swift in Sources */,
+				8B70604C2B41A42E00E2AC3F /* previewContainer.swift in Sources */,
 				8B70603D2B3F724600E2AC3F /* FoodDetailView.swift in Sources */,
 				8B7060432B40AFE700E2AC3F /* SubmitFoodButton.swift in Sources */,
 				8B7060392B3F2E9F00E2AC3F /* TokenResponse.swift in Sources */,
@@ -229,7 +275,9 @@
 				8B7060312B3F0F0F00E2AC3F /* RootView.swift in Sources */,
 				8B7060232B3DFA7D00E2AC3F /* NutritionixService.swift in Sources */,
 				8B7060332B3F119D00E2AC3F /* DailyDiaryView.swift in Sources */,
+				8B70604E2B41BAF900E2AC3F /* FoodItemButton.swift in Sources */,
 				8B70602F2B3ED0BA00E2AC3F /* FoodItemRow.swift in Sources */,
+				8B7060492B40BEF800E2AC3F /* FoodDataItem.swift in Sources */,
 				8B70603F2B3F844D00E2AC3F /* NixNutrition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

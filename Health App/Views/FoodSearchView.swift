@@ -19,6 +19,7 @@ struct FoodSearchView: View {
     @FocusState private var searchIsFocused:Bool
     
     
+    
     var body: some View {
         
         
@@ -112,12 +113,6 @@ struct FoodSearchView: View {
             
         }
         .padding(.horizontal)
-        .toolbar {
-            ToolbarItem(placement: .topBarTrailing) {
-                
-                
-            }
-        }
         
     }
 }

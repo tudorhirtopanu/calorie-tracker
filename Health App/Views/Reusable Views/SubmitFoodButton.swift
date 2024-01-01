@@ -26,6 +26,8 @@ struct SubmitFoodButton: View {
             
             Button(action: {
                 
+                //TODO: Ensure button can only be pressed once
+                
                 // Save Data as food item
                let data = FoodDataItem(name: foodName, foodOccasion: foodOccasion, calories: calories, protein: protein)
                 

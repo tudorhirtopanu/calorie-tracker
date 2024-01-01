@@ -66,7 +66,7 @@ struct DailyDiaryView: View {
     var body: some View {
         
             VStack {
-
+                
                 HStack{
                     Text("Meal")
                         .padding(.leading,10)
@@ -266,6 +266,7 @@ struct DailyDiaryView: View {
                     Task {
                         
                         if await dailyTaskManager.performDailyTaskIfNeeded() {
+                            // TODO: Save daily total and date before deleting
                             await MainActor.run {
                                 deleteFoodData()
                             }
