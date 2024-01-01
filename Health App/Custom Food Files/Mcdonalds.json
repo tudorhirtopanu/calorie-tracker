@@ -2,13 +2,54 @@
     {
         "id":0,
         "name":"Mcdonald's Fries",
-        "image":null
         "servingSizes":[
             {
+                "id":0,
                 "name":"Small",
                 "weight":80,
                 "calories":236,
                 "protein":2.3
+            },
+            {
+                "id":1,
+                "name":"Medium",
+                "weight":114,
+                "calories":337,
+                "protein":3.3
+            },
+            {
+                "id":2,
+                "name":"Large",
+                "weight":150,
+                "calories":445,
+                "protein":4.4
+            }
+        ]
+    },
+    {
+        "id":1,
+        "name":"Mcdonald's McNuggets",
+        "servingSizes":[
+            {
+                "id":0,
+                "name":"1 McNugget",
+                "weight":17.5,
+                "calories":43,
+                "protein":2.5
+            },
+            {
+                "id":1,
+                "name":"6 McNuggets",
+                "weight":105,
+                "calories":261,
+                "protein":15
+            },
+            {
+                "id":2,
+                "name":"9 McNuggets",
+                "weight":158,
+                "calories":392,
+                "protein":22.5
             }
         ]
     }

@@ -18,7 +18,7 @@ struct SubmitFoodButton: View {
     var foodName:String
     var foodOccasion:Int
     var calories:Int
-    var protein:Int
+    var protein:Double
     
     var body: some View {
         

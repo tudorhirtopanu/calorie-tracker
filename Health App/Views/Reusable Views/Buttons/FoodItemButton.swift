@@ -11,7 +11,7 @@ struct FoodItemButton: View {
     
     @State var name:String
     @State var calories:Int
-    @State var protein:Int
+    @State var protein:Double
     
     var body: some View {
         
