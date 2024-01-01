@@ -28,5 +28,6 @@ struct Health_App: App {
             RootView()
                 .modelContainer(for: FoodDataItem.self)
         }
+        
     }
 }
