@@ -19,6 +19,7 @@ struct CreateCustomFoodView: View {
     
     @Environment(\.modelContext) private var context
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var nm:NavigationManager
     
     @State var itemName:String = ""
     @State var itemCal:String = ""
@@ -80,19 +81,22 @@ struct CreateCustomFoodView: View {
                 Section("Add to meal occasion"){
                     HStack{
                         
-                        SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
-                        
-                        Divider()
-                                                
-                        SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
-                        
-                        Divider()
-                        
-                        SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
-                        
-                        Divider()
-                        
-                        SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                        Group {
+                            
+                            SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            
+                            Divider()
+                            
+                            SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            
+                            Divider()
+                            
+                            SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            
+                            Divider()
+                            
+                            SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                        }.environmentObject(nm)
                        
                     }
                     .buttonStyle(BorderlessButtonStyle())
@@ -116,4 +120,5 @@ struct CreateCustomFoodView: View {
 
 #Preview {
     CreateCustomFoodView()
+        .environmentObject(NavigationManager())
 }

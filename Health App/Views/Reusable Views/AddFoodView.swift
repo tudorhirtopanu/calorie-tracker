@@ -16,6 +16,8 @@ struct AddFoodView: View {
      @State var itemCal:Int = -1
      @State var itemProtein:Double = -1
     
+    @EnvironmentObject var nm:NavigationManager
+    
     var body: some View {
         ZStack {
             
@@ -88,20 +90,22 @@ struct AddFoodView: View {
                     
                     Section("Add to meal occasion"){
                         HStack{
-                            
-                            SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: itemCal, protein: itemProtein)
-
-                            Divider()
-                                                    
-                            SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: itemCal, protein: itemProtein)
-                            
-                            Divider()
-                            
-                            SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: itemCal, protein: itemProtein)
-                            
-                            Divider()
-                            
-                            SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: itemCal, protein: itemProtein)
+                            Group{
+                                SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: itemCal, protein: itemProtein)
+                                
+                                Divider()
+                                
+                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: itemCal, protein: itemProtein)
+                                
+                                Divider()
+                                
+                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: itemCal, protein: itemProtein)
+                                
+                                Divider()
+                                
+                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: itemCal, protein: itemProtein)
+                            }
+                            .environmentObject(nm)
                            
                         }
                         .buttonStyle(BorderlessButtonStyle())
@@ -119,4 +123,5 @@ struct AddFoodView: View {
 
 #Preview {
     AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]))
+        .environmentObject(NavigationManager())
 }
