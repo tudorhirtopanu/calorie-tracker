@@ -48,6 +48,7 @@ struct DailyDiaryView: View {
     }
     
     @Environment(\.modelContext) private var context
+    @Environment(\.scenePhase) private var scenePhase
     
     @StateObject private var dailyTaskManager = DailyTaskManager()
     
@@ -65,22 +66,6 @@ struct DailyDiaryView: View {
     var body: some View {
         
             VStack {
-                
-                ZStack {
-                    
-                    RoundedRectangle(cornerSize: CGSize( width: 10, height: 10))
-                        .foregroundStyle(Color.gray.opacity(0.15))
-                        .frame(height: 40)
-                    
-                    HStack {
-                        
-                        Image(systemName: "magnifyingglass")
-                            .foregroundStyle(Color.gray)
-                        TextField("Search for food ...", text: $textField)
-                            .focused($searchIsFocused)
-                    }
-                    .padding(8)
-                }
 
                 HStack{
                     Text("Meal")
@@ -276,19 +261,19 @@ struct DailyDiaryView: View {
                 .padding([.bottom, .top],10)
             }
             .padding(.horizontal)
-            .onAppear {
-                
-                Task {
-                    
-                    if await dailyTaskManager.performDailyTaskIfNeeded() {
-                        await MainActor.run {
-                            deleteFoodData()
+            .onChange(of: scenePhase, { oldValue, newValue in
+                if newValue == .active {
+                    Task {
+                        
+                        if await dailyTaskManager.performDailyTaskIfNeeded() {
+                            await MainActor.run {
+                                deleteFoodData()
+                            }
                         }
+                        
                     }
-                    
                 }
-                
-            }
+            })
                 
     }
 }
