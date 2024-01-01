@@ -18,8 +18,6 @@ struct FoodSearchView: View {
     
     @FocusState private var searchIsFocused:Bool
     
-    
-    
     var body: some View {
         
         
@@ -67,19 +65,32 @@ struct FoodSearchView: View {
             })
             .padding([.top, .bottom], 10)
             
-            Text("Recent Items")
+//            Text("Recent Items")
+//                .font(.caption)
+//                .foregroundStyle(Color.gray)
+            
+//            if foodItems == nil {
+//                Text("No Recent Items")
+//                    .padding(.top, 10)
+//            }
+            
+            Text("Popular Brands")
                 .font(.caption)
                 .foregroundStyle(Color.gray)
+                .padding(.bottom, 5)
             
             if foodItems == nil {
-                Text("No Recent Items")
-                    .padding(.top, 10)
+                
+                HStack{
+                    BrandButton(fileName: "Mcdonalds", image: "McdonaldsLogo", brandName: "Mcdonalds")
+                }
+                
             }
             
             Spacer()
             
             if let foodItems = foodItems {
-                
+               
                 ScrollView {
                     LazyVGrid(columns:[GridItem(), GridItem()]) {
                         

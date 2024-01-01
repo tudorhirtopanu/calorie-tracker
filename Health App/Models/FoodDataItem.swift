@@ -15,9 +15,9 @@ class FoodDataItem: Identifiable {
     var name:String
     var foodOccasion:Int
     var calories:Int
-    var protein:Int
+    var protein:Double
     
-    init(name: String, foodOccasion:Int, calories:Int, protein:Int) {
+    init(name: String, foodOccasion:Int, calories:Int, protein:Double) {
         self.id = UUID().uuidString
         self.name = name
         self.foodOccasion = foodOccasion

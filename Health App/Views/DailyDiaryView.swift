@@ -40,7 +40,7 @@ struct DailyDiaryView: View {
         return totalCalories
     }
     
-    private func calculateProtein(itemArray:[FoodDataItem]) -> Int {
+    private func calculateProtein(itemArray:[FoodDataItem]) -> Double {
         
         let totalProtein = itemArray.reduce(0) { $0 + $1.protein }
         

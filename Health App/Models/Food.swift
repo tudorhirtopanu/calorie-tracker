@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct Food:Encodable {
+struct Food:Identifiable, Decodable {
     let id:Int
     let name:String
-    let image:URL?
+    //let image:URL?
     let servingSizes:[ServingSizes]
 }
 
-struct ServingSizes:Identifiable, Encodable {
+struct ServingSizes:Identifiable, Decodable {
     let id:Int
     let name:String
-    let weight:Int
+    let weight:Double
     let calories:Int
     let protein: Double
 }

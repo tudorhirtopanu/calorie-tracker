@@ -18,6 +18,7 @@ enum FoodOccasions:Int {
 struct CreateCustomFoodView: View {
     
     @Environment(\.modelContext) private var context
+    @Environment(\.presentationMode) var presentationMode
     
     @State var itemName:String = ""
     @State var itemCal:String = ""
@@ -25,6 +26,12 @@ struct CreateCustomFoodView: View {
     
     var body: some View {
         VStack {
+            
+//            Button(action: {
+//                presentationMode.wrappedValue.dismiss()
+//            }, label: {
+//                Text("Go back")
+//            })
             
             Form{
                 
@@ -73,19 +80,19 @@ struct CreateCustomFoodView: View {
                 Section("Add to meal occasion"){
                     HStack{
                         
-                        SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: Int(itemCal) ?? 0, protein: Int(itemProtein) ?? 0)
+                        SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
                         
                         Divider()
                                                 
-                        SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: Int(itemCal) ?? 0, protein: Int(itemProtein) ?? 0)
+                        SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
                         
                         Divider()
                         
-                        SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: Int(itemCal) ?? 0, protein: Int(itemProtein) ?? 0)
+                        SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
                         
                         Divider()
                         
-                        SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: Int(itemCal) ?? 0, protein: Int(itemProtein) ?? 0)
+                        SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
                        
                     }
                     .buttonStyle(BorderlessButtonStyle())
