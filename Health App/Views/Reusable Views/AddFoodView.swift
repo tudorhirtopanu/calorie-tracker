@@ -12,9 +12,11 @@ struct AddFoodView: View {
     @State var foodItem:Food
     @State var selectedServing:ServingSizes?
     
-     @State var itemName:String = ""
-     @State var itemCal:Int = -1
-     @State var itemProtein:Double = -1
+    @State var itemName:String = ""
+    @State var itemCal:Int = -1
+    @State var itemProtein:Double = -1
+    @State var servingSize:String = ""
+    @State var isMeasuredByWeight:Bool = false
     
     @EnvironmentObject var nm:NavigationManager
     
@@ -46,6 +48,8 @@ struct AddFoodView: View {
                                 itemName = foodItem.name
                                 itemCal = s.calories
                                 itemProtein = s.protein
+                                servingSize = s.name
+                                isMeasuredByWeight = foodItem.measuredByWeight
                             }, label: {
                                 HStack {
                                     Text(s.name + " (\(String(Int(s.weight)))g)")
@@ -91,19 +95,19 @@ struct AddFoodView: View {
                     Section("Add to meal occasion"){
                         HStack{
                             Group{
-                                SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: itemCal, protein: itemProtein)
+                                SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize, measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: itemCal, protein: itemProtein)
+                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize,measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: itemCal, protein: itemProtein)
+                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize,measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: itemCal, protein: itemProtein)
+                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize,measuredByWeight: isMeasuredByWeight)
                             }
                             .environmentObject(nm)
                            
@@ -122,6 +126,6 @@ struct AddFoodView: View {
 }
 
 #Preview {
-    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]))
+    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", measuredByWeight: true, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]))
         .environmentObject(NavigationManager())
 }

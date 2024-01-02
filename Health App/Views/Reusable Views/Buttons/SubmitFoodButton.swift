@@ -20,6 +20,8 @@ struct SubmitFoodButton: View {
     var foodOccasion:Int
     var calories:Int
     var protein:Double
+    var servingSize:String
+    var measuredByWeight:Bool
     
     @EnvironmentObject var nm:NavigationManager
     
@@ -32,7 +34,7 @@ struct SubmitFoodButton: View {
                 //TODO: Ensure button can only be pressed once
                 
                 // Save Data as food item
-               let data = FoodDataItem(name: foodName, foodOccasion: foodOccasion, calories: calories, protein: protein)
+                let data = FoodDataItem(name: foodName, foodOccasion: foodOccasion, calories: calories, protein: protein, servingSize: servingSize, measuredByWeight: measuredByWeight)
                 
                 context.insert(data)
                 
@@ -62,6 +64,6 @@ struct SubmitFoodButton: View {
 }
 
 #Preview {
-    SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: "Pizza", foodOccasion: 1, calories: 220, protein: 20)
+    SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: "Pizza", foodOccasion: 1, calories: 220, protein: 20, servingSize: "1 Serving", measuredByWeight: false)
         .environmentObject(NavigationManager())
 }

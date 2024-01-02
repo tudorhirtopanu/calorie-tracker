@@ -24,6 +24,7 @@ struct CreateCustomFoodView: View {
     @State var itemName:String = ""
     @State var itemCal:String = ""
     @State var itemProtein:String = ""
+    @State var isMeasuredByWeight:Bool = false
     
     var body: some View {
         VStack {
@@ -83,19 +84,19 @@ struct CreateCustomFoodView: View {
                         
                         Group {
                             
-                            SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0, servingSize: "1 Serving", measuredByWeight: isMeasuredByWeight)
                             
                             Divider()
                             
-                            SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0, servingSize: "1 Serving",measuredByWeight: isMeasuredByWeight)
                             
                             Divider()
                             
-                            SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0, servingSize: "1 Serving",measuredByWeight: isMeasuredByWeight)
                             
                             Divider()
                             
-                            SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                            SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0, servingSize: "1 Serving", measuredByWeight: isMeasuredByWeight)
                         }.environmentObject(nm)
                        
                     }

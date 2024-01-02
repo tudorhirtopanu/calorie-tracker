@@ -12,6 +12,7 @@ struct FoodItemButton: View {
     @State var name:String
     @State var calories:Int
     @State var protein:Double
+    @State var servingSize:String
     
     var body: some View {
         
@@ -19,9 +20,14 @@ struct FoodItemButton: View {
             
         }, label: {
             HStack{
-                VStack {
+                VStack(alignment: .leading) {
                     Text(name)
                         .padding(.leading,10)
+                    Text(servingSize)
+                        .padding(.leading,10)
+                        .font(Font.system(size: 14))
+                        .foregroundStyle(Color.gray)
+                    
                 }
                 Spacer()
                 HStack {
@@ -39,6 +45,6 @@ struct FoodItemButton: View {
 }
 
 #Preview {
-    FoodItemButton(name: "Pizza", calories: 400, protein: 25)
+    FoodItemButton(name: "Pizza", calories: 400, protein: 25, servingSize: "1 Serving")
         .padding(.horizontal)
 }

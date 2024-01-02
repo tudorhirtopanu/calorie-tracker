@@ -113,7 +113,7 @@ struct DailyDiaryView: View {
                     
                     ForEach(breakfastItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
+                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
                     .padding([.bottom, .top],1)
@@ -142,7 +142,7 @@ struct DailyDiaryView: View {
                     
                     ForEach(lunchItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
+                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
                     .padding(.top)
@@ -169,7 +169,7 @@ struct DailyDiaryView: View {
                     
                     ForEach(dinnerItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
+                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
                     .padding(.top)
@@ -196,7 +196,7 @@ struct DailyDiaryView: View {
                     
                     ForEach(snackItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein)
+                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
                     .padding(.top)
