@@ -10,6 +10,8 @@ import SwiftData
 
 struct DailyDiaryView: View {
     
+    @State private var refreshID = UUID()
+    
     @State private var textField: String = ""
     @State var isEditEnabled:Bool = false
     
@@ -54,6 +56,12 @@ struct DailyDiaryView: View {
         return Double(Int(number * multiplier)) / multiplier
     }
     
+    private func refreshView() {
+            withAnimation {
+                refreshID = UUID() // Change the value to trigger a refresh
+            }
+        }
+    
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var scenePhase
     
@@ -78,6 +86,8 @@ struct DailyDiaryView: View {
     
     var body: some View {
         
+       // var snackTotalCal =
+        
             VStack {
                 
                 HStack {
@@ -94,6 +104,8 @@ struct DailyDiaryView: View {
                             DispatchQueue.main.async {
                                 withAnimation(.spring) {
                                     isEditEnabled = false
+                                    
+                                    refreshView()
                                 }
                                }
                         }, label: {
@@ -121,8 +133,27 @@ struct DailyDiaryView: View {
                 }
                 
                 ScrollView{
-
-                    DiaryHeader(mealTime: "Breakfast", mealCalories: calculateCalories(itemArray: breakfastItems), mealProtein: calculateProtein(itemArray: breakfastItems), spacingCondition: breakfastItems == [])
+                    
+                    HStack {
+                        Text("Breakfast")
+                            .fontWeight(.semibold)
+                            .padding(.leading,10)
+                        Spacer()
+                        Text(String(calculateCalories(itemArray: breakfastItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        Text(String(calculateProtein(itemArray: breakfastItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        
+                    }
+                    .overlay(content: {
+                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
+                            .foregroundStyle(Color.gray.opacity(0.2))
+                            .frame(height: 40)
+                    })
+                    .padding(.top)
+                    .padding(.bottom, breakfastItems == [] ? 0 : 10)
                                         
                     ForEach(breakfastItems) { item in
                         
@@ -156,8 +187,27 @@ struct DailyDiaryView: View {
                         
                     }
                     .padding([.bottom, .top],1)
-         
-                    DiaryHeader(mealTime: "Lunch", mealCalories: calculateCalories(itemArray: lunchItems), mealProtein: calculateProtein(itemArray: lunchItems), spacingCondition: lunchItems == [])
+                    
+                    HStack {
+                        Text("Lunch")
+                            .fontWeight(.semibold)
+                            .padding(.leading,10)
+                        Spacer()
+                        Text(String(calculateCalories(itemArray: lunchItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        Text(String(calculateProtein(itemArray: lunchItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        
+                    }
+                    .overlay(content: {
+                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
+                            .foregroundStyle(Color.gray.opacity(0.2))
+                            .frame(height: 40)
+                    })
+                    .padding(.top)
+                    .padding(.bottom, lunchItems == [] ? 0 : 10)
                     
                     ForEach(lunchItems) { item in
                         
@@ -192,7 +242,26 @@ struct DailyDiaryView: View {
                     }
                     .padding([.bottom, .top],1)
                     
-                    DiaryHeader(mealTime: "Dinner", mealCalories: calculateCalories(itemArray: dinnerItems), mealProtein: calculateProtein(itemArray: dinnerItems), spacingCondition: dinnerItems == [])
+                    HStack {
+                        Text("Dinner")
+                            .fontWeight(.semibold)
+                            .padding(.leading,10)
+                        Spacer()
+                        Text(String(calculateCalories(itemArray: dinnerItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        Text(String(calculateProtein(itemArray: dinnerItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        
+                    }
+                    .overlay(content: {
+                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
+                            .foregroundStyle(Color.gray.opacity(0.2))
+                            .frame(height: 40)
+                    })
+                    .padding(.top)
+                    .padding(.bottom, dinnerItems == [] ? 0 : 10)
                     
                     ForEach(dinnerItems) { item in
                         
@@ -227,7 +296,26 @@ struct DailyDiaryView: View {
                     }
                     .padding([.bottom, .top],1)
                     
-                    DiaryHeader(mealTime: "Snacks", mealCalories: calculateCalories(itemArray: snackItems), mealProtein: calculateProtein(itemArray: snackItems), spacingCondition: snackItems == [])
+                    HStack {
+                        Text("Snacks")
+                            .fontWeight(.semibold)
+                            .padding(.leading,10)
+                        Spacer()
+                        Text(String(calculateCalories(itemArray: snackItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        Text(String(calculateProtein(itemArray: snackItems)))
+                            .fontWeight(.semibold)
+                            .frame(width:50)
+                        
+                    }
+                    .overlay(content: {
+                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
+                            .foregroundStyle(Color.gray.opacity(0.2))
+                            .frame(height: 40)
+                    })
+                    .padding(.top)
+                    .padding(.bottom, snackItems == [] ? 0 : 10)
                     
                     ForEach(snackItems) { item in
                         
