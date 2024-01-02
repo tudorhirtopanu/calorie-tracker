@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0DB1152B4451FD006EB879 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1142B4451FD006EB879 /* ConfirmationPopover.swift */; };
+		8B0DB1182B446DE9006EB879 /* FoodSelectionOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1172B446DE9006EB879 /* FoodSelectionOverlay.swift */; };
+		8B0DB11A2B446FE9006EB879 /* DiaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */; };
 		8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060112B3DE0CB00E2AC3F /* Health_App.swift */; };
 		8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */; };
 		8B7060162B3DE0CE00E2AC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */; };
@@ -35,9 +38,13 @@
 		8B70605C2B430E4D00E2AC3F /* CustomBrandFoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70605B2B430E4D00E2AC3F /* CustomBrandFoodsView.swift */; };
 		8B70605E2B431B2600E2AC3F /* BrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70605D2B431B2600E2AC3F /* BrandButton.swift */; };
 		8B7060612B433BE100E2AC3F /* AddFoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060602B433BE100E2AC3F /* AddFoodView.swift */; };
+		8B7060642B43627200E2AC3F /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060632B43627200E2AC3F /* NavigationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B0DB1142B4451FD006EB879 /* ConfirmationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopover.swift; sourceTree = "<group>"; };
+		8B0DB1172B446DE9006EB879 /* FoodSelectionOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionOverlay.swift; sourceTree = "<group>"; };
+		8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHeader.swift; sourceTree = "<group>"; };
 		8B70600E2B3DE0CB00E2AC3F /* Health App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7060112B3DE0CB00E2AC3F /* Health_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_App.swift; sourceTree = "<group>"; };
 		8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
@@ -67,6 +74,7 @@
 		8B70605B2B430E4D00E2AC3F /* CustomBrandFoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBrandFoodsView.swift; sourceTree = "<group>"; };
 		8B70605D2B431B2600E2AC3F /* BrandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandButton.swift; sourceTree = "<group>"; };
 		8B7060602B433BE100E2AC3F /* AddFoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFoodView.swift; sourceTree = "<group>"; };
+		8B7060632B43627200E2AC3F /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8B0DB1162B445201006EB879 /* Custom Components */ = {
+			isa = PBXGroup;
+			children = (
+				8B0DB1142B4451FD006EB879 /* ConfirmationPopover.swift */,
+				8B0DB1172B446DE9006EB879 /* FoodSelectionOverlay.swift */,
+			);
+			path = "Custom Components";
+			sourceTree = "<group>";
+		};
 		8B7060052B3DE0CB00E2AC3F = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +121,7 @@
 				8B70601F2B3DFA3F00E2AC3F /* Views */,
 				8B7060202B3DFA4300E2AC3F /* ViewModels */,
 				8B7060212B3DFA4B00E2AC3F /* Models */,
+				8B7060622B43625000E2AC3F /* Controllers */,
 				8B70602A2B3E1F2700E2AC3F /* Services */,
 				8B70604A2B41A3DF00E2AC3F /* Preview Helpers */,
 				8B7060512B421D7B00E2AC3F /* Helpers */,
@@ -174,6 +192,8 @@
 				8B70603C2B3F724600E2AC3F /* FoodDetailView.swift */,
 				8B70602E2B3ED0BA00E2AC3F /* FoodItemRow.swift */,
 				8B70605F2B433BC900E2AC3F /* Buttons */,
+				8B0DB1162B445201006EB879 /* Custom Components */,
+				8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -209,6 +229,14 @@
 				8B7060422B40AFE700E2AC3F /* SubmitFoodButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		8B7060622B43625000E2AC3F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8B7060632B43627200E2AC3F /* NavigationManager.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,9 +315,12 @@
 				8B70603B2B3F6DAB00E2AC3F /* Food.swift in Sources */,
 				8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */,
 				8B7060372B3F298600E2AC3F /* FatSecretService.swift in Sources */,
+				8B7060642B43627200E2AC3F /* NavigationManager.swift in Sources */,
 				8B7060502B41F71800E2AC3F /* DailyTaskManager.swift in Sources */,
+				8B0DB11A2B446FE9006EB879 /* DiaryHeader.swift in Sources */,
 				8B70605C2B430E4D00E2AC3F /* CustomBrandFoodsView.swift in Sources */,
 				8B7060252B3DFC4300E2AC3F /* Secrets.swift in Sources */,
+				8B0DB1152B4451FD006EB879 /* ConfirmationPopover.swift in Sources */,
 				8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */,
 				8B7060612B433BE100E2AC3F /* AddFoodView.swift in Sources */,
 				8B7060412B408E4000E2AC3F /* CreateCustomFoodView.swift in Sources */,
@@ -305,6 +336,7 @@
 				8B70604E2B41BAF900E2AC3F /* FoodItemButton.swift in Sources */,
 				8B7060562B43093900E2AC3F /* JSONHandler.swift in Sources */,
 				8B70602F2B3ED0BA00E2AC3F /* FoodItemRow.swift in Sources */,
+				8B0DB1182B446DE9006EB879 /* FoodSelectionOverlay.swift in Sources */,
 				8B7060492B40BEF800E2AC3F /* FoodDataItem.swift in Sources */,
 				8B70603F2B3F844D00E2AC3F /* NixNutrition.swift in Sources */,
 			);

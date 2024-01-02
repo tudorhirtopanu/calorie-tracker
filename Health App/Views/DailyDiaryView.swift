@@ -11,7 +11,7 @@ import SwiftData
 struct DailyDiaryView: View {
     
     @State private var textField: String = ""
-    @State private var isEditEnabled:Bool = false
+    @State var isEditEnabled:Bool = false
     
     @FocusState private var searchIsFocused:Bool
     
@@ -59,6 +59,8 @@ struct DailyDiaryView: View {
     
     @StateObject private var dailyTaskManager = DailyTaskManager()
     
+    @State var itemsToEdit:[FoodDataItem] = []
+    
     private func deleteFoodData() {
         
         do {
@@ -70,9 +72,41 @@ struct DailyDiaryView: View {
         
     }
     
+    private func deleteFoodItem(item:FoodDataItem){
+        context.delete(item)
+    }
+    
     var body: some View {
         
             VStack {
+                
+                HStack {
+                    
+                    Spacer()
+                    
+                    if isEditEnabled{
+                        Button(action: {
+                            
+                            for item in itemsToEdit {
+                                deleteFoodItem(item: item)
+                            }
+                            
+                            DispatchQueue.main.async {
+                                withAnimation(.spring) {
+                                    isEditEnabled = false
+                                }
+                               }
+                        }, label: {
+                            Image(systemName: "trash")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width:25, height: 25)
+                                .foregroundStyle(.red)
+                        })
+                        .padding(10)
+                    }
+                    
+                }
                 
                 HStack{
                     Text("Meal")
@@ -87,125 +121,146 @@ struct DailyDiaryView: View {
                 }
                 
                 ScrollView{
-                    
-                    HStack {
-                        Text("Breakfast")
-                            .fontWeight(.semibold)
-                            .padding(.leading,10)
-                        Spacer()
-                        Text(String(calculateCalories(itemArray: breakfastItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        Text(String(calculateProtein(itemArray: breakfastItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        
-                    }
-                    .overlay(content: {
-                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
-                            .foregroundStyle(Color.gray.opacity(0.2))
-                            .frame(height: 40)
-                    })
-                    .padding(.top)
-                    .padding(.bottom, breakfastItems == [] ? 0 : 10)
-                    
-                    //Divider()
-                    
+
+                    DiaryHeader(mealTime: "Breakfast", mealCalories: calculateCalories(itemArray: breakfastItems), mealProtein: calculateProtein(itemArray: breakfastItems), spacingCondition: breakfastItems == [])
+                                        
                     ForEach(breakfastItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
+                        HStack {
+                            
+                            if isEditEnabled{
+                                
+                                if itemsToEdit.contains(item){
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .padding(.leading,10)
+                                        .fontWeight(.thin)
+                                }
+                                else {
+                                    Image(systemName: "circle")
+                                        .padding(.leading,10)
+                                        .foregroundStyle(Color.primary)
+                                }
+                                
+                            }
+                            
+                            FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize, isEditEnabled: $isEditEnabled, selectItem: {
+                                
+                                if !itemsToEdit.contains(item){
+                                    itemsToEdit.append(item)
+                                } else {
+                                    itemsToEdit.removeAll(where: { $0 == item })
+                                }
+                                
+                            })
+                        }
                         
                     }
                     .padding([.bottom, .top],1)
-                    
-                    
-                    
-                    HStack {
-                        Text("Lunch")
-                            .fontWeight(.semibold)
-                            .padding(.leading,10)
-                        Spacer()
-                        Text(String(calculateCalories(itemArray: lunchItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        Text(String(calculateProtein(itemArray: lunchItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        
-                    }
-                    .overlay(content: {
-                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
-                            .foregroundStyle(Color.gray.opacity(0.2))
-                            .frame(height: 40)
-                    })
-                    .padding(.top)
-                    .padding(.bottom, lunchItems == [] ? 0 : 10)
+         
+                    DiaryHeader(mealTime: "Lunch", mealCalories: calculateCalories(itemArray: lunchItems), mealProtein: calculateProtein(itemArray: lunchItems), spacingCondition: lunchItems == [])
                     
                     ForEach(lunchItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
+                        HStack{
+                            
+                            if isEditEnabled{
+                                
+                                if itemsToEdit.contains(item){
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .padding(.leading,10)
+                                        .fontWeight(.thin)
+                                }
+                                else {
+                                    Image(systemName: "circle")
+                                        .padding(.leading,10)
+                                        .foregroundStyle(Color.primary)
+                                }
+                                
+                            }
+                            
+                            FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize, isEditEnabled: $isEditEnabled, selectItem: {
+                                
+                                if !itemsToEdit.contains(item){
+                                    itemsToEdit.append(item)
+                                } else {
+                                    itemsToEdit.removeAll(where: { $0 == item })
+                                }
+                                
+                            })
+                        }
                         
                     }
                     .padding([.bottom, .top],1)
                     
-                    HStack {
-                        Text("Dinner")
-                            .fontWeight(.semibold)
-                            .padding(.leading,10)
-                        Spacer()
-                        Text(String(calculateCalories(itemArray: dinnerItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        Text(String(calculateProtein(itemArray: dinnerItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        
-                    }
-                    .overlay(content: {
-                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
-                            .foregroundStyle(Color.gray.opacity(0.2))
-                            .frame(height: 40)
-                    })
-                    .padding(.top)
-                    .padding(.bottom, dinnerItems == [] ? 0 : 10)
+                    DiaryHeader(mealTime: "Dinner", mealCalories: calculateCalories(itemArray: dinnerItems), mealProtein: calculateProtein(itemArray: dinnerItems), spacingCondition: dinnerItems == [])
                     
                     ForEach(dinnerItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
+                        HStack{
+                            
+                            if isEditEnabled{
+                                
+                                if itemsToEdit.contains(item){
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .padding(.leading,10)
+                                        .fontWeight(.thin)
+                                }
+                                else {
+                                    Image(systemName: "circle")
+                                        .padding(.leading,10)
+                                        .foregroundStyle(Color.primary)
+                                }
+                                
+                            }
+                            
+                            FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize, isEditEnabled: $isEditEnabled, selectItem: {
+                                
+                                if !itemsToEdit.contains(item){
+                                    itemsToEdit.append(item)
+                                } else {
+                                    itemsToEdit.removeAll(where: { $0 == item })
+                                }
+                                
+                            })
+                        }
                         
                     }
                     .padding([.bottom, .top],1)
                     
-                    HStack {
-                        Text("Snacks")
-                            .fontWeight(.semibold)
-                            .padding(.leading,10)
-                        Spacer()
-                        Text(String(calculateCalories(itemArray: snackItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        Text(String(calculateProtein(itemArray: snackItems)))
-                            .fontWeight(.semibold)
-                            .frame(width:50)
-                        
-                    }
-                    .overlay(content: {
-                        RoundedRectangle(cornerSize: CGSize( width: 20, height: 20))
-                            .foregroundStyle(Color.gray.opacity(0.2))
-                            .frame(height: 40)
-                    })
-                    .padding(.top)
-                    .padding(.bottom, snackItems == [] ? 0 : 10)
+                    DiaryHeader(mealTime: "Snacks", mealCalories: calculateCalories(itemArray: snackItems), mealProtein: calculateProtein(itemArray: snackItems), spacingCondition: snackItems == [])
                     
                     ForEach(snackItems) { item in
                         
-                        FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
+                        HStack {
+                            
+                            if isEditEnabled{
+                                
+                                if itemsToEdit.contains(item){
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .padding(.leading,10)
+                                        .fontWeight(.thin)
+                                }
+                                else {
+                                    Image(systemName: "circle")
+                                        .padding(.leading,10)
+                                        .foregroundStyle(Color.primary)
+                                }
+                                
+                            }
+                            
+                            FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize, isEditEnabled: $isEditEnabled, selectItem: {
+                                
+                                if !itemsToEdit.contains(item){
+                                    itemsToEdit.append(item)
+                                } else {
+                                    itemsToEdit.removeAll(where: { $0 == item })
+                                }
+                                
+                            })
+                        }
                         
                     }
                     .padding([.bottom, .top],1)
-                    
-                    
-                    
                 }
                 
                 Spacer()

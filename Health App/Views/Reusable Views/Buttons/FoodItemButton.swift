@@ -14,10 +14,27 @@ struct FoodItemButton: View {
     @State var protein:Double
     @State var servingSize:String
     
+    @Binding var isEditEnabled:Bool
+    
+    @State var selectItem:()->Void
+    
     var body: some View {
         
         Button(action: {
             
+            // Turn on edit mode
+            withAnimation(.spring) {
+                isEditEnabled = true
+            }
+            
+            // If item isnt in array, add it
+//            if !itemsToEdit.contains(foodItem){
+//                itemsToEdit.append(foodItem)
+//            } else {
+//                itemsToEdit.removeAll(where: { $0 == foodItem })
+//            }
+            selectItem()
+                        
         }, label: {
             HStack{
                 VStack(alignment: .leading) {
@@ -45,6 +62,7 @@ struct FoodItemButton: View {
 }
 
 #Preview {
-    FoodItemButton(name: "Pizza", calories: 400, protein: 25, servingSize: "1 Serving")
+    FoodItemButton(name: "Pizza", calories: 400, protein: 25, servingSize: "1 Serving", isEditEnabled: .constant(false), selectItem: {})
         .padding(.horizontal)
+        .modelContainer(previewContainer)
 }
