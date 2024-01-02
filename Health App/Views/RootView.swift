@@ -28,6 +28,19 @@ struct RootView: View {
             }
             
         }
+        .overlay(content: {
+            if nm.presentConfirmation {
+                ConfirmationPopover()
+                    .onAppear{
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
+                            withAnimation(.spring) {
+                                nm.presentConfirmation.toggle()
+                            }
+                        })
+                    }
+            }
+        })
+        
     }
 }
 

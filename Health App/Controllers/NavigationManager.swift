@@ -11,5 +11,6 @@ import SwiftUI
 class NavigationManager:ObservableObject {
     
     @Published var path:NavigationPath = NavigationPath()
+    @Published var presentConfirmation:Bool = false
     
 }

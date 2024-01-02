@@ -12,7 +12,7 @@ struct FoodSearchView: View {
     @State private var textField: String = ""
     
     @State private var foodItems: NixFoodItems?
-    @State private var isPresented:Bool = false
+    @State private var confirmItem:Bool = false
     @State private var presentCustomFood:Bool = false
     @State private var selectedFoodItemText: String = ""
     
@@ -72,6 +72,12 @@ struct FoodSearchView: View {
                 Text("Search")
             })
             .padding([.top, .bottom], 10)
+            
+            Button(action: {
+                confirmItem.toggle()
+            }, label: {
+                Text("show popover")
+            })
             
             Text("Popular Brands")
                 .font(.caption)

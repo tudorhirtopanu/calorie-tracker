@@ -92,6 +92,34 @@ struct AddFoodView: View {
                         }
                     })
                     
+//                    Section(content: {
+//                        
+//                        HStack {
+//                            Text("Add Custom Amount")
+//                            
+//                            Spacer()
+//                            
+//                            Image(systemName: "circle")
+//                                .frame(width:20)
+//                                .fontWeight(.thin)
+//                        }
+//                        
+//                    }, header: {
+////                        HStack {
+////                            Text("Custom Amount")
+////                            
+////                            Spacer()
+////                            
+////                            Text("KCAL")
+////                                .frame(width:40)
+////                            Text("PROT")
+////                                .frame(width:40)
+////                            Text("d")
+////                                .opacity(0)
+////                                .frame(width:20)
+////                        }
+//                    })
+                    
                     Section("Add to meal occasion"){
                         HStack{
                             Group{
