@@ -11,6 +11,7 @@ struct Food:Identifiable, Decodable {
     let id:Int
     let name:String
     //let image:URL?
+    let measuredByWeight:Bool
     let servingSizes:[ServingSizes]
 }
 
