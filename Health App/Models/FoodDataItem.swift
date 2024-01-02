@@ -18,6 +18,7 @@ class FoodDataItem: Identifiable {
     var calories:Int
     var protein:Double
     var servingSize:String
+    var creationDate:Date
     
     init(name: String, foodOccasion:Int, calories:Int, protein:Double, servingSize:String, measuredByWeight:Bool) {
         self.id = UUID().uuidString
@@ -27,6 +28,7 @@ class FoodDataItem: Identifiable {
         self.protein = protein
         self.servingSize = servingSize
         self.measuredByWeight = measuredByWeight
+        self.creationDate = Date()
     }
     
     static func example() -> FoodDataItem {
