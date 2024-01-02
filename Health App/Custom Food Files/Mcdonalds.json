@@ -2,6 +2,7 @@
     {
         "id":0,
         "name":"Mcdonald's Fries",
+        "measuredByWeight":true,
         "servingSizes":[
             {
                 "id":0,
@@ -29,6 +30,7 @@
     {
         "id":1,
         "name":"Mcdonald's McNuggets",
+        "measuredByWeight":false,
         "servingSizes":[
             {
                 "id":0,
