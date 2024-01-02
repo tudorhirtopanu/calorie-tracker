@@ -19,19 +19,19 @@ struct DailyDiaryView: View {
     
     @Query(filter: #Predicate<FoodDataItem>{food in
         food.foodOccasion == 0
-    }) private var breakfastItems:[FoodDataItem]
+    }, sort: \.creationDate, order: .forward) private var breakfastItems:[FoodDataItem]
     
     @Query(filter: #Predicate<FoodDataItem>{food in
         food.foodOccasion == 1
-    }) private var lunchItems:[FoodDataItem]
+    }, sort: \.creationDate, order: .forward) private var lunchItems:[FoodDataItem]
     
     @Query(filter: #Predicate<FoodDataItem>{food in
         food.foodOccasion == 2
-    }) private var dinnerItems:[FoodDataItem]
+    }, sort: \.creationDate, order: .forward) private var dinnerItems:[FoodDataItem]
     
     @Query(filter: #Predicate<FoodDataItem>{food in
         food.foodOccasion == 3
-    }) private var snackItems:[FoodDataItem]
+    }, sort: \.creationDate, order: .forward) private var snackItems:[FoodDataItem]
     
     private func calculateCalories(itemArray:[FoodDataItem]) -> Int {
         
@@ -107,7 +107,7 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
-                    
+                    .padding(.bottom, breakfastItems == [] ? 0 : 10)
                     
                     //Divider()
                     
@@ -139,13 +139,14 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
+                    .padding(.bottom, lunchItems == [] ? 0 : 10)
                     
                     ForEach(lunchItems) { item in
                         
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
-                    .padding(.top)
+                    .padding([.bottom, .top],1)
                     
                     HStack {
                         Text("Dinner")
@@ -166,13 +167,14 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
+                    .padding(.bottom, dinnerItems == [] ? 0 : 10)
                     
                     ForEach(dinnerItems) { item in
                         
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
-                    .padding(.top)
+                    .padding([.bottom, .top],1)
                     
                     HStack {
                         Text("Snacks")
@@ -193,13 +195,14 @@ struct DailyDiaryView: View {
                             .frame(height: 40)
                     })
                     .padding(.top)
+                    .padding(.bottom, snackItems == [] ? 0 : 10)
                     
                     ForEach(snackItems) { item in
                         
                         FoodItemButton(name: item.name, calories: item.calories, protein: item.protein, servingSize: item.servingSize)
                         
                     }
-                    .padding(.top)
+                    .padding([.bottom, .top],1)
                     
                     
                     
