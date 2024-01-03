@@ -26,7 +26,7 @@ struct Health_App: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .modelContainer(for: FoodDataItem.self)
+                .modelContainer(for: [FoodDataItem.self, DailyNutrientData.self])
         }
         
     }
