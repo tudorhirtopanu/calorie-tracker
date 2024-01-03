@@ -1,8 +1,8 @@
 //
-//  NutrientData.swift
+//  DailyNutrientData.swift
 //  Health App
 //
-//  Created by Tudor Hirtopanu on 02/01/2024.
+//  Created by Tudor Hirtopanu on 03/01/2024.
 //
 
 import Foundation
@@ -15,20 +15,18 @@ class DailyNutrientData: Identifiable {
     var day:Int
     var totalCalories:Int
     var totalProtein:Double
+    var creationDate:Date
     
-    init( day: Int, totalCalories: Int, totalProtein: Double) {
+    init(day:Int, totalCalories:Int, totalProtein:Double) {
         self.id = UUID().uuidString
         self.day = day
         self.totalCalories = totalCalories
         self.totalProtein = totalProtein
+        self.creationDate = Date()
     }
     
-    static func example() -> DailyNutrientData {
-        return DailyNutrientData(day: 2, totalCalories: 2500, totalProtein: 120)
+    static func example() ->DailyNutrientData {
+        return DailyNutrientData(day: 2, totalCalories: 200, totalProtein: 10)
     }
     
 }
-/*
- 1 - Mon
- 7 - Sat
- */
