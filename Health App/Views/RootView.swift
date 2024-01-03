@@ -25,6 +25,12 @@ struct RootView: View {
                     .tabItem {
                         Label("Search", systemImage: "magnifyingglass")
                     }
+                
+                InsightsView()
+                    .environmentObject(nm)
+                    .tabItem {
+                        Label("Insights", systemImage: "chart.bar.fill")
+                    }
             }
             
         }
