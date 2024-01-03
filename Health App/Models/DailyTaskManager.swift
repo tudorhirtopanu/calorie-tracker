@@ -8,17 +8,7 @@
 import Foundation
 
 class DailyTaskManager:ObservableObject {
-    
-    @Published var lastExecutionDate: Date?
-    
-    func tomorrowDate() -> Date {
-            return Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
-        }
-    
-//    init(){
-//        scheduleBackgroundTask()
-//    }
-    
+        
     private func scheduleBackgroundTask() {
         Task {
             await performDailyTaskIfNeeded()
@@ -41,6 +31,8 @@ class DailyTaskManager:ObservableObject {
         
     }
     
+    
+    
     func isNewDay() -> Bool {
         let storedDate = UserDefaults.standard.object(forKey: "lastDeletionDateTest") as? Date
         let currentDate = Calendar.current.startOfDay(for: Date())
@@ -52,6 +44,37 @@ class DailyTaskManager:ObservableObject {
             return true
         }
         
+    }
+    
+    func returnCurrentDay() -> Int {
+        let currentDate = Date()
+
+        let calendar = Calendar.current
+        let dayOfWeek = calendar.component(.weekday, from: currentDate)
+        
+        return dayOfWeek
+    }
+    
+    func shouldDeleteWeeklyData() async -> Bool {
+        
+        if returnCurrentDay() == 1 {
+            print("current day = \(returnCurrentDay())")
+            return true
+        } else {
+            print("current day = \(returnCurrentDay())")
+            return false
+        }
+        
+    }
+    
+    func returnPreviousDay() -> Int {
+        let currentDay = returnCurrentDay()
+        
+        if currentDay == 1 {
+            return 7
+        } else {
+            return currentDay - 1
+        }
     }
     
 }
