@@ -457,7 +457,7 @@ struct DailyDiaryView: View {
                         
                         let totalCalories = calculateCalories(itemArray: items)
                         let totalProtein = calculateProtein(itemArray: items)
-                        let previousDay = dailyTaskManager.returnPreviousDay()
+                        let previousDay = dailyTaskManager.returnPreviousDay() 
                         
                         let dataItem = DailyNutrientData(day: previousDay, totalCalories: totalCalories, totalProtein: totalProtein)
                         

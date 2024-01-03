@@ -12,7 +12,7 @@ let previewContainer: ModelContainer = {
     
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: FoodDataItem.self, configurations: config)
+        let container = try ModelContainer(for: FoodDataItem.self, DailyNutrientData.self, configurations: config)
         
         Task { @MainActor in
             
@@ -23,6 +23,9 @@ let previewContainer: ModelContainer = {
             
             let item2 = FoodDataItem(name: "Pizza", foodOccasion: FoodOccasions.lunch.rawValue, calories: 200, protein: 20, servingSize: "1 Pizza", measuredByWeight: true)
             context.insert(item2)
+            
+            let dailyItem = DailyNutrientData.example()
+            context.insert(dailyItem)
             
         }
         return container

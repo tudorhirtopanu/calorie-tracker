@@ -9,6 +9,8 @@ import Foundation
 
 class DailyTaskManager:ObservableObject {
         
+    
+    
     private func scheduleBackgroundTask() {
         Task {
             await performDailyTaskIfNeeded()
@@ -50,7 +52,7 @@ class DailyTaskManager:ObservableObject {
         let currentDate = Date()
 
         let calendar = Calendar.current
-        let dayOfWeek = calendar.component(.weekday, from: currentDate)
+        let dayOfWeek = calendar.component(.day, from: currentDate)
         
         return dayOfWeek
     }
