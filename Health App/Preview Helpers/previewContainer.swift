@@ -32,3 +32,25 @@ let previewContainer: ModelContainer = {
     }
     
 }()
+
+let previewContainer2: ModelContainer = {
+    
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: DailyNutrientData.self, configurations: config)
+        
+        Task { @MainActor in
+            
+            let context = container.mainContext
+            
+            let dataItem = DailyNutrientData.example()
+            context.insert(dataItem)
+            
+        }
+        return container
+    }
+    catch {
+       fatalError("Failed to create container")
+    }
+    
+}()
