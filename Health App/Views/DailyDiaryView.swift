@@ -18,6 +18,7 @@ struct DailyDiaryView: View {
     @FocusState private var searchIsFocused:Bool
     
     @Query private var items:[FoodDataItem]
+    @Query private var dailyItems:[DailyNutrientData]
     
     @Query(filter: #Predicate<FoodDataItem>{food in
         food.foodOccasion == 0
@@ -80,8 +81,38 @@ struct DailyDiaryView: View {
         
     }
     
+    private func deleteDailyData() {
+        do {
+            try context.delete(model: DailyNutrientData.self)
+        }
+        catch {
+           print("failed to delete model")
+        }
+    }
+    
     private func deleteFoodItem(item:FoodDataItem){
         context.delete(item)
+    }
+    
+    private func insertDataItem(item:DailyNutrientData) {
+        
+        context.insert(item)
+    }
+    
+    private func retrieveDay(dataArray:[DailyNutrientData], day:Int) -> DailyNutrientData {
+        if let day = dataArray.first(where: {$0.day == day}) {
+            return day
+        } else {
+            return DailyNutrientData(day: day, totalCalories: 0, totalProtein: 0)
+        }
+    }
+    
+    private func doesDailyDataExist(dataArray:[DailyNutrientData], day:Int) -> Bool {
+        if dataArray.first(where: {$0.day == day}) != nil {
+            return true
+        } else {
+            return false
+        }
     }
     
     var body: some View {
@@ -104,7 +135,7 @@ struct DailyDiaryView: View {
                             DispatchQueue.main.async {
                                 withAnimation(.spring) {
                                     isEditEnabled = false
-                                    
+                                    // Check if needed
                                     refreshView()
                                 }
                                }
@@ -410,7 +441,10 @@ struct DailyDiaryView: View {
                         .foregroundStyle(Color.red)
                         .fontWeight(.medium)
                         
+                        Divider()
+                        
                     }
+                    
                     
                 }
                 .frame(height:100)
@@ -421,12 +455,43 @@ struct DailyDiaryView: View {
                 if newValue == .active {
                     Task {
                         
+                        let totalCalories = calculateCalories(itemArray: items)
+                        let totalProtein = calculateProtein(itemArray: items)
+                        let previousDay = dailyTaskManager.returnPreviousDay()
+                        
+                        let dataItem = DailyNutrientData(day: previousDay, totalCalories: totalCalories, totalProtein: totalProtein)
+                        
+                        
                         if await dailyTaskManager.performDailyTaskIfNeeded() {
-                            // TODO: Save daily total and date before deleting
+                            
                             await MainActor.run {
+                                
+                                // Check if there is already a data item for this day
+                                if doesDailyDataExist(dataArray: dailyItems, day: previousDay){
+                                    
+                                    // update the item
+                                    let dataItem = retrieveDay(dataArray: dailyItems, day: previousDay)
+                                    
+                                    dataItem.totalCalories = totalCalories
+                                    
+                                    dataItem.totalProtein = totalProtein
+                                    
+                                } else {
+                                    
+                                    // insert new data item for the day
+                                    insertDataItem(item: dataItem)
+                                }
+                                                                
+                                // Delete the daily food data
                                 deleteFoodData()
                             }
                         }
+                        
+//                        if await dailyTaskManager.shouldDeleteWeeklyData() {
+//                            await MainActor.run {
+//                                deleteDailyData()
+//                            }
+//                        }
                         
                     }
                 }
