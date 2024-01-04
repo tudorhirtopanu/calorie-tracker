@@ -49,6 +49,10 @@ struct InsightsView: View {
     @StateObject var dtm = DailyTaskManager()
     @StateObject var dh = DateHandler()
     
+    @Query(filter: #Predicate<DailyNutrientData>{food in
+        food.day == 1
+    }, sort: \.creationDate, order: .forward) private var daysData:[DailyNutrientData]
+    
     func getDayOfMonthForDate(_ date: Date) -> Int {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year, .month, .weekday], from: date)
@@ -123,37 +127,48 @@ struct InsightsView: View {
                 Text(String(d.day))
             }
             
-            Text("Day of month: \(getDayOfMonthForDate(Date()))")
+            Text("Num Items: \(daysData.count)")
+            
+            if daysData.count > 0 {
+                Text(String(daysData.first!.day))
+            }
             
             Section {
                 VStack(alignment: .leading){
                     
                     ForEach(arrayOfDays, id: \.self) {day in
                         let dayData = returnDataItem(day: dtm.adjustedWeekday(weekday: day))
-                        //let day = todaysData.first.day
-                        
-                        let date = dh.getDateComponents(from: Date())
                         
                         let futureDate = dh.calculateFutureDate(from: Date(), daysForward: returnIndexOfDate(currentDayNum: currentDay, weekDayNum: day) - currentDay)!
-                        let futureDateComponents = dh.getDateComponents(from: futureDate)
                         
                         HStack {
-                            Text(dh.returnDayName(day:dtm.adjustedWeekday(weekday: day)))
-                                .frame(width:100)
+                            HStack {
+                                Text(dh.returnDayName(day:dtm.adjustedWeekday(weekday: day)))
+                                    .frame(width:100)
+                            }
                             
+                            // Is Current Day
                             if dayData.day == dtm.adjustedWeekday(weekday: currentDay){
                                 Text(String(calculateCalories(itemArray: todaysData)))
                             }else {
-                                if dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate){
-                                    Text(String(dayData.totalCalories))
-                                    Image(systemName: "circle.fill")
-                                        .foregroundStyle(.green)
-                                    
-                                }else {
-                                    Text(String(00))
-                                    Image(systemName: "circle.fill")
-                                        .foregroundStyle(.red)
+                                
+                                if dayData.day != 7 {
+                                    if dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate){
+                                        Text(String(dayData.totalCalories))
+                                        Image(systemName: "circle.fill")
+                                            .foregroundStyle(.green)
+                                        
+                                    }else {
+                                        Text(String(00))
+                                        Image(systemName: "circle.fill")
+                                            .foregroundStyle(.red)
+                                    }
+                                } else {
+                                    // MARK: Temp fix for showing 0 on sunday
+                                    Text(String(0))
                                 }
+                                
+                                
                             }
                             
                             
@@ -200,6 +215,18 @@ struct InsightsView: View {
         }.onChange(of: scenePhase, { oldValue, newValue in
             if newValue == .active {
                 currentDay = Calendar.current.component(.weekday, from: Date())
+                
+//                if currentDay != 1 {
+//                    if daysData.count > 0 {
+//                        if daysData.first!.totalCalories != 0 {
+//                            for day in daysData {
+//                                day.totalCalories = 0
+//                                day.totalProtein = 0
+//                            }
+//                        }
+//                    }
+//                }
+                
             }
         })
                    

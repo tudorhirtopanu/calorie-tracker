@@ -35,7 +35,7 @@ struct DailyDiaryView: View {
     @Query(filter: #Predicate<FoodDataItem>{food in
         food.foodOccasion == 3
     }, sort: \.creationDate, order: .forward) private var snackItems:[FoodDataItem]
-    
+        
     private func calculateCalories(itemArray:[FoodDataItem]) -> Int {
         
         let totalCalories = itemArray.reduce(0) { $0 + $1.calories }
@@ -476,7 +476,7 @@ struct DailyDiaryView: View {
                         let lastActiveDayOld = Calendar.current.component(.weekday, from: items.first?.creationDate as? Date ?? yesterday())
                         let lastActiveDay = dailyTaskManager.adjustedWeekday(weekday: lastActiveDayOld)
                         
-                        
+                        let currentDayNumber = Calendar.current.component(.weekday, from: Date())
                         
                         
                         if await dailyTaskManager.performDailyTaskIfNeeded() {
@@ -488,16 +488,20 @@ struct DailyDiaryView: View {
                                     
                                     print("last active day: \(lastActiveDay)")
                                     
-                                    // update the item
-                                    let dataItem = retrieveDay(dataArray: dailyItems, day: lastActiveDay)
-                                    
-                                    dataItem.totalCalories = totalCalories
-                                    
-                                    dataItem.totalProtein = totalProtein
-                                    
-                                    dataItem.creationDate = Date()
-                                    
-                                    print("creation date: \(dataItem.creationDate)")
+                                    if lastActiveDay != 1{
+                                        // update the item
+                                        let dataItem = retrieveDay(dataArray: dailyItems, day: lastActiveDay)
+                                        
+                                        dataItem.totalCalories = totalCalories
+                                        
+                                        dataItem.totalProtein = totalProtein
+                                        
+                                        dataItem.creationDate = Date()
+                                        
+                                        print("creation date: \(dataItem.creationDate)")
+                                    } else {
+                                        
+                                    }
                                     
                                 } else {
                                     
