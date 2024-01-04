@@ -455,11 +455,20 @@ struct DailyDiaryView: View {
                 if newValue == .active {
                     Task {
                         
+                        func yesterday() -> Date {
+                            let secondsInDay: TimeInterval = 24 * 60 * 60
+                            return Date().addingTimeInterval(-secondsInDay)
+                        }
+                        
                         let totalCalories = calculateCalories(itemArray: items)
                         let totalProtein = calculateProtein(itemArray: items)
-                        let previousDay = dailyTaskManager.returnPreviousDay() 
                         
-                        let dataItem = DailyNutrientData(day: previousDay, totalCalories: totalCalories, totalProtein: totalProtein)
+                        // TODO: Instead of saving to previous day, save to when was last active
+                        let previousDay = dailyTaskManager.returnPreviousDay()
+                        
+                        let lastActiveDay = Calendar.current.component(.day, from: items.first?.creationDate as? Date ?? yesterday())
+                        
+                        let dataItem = DailyNutrientData(day: lastActiveDay, totalCalories: totalCalories, totalProtein: totalProtein)
                         
                         
                         if await dailyTaskManager.performDailyTaskIfNeeded() {
@@ -467,10 +476,10 @@ struct DailyDiaryView: View {
                             await MainActor.run {
                                 
                                 // Check if there is already a data item for this day
-                                if doesDailyDataExist(dataArray: dailyItems, day: previousDay){
+                                if doesDailyDataExist(dataArray: dailyItems, day: lastActiveDay){
                                     
                                     // update the item
-                                    let dataItem = retrieveDay(dataArray: dailyItems, day: previousDay)
+                                    let dataItem = retrieveDay(dataArray: dailyItems, day: lastActiveDay)
                                     
                                     dataItem.totalCalories = totalCalories
                                     
