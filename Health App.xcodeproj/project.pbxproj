@@ -41,6 +41,7 @@
 		8B7060642B43627200E2AC3F /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060632B43627200E2AC3F /* NavigationManager.swift */; };
 		8B90D1DC2B46150A00DA145E /* DailyNutrientData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */; };
 		8B90D1DE2B46160600DA145E /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90D1DD2B46160600DA145E /* InsightsView.swift */; };
+		8BA110812B46E8D800777D43 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110802B46E8D800777D43 /* DateHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		8B7060632B43627200E2AC3F /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNutrientData.swift; sourceTree = "<group>"; };
 		8B90D1DD2B46160600DA145E /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
+		8BA110802B46E8D800777D43 /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */,
 				8B70604F2B41F71800E2AC3F /* DailyTaskManager.swift */,
 				8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */,
+				8BA110802B46E8D800777D43 /* DateHandler.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				8B70605E2B431B2600E2AC3F /* BrandButton.swift in Sources */,
 				8B70604C2B41A42E00E2AC3F /* previewContainer.swift in Sources */,
 				8B70603D2B3F724600E2AC3F /* FoodDetailView.swift in Sources */,
+				8BA110812B46E8D800777D43 /* DateHandler.swift in Sources */,
 				8B7060432B40AFE700E2AC3F /* SubmitFoodButton.swift in Sources */,
 				8B7060392B3F2E9F00E2AC3F /* TokenResponse.swift in Sources */,
 				8B70602C2B3E1FDD00E2AC3F /* NixFoodItems.swift in Sources */,

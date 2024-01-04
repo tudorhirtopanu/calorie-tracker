@@ -17,16 +17,16 @@ class DailyNutrientData: Identifiable {
     var totalProtein:Double
     var creationDate:Date
     
-    init(day:Int, totalCalories:Int, totalProtein:Double) {
+    init(day:Int, totalCalories:Int, totalProtein:Double, creationDate:Date) {
         self.id = UUID().uuidString
         self.day = day
         self.totalCalories = totalCalories
         self.totalProtein = totalProtein
-        self.creationDate = Date()
+        self.creationDate = creationDate
     }
     
     static func example() ->DailyNutrientData {
-        return DailyNutrientData(day: 2, totalCalories: 200, totalProtein: 10)
+        return DailyNutrientData(day: 2, totalCalories: 200, totalProtein: 10, creationDate: Date())
     }
     
 }

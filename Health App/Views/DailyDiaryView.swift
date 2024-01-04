@@ -103,7 +103,9 @@ struct DailyDiaryView: View {
         if let day = dataArray.first(where: {$0.day == day}) {
             return day
         } else {
-            return DailyNutrientData(day: day, totalCalories: 0, totalProtein: 0)
+            let dataItem = DailyNutrientData(day: day, totalCalories: 0, totalProtein: 0, creationDate: Date())
+            context.insert(dataItem)
+            return dataItem
         }
     }
     
@@ -460,6 +462,11 @@ struct DailyDiaryView: View {
                             return Date().addingTimeInterval(-secondsInDay)
                         }
                         
+                        func lastWeek() -> Date {
+                            let secondsInDay: TimeInterval = (24 * 60 * 60)*8
+                            return Date().addingTimeInterval(-secondsInDay)
+                        }
+                        
                         let totalCalories = calculateCalories(itemArray: items)
                         let totalProtein = calculateProtein(itemArray: items)
                         
@@ -469,7 +476,7 @@ struct DailyDiaryView: View {
                         let lastActiveDayOld = Calendar.current.component(.weekday, from: items.first?.creationDate as? Date ?? yesterday())
                         let lastActiveDay = dailyTaskManager.adjustedWeekday(weekday: lastActiveDayOld)
                         
-                        let dataItem = DailyNutrientData(day: lastActiveDay, totalCalories: totalCalories, totalProtein: totalProtein)
+                        
                         
                         
                         if await dailyTaskManager.performDailyTaskIfNeeded() {
@@ -488,12 +495,21 @@ struct DailyDiaryView: View {
                                     
                                     dataItem.totalProtein = totalProtein
                                     
+                                    dataItem.creationDate = Date()
+                                    
                                     print("creation date: \(dataItem.creationDate)")
                                     
                                 } else {
                                     
+                                    let foodItem = items.first
+                                    let date = foodItem?.creationDate
+                                    
+                                    let dataItem = DailyNutrientData(day: lastActiveDay, totalCalories: totalCalories, totalProtein: totalProtein, creationDate: date ?? Date())
+                                    
                                     // insert new data item for the day
                                     insertDataItem(item: dataItem)
+                                    
+                                    print("\(dataItem.creationDate) - DATE HAS BEEN UPDATED FOR \(dataItem)")
                                 }
                                                                 
                                 // Delete the daily food data

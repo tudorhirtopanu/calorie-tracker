@@ -21,7 +21,7 @@ struct InsightsView: View {
     @Environment(\.modelContext) private var context
     
     private func returnDataItem(day:Int)->DailyNutrientData {
-        return dailyData.first(where: { $0.day == day}) ?? DailyNutrientData(day: day, totalCalories: 0, totalProtein: 0)
+        return dailyData.first(where: { $0.day == day}) ?? DailyNutrientData(day: day, totalCalories: 0, totalProtein: 0, creationDate: Date())
     }
         
     private func deleteData() {
@@ -146,8 +146,13 @@ struct InsightsView: View {
                             }else {
                                 if dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate){
                                     Text(String(dayData.totalCalories))
+                                    Image(systemName: "circle.fill")
+                                        .foregroundStyle(.green)
+                                    
                                 }else {
                                     Text(String(00))
+                                    Image(systemName: "circle.fill")
+                                        .foregroundStyle(.red)
                                 }
                             }
                             

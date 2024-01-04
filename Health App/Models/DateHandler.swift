@@ -34,7 +34,6 @@ class DateHandler: ObservableObject {
     func isDateInCurrentWeek(currentDate:Date, creationDate:Date) -> Bool {
         let calendar = Calendar.current
         
-        //calendar.firstWeekday = 2
         
         
         let currentWeek = calendar.component(.weekOfYear, from: creationDate)
