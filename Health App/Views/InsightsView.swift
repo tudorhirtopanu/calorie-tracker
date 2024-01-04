@@ -8,7 +8,12 @@
 import SwiftUI
 import SwiftData
 
+
+
 struct InsightsView: View {
+
+    let currentDate = Date()
+    let daysForward = 30
     
     @Query private var dailyData:[DailyNutrientData]
     @Query private var todaysData:[FoodDataItem]
@@ -18,27 +23,7 @@ struct InsightsView: View {
     private func returnDataItem(day:Int)->DailyNutrientData {
         return dailyData.first(where: { $0.day == day}) ?? DailyNutrientData(day: day, totalCalories: 0, totalProtein: 0)
     }
-    
-    private func returnDayName(day:Int) -> String {
-        if day == 1 {
-            return "Monday"
-        } else if day == 2 {
-            return "Tuesday"
-        } else if day == 3 {
-            return "Wednesday"
-        } else if day == 4 {
-            return "Thursday"
-        } else if day == 5 {
-            return "Friday"
-        } else if day == 6 {
-            return "Saturday"
-        } else if day == 7 {
-            return "Sunday"
-        } else {
-            return "Unknown"
-        }
-    }
-    
+        
     private func deleteData() {
         
         do {
@@ -57,45 +42,12 @@ struct InsightsView: View {
         return totalCalories
     }
     
-    private func isDateInCurrentWeek(_ date:Date) -> Bool {
-        var calendar = Calendar.current
-        var currentDate = Date()
-        
-        //calendar.firstWeekday = 2
-        
-        
-        let currentWeek = calendar.component(.weekOfYear, from: currentDate)
-        let targetWeek = calendar.component(.weekOfYear, from: date)
-        
-        return currentWeek == targetWeek
-    }
-    
-//    private func isDateInCurrentWeek(_ date: Date) -> Bool {
-//        var calendar = Calendar.current
-//        calendar.firstWeekday = 2
-//
-//        let currentDate = Date()
-//        let currentWeekday = calendar.component(.weekday, from: currentDate)
-//        let targetWeekday = calendar.component(.weekday, from: date)
-//
-//        if currentWeekday == 1 { // If today is Sunday
-//            let currentWeek = calendar.component(.weekOfYear, from: currentDate)
-//            let targetWeek = calendar.component(.weekOfYear, from: date)
-//
-//            return targetWeek == currentWeek || (targetWeek == currentWeek - 1 && targetWeekday != 1)
-//        } else {
-//            let currentWeek = calendar.component(.weekOfYear, from: currentDate)
-//            let targetWeek = calendar.component(.weekOfYear, from: date)
-//
-//            return currentWeek == targetWeek
-//        }
-//    }
-    
     @State var arrayOfDays:[Int] = [2, 3, 4, 5, 6, 7, 1]
     @State var currentDay = Calendar.current.component(.weekday, from: Date())
     @Environment(\.scenePhase) private var scenePhase
     
     @StateObject var dtm = DailyTaskManager()
+    @StateObject var dh = DateHandler()
     
     func getDayOfMonthForDate(_ date: Date) -> Int {
         let calendar = Calendar.current
@@ -109,9 +61,39 @@ struct InsightsView: View {
         return daysDifference + 1
     }
     
+    func returnIndexOfDate(currentDayNum:Int, weekDayNum:Int) -> Int {
+        
+        // get index of the current day
+        let indexOfDay = arrayOfDays.firstIndex(of: currentDayNum)
+        
+        // get index of the weekday in the list
+        let indexOfWeekDay = arrayOfDays.firstIndex(of: weekDayNum)
+        
+        let difference = indexOfWeekDay! - indexOfDay!
+        
+        return currentDayNum + difference
+        
+    }
+    
     var body: some View {
         
+        
+        
         List {
+            Button(action: {
+                if let futureDate = dh.calculateFutureDate(from: currentDate, daysForward: daysForward) {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "dd MMM yyyy"
+                    let formattedDate = dateFormatter.string(from: futureDate)
+
+                    print("\(daysForward) days forward from today is \(formattedDate)")
+                } else {
+                    print("Failed to calculate future date.")
+                }
+            }, label: {
+                Text("get new date")
+            })
+            
             
             Button(action: {
                 deleteData()
@@ -119,14 +101,28 @@ struct InsightsView: View {
                 Text("Delete Data")
             })
             
-            Text("Total Data Items "+String(dailyData.count))
+            VStack{
+                let date = dh.getDateComponents(from: Date())
+                Text(String(dh.returnDayName(day: dtm.adjustedWeekday(weekday: date.weekday))))
+                    .padding(.trailing,5)
+                HStack{
+                    Text(String(date.day))
+                        .padding(.trailing,5)
+                    Text(String(date.month))
+                        .padding(.trailing,5)
+                    Text(String(date.year))
+                        .padding(.trailing,5)
+                }
+            }
             
-            Text("Day is \(returnDayName(day:dtm.adjustedWeekday(weekday: currentDay))) -> \(String(dtm.adjustedWeekday(weekday: currentDay)))")
+            Text("Total Data Items "+String(currentDay))
+            
+            Text("Day is \(dh.returnDayName(day:dtm.adjustedWeekday(weekday: currentDay))) -> \(String(dtm.adjustedWeekday(weekday: currentDay)))")
             
             ForEach(dailyData){d in
                 Text(String(d.day))
             }
-            let lastActiveDayOld = Calendar.current.component(.day, from: Date())
+            
             Text("Day of month: \(getDayOfMonthForDate(Date()))")
             
             Section {
@@ -136,27 +132,58 @@ struct InsightsView: View {
                         let dayData = returnDataItem(day: dtm.adjustedWeekday(weekday: day))
                         //let day = todaysData.first.day
                         
+                        let date = dh.getDateComponents(from: Date())
+                        
+                        let futureDate = dh.calculateFutureDate(from: Date(), daysForward: returnIndexOfDate(currentDayNum: currentDay, weekDayNum: day) - currentDay)!
+                        let futureDateComponents = dh.getDateComponents(from: futureDate)
+                        
                         HStack {
-                            Text(returnDayName(day:dtm.adjustedWeekday(weekday: day)))
+                            Text(dh.returnDayName(day:dtm.adjustedWeekday(weekday: day)))
                                 .frame(width:100)
                             
                             if dayData.day == dtm.adjustedWeekday(weekday: currentDay){
                                 Text(String(calculateCalories(itemArray: todaysData)))
                             }else {
-                                if isDateInCurrentWeek(dayData.creationDate){
+                                if dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate){
                                     Text(String(dayData.totalCalories))
                                 }else {
                                     Text(String(00))
                                 }
                             }
                             
+                            
                             Button(action: {
-                                print(isDateInCurrentWeek(dayData.creationDate))
+                                print(dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate))
+                                print("Created on \(dayData.creationDate)")
+                                print("Date: \(futureDate)")
+                                
                             }, label: {
-                                Text("Is in same week")
+                                Text("same week?")
                             })
-                            .padding()
+                            .padding(5)
                             .buttonStyle(BorderlessButtonStyle())
+                            
+//                            Text(String(returnIndexOfDate(currentDayNum: currentDay, weekDayNum: day) - currentDay))
+                            VStack{
+                                
+                                
+//                                Text(String(futureDateComponents.day))
+                                
+                                
+//                                Text(String(dh.returnDayName(day: dtm.adjustedWeekday(weekday: date.weekday))))
+//                                    .padding(.trailing,5)
+//                                HStack{
+//                                    Text(String(date.day))
+//                                        .padding(.trailing,5)
+//                                        .font(Font.system(size: 12))
+//                                    Text(String(date.month))
+//                                        .padding(.trailing,5)
+//                                        .font(Font.system(size: 12))
+//                                    Text(String(date.year))
+//                                        .padding(.trailing,5)
+//                                        .font(Font.system(size: 12))
+//                                }
+                            }
                             
                         }
                         
