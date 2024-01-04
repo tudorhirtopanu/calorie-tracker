@@ -466,7 +466,8 @@ struct DailyDiaryView: View {
                         // TODO: Instead of saving to previous day, save to when was last active
                         let previousDay = dailyTaskManager.returnPreviousDay()
                         
-                        let lastActiveDay = Calendar.current.component(.day, from: items.first?.creationDate as? Date ?? yesterday())
+                        let lastActiveDayOld = Calendar.current.component(.weekday, from: items.first?.creationDate as? Date ?? yesterday())
+                        let lastActiveDay = dailyTaskManager.adjustedWeekday(weekday: lastActiveDayOld)
                         
                         let dataItem = DailyNutrientData(day: lastActiveDay, totalCalories: totalCalories, totalProtein: totalProtein)
                         
@@ -478,12 +479,16 @@ struct DailyDiaryView: View {
                                 // Check if there is already a data item for this day
                                 if doesDailyDataExist(dataArray: dailyItems, day: lastActiveDay){
                                     
+                                    print("last active day: \(lastActiveDay)")
+                                    
                                     // update the item
                                     let dataItem = retrieveDay(dataArray: dailyItems, day: lastActiveDay)
                                     
                                     dataItem.totalCalories = totalCalories
                                     
                                     dataItem.totalProtein = totalProtein
+                                    
+                                    print("creation date: \(dataItem.creationDate)")
                                     
                                 } else {
                                     

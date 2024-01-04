@@ -52,7 +52,7 @@ class DailyTaskManager:ObservableObject {
         let currentDate = Date()
 
         let calendar = Calendar.current
-        let dayOfWeek = calendar.component(.day, from: currentDate)
+        let dayOfWeek = calendar.component(.weekday, from: currentDate)
         
         return dayOfWeek
     }
@@ -78,5 +78,14 @@ class DailyTaskManager:ObservableObject {
             return currentDay - 1
         }
     }
+    
+    func adjustedWeekday(weekday:Int) -> Int {
+        
+            var adjustedWeekday = weekday - 1
+            if adjustedWeekday == 0 {
+                adjustedWeekday = 7
+            }
+            return adjustedWeekday
+        }
     
 }
