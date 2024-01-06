@@ -54,5 +54,19 @@
                 "protein":22.5
             }
         ]
+    },
+    {
+        "id":2,
+        "name":"Mcdonald's Big Mac",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":194,
+                "calories":493,
+                "protein":26
+            }
+        ]
     }
 ]
