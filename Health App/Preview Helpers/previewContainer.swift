@@ -12,7 +12,7 @@ let previewContainer: ModelContainer = {
     
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: FoodDataItem.self, DailyNutrientData.self, configurations: config)
+        let container = try ModelContainer(for: FoodDataItem.self, DailyNutrientData.self, CustomFoodData.self, configurations: config)
         
         Task { @MainActor in
             
@@ -26,6 +26,9 @@ let previewContainer: ModelContainer = {
             
             let dailyItem = DailyNutrientData.example()
             context.insert(dailyItem)
+            
+            let customItem = CustomFoodData.example()
+            context.insert(customItem)
             
         }
         return container
