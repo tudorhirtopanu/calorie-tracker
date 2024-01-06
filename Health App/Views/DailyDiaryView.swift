@@ -57,11 +57,11 @@ struct DailyDiaryView: View {
         return Double(Int(number * multiplier)) / multiplier
     }
     
-    private func refreshView() {
-            withAnimation {
-                refreshID = UUID() // Change the value to trigger a refresh
-            }
-        }
+//    private func refreshView() {
+//            withAnimation {
+//                refreshID = UUID() // Change the value to trigger a refresh
+//            }
+//        }
     
     @Environment(\.modelContext) private var context
     @Environment(\.scenePhase) private var scenePhase
@@ -137,8 +137,9 @@ struct DailyDiaryView: View {
                             DispatchQueue.main.async {
                                 withAnimation(.spring) {
                                     isEditEnabled = false
+                                    
                                     // Check if needed
-                                    refreshView()
+                                    //refreshView()
                                 }
                                }
                         }, label: {
@@ -471,12 +472,12 @@ struct DailyDiaryView: View {
                         let totalProtein = calculateProtein(itemArray: items)
                         
                         // TODO: Instead of saving to previous day, save to when was last active
-                        let previousDay = dailyTaskManager.returnPreviousDay()
+                        //let previousDay = dailyTaskManager.returnPreviousDay()
                         
                         let lastActiveDayOld = Calendar.current.component(.weekday, from: items.first?.creationDate as? Date ?? yesterday())
                         let lastActiveDay = dailyTaskManager.adjustedWeekday(weekday: lastActiveDayOld)
                         
-                        let currentDayNumber = Calendar.current.component(.weekday, from: Date())
+                        //let currentDayNumber = Calendar.current.component(.weekday, from: Date())
                         
                         
                         if await dailyTaskManager.performDailyTaskIfNeeded() {

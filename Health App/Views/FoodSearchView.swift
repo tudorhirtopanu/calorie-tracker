@@ -7,6 +7,13 @@
 
 import SwiftUI
 
+enum FoodSearchNav:Hashable, Identifiable{
+    case addCustomFood
+    case savedView
+    
+    var id: Self { self }
+}
+
 struct FoodSearchView: View {
     
     @State private var textField: String = ""
@@ -21,8 +28,11 @@ struct FoodSearchView: View {
     @EnvironmentObject var nm:NavigationManager
     
     private struct CustomValue:Hashable {
-        let test:Int
+        let customFoodView:Int
+        let savedFoodView:Int
     }
+    
+    
     
     var body: some View {
         
@@ -46,17 +56,14 @@ struct FoodSearchView: View {
                     .padding(8)
                 }
                 
-                NavigationLink(value: CustomValue(test: 2), label: {
+                NavigationLink(value: FoodSearchNav.addCustomFood, label: {
                     VStack {
                         Image("fork.knife.badge.plus")
                         Text("Custom")
                             .font(Font.system(size: 12))
                     }
                 })
-                .navigationDestination(for: CustomValue.self) { state in
-                    CreateCustomFoodView()
-                                    .environmentObject(nm)
-                }
+                
                 
             }
             
@@ -73,16 +80,29 @@ struct FoodSearchView: View {
             })
             .padding([.top, .bottom], 10)
             
-            Button(action: {
-                confirmItem.toggle()
-            }, label: {
-                Text("show popover")
+//            Button(action: {
+//                confirmItem.toggle()
+//            }, label: {
+//                Text("show popover")
+//            })
+            
+            NavigationLink(value: FoodSearchNav.savedView, label: {
+                HStack{
+                    Image(systemName: "fork.knife.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 30)
+                    
+                    Text("Custom Foods")
+                }
+                .padding(10)
+                .background(.gray.opacity(0.25), in: RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
             })
             
             Text("Popular Brands")
                 .font(.caption)
                 .foregroundStyle(Color.gray)
-                .padding(.bottom, 5)
+                .padding([.bottom, .top], 5)
             
             if foodItems == nil {
                 
@@ -121,6 +141,18 @@ struct FoodSearchView: View {
             }
             
         }
+        .navigationDestination(for: FoodSearchNav.self) { state in
+            switch state {
+            case .addCustomFood:
+                CreateCustomFoodView()
+                    .environmentObject(nm)
+                
+            case .savedView:
+                CustomFoodsView()
+                    .environmentObject(nm)
+            }
+                            
+        }
         .padding(.horizontal)
         
     }
@@ -130,5 +162,6 @@ struct FoodSearchView: View {
     NavigationStack{
         FoodSearchView()
             .environmentObject(NavigationManager())
+            .modelContainer(previewContainer)
     }
 }

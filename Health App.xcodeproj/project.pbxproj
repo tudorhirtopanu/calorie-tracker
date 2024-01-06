@@ -42,6 +42,8 @@
 		8B90D1DC2B46150A00DA145E /* DailyNutrientData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */; };
 		8B90D1DE2B46160600DA145E /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B90D1DD2B46160600DA145E /* InsightsView.swift */; };
 		8BA110812B46E8D800777D43 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110802B46E8D800777D43 /* DateHandler.swift */; };
+		8BA110842B49CF0400777D43 /* CustomFoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110832B49CF0400777D43 /* CustomFoodsView.swift */; };
+		8BA110862B49D06700777D43 /* CustomFoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110852B49D06700777D43 /* CustomFoodData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -81,6 +83,8 @@
 		8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNutrientData.swift; sourceTree = "<group>"; };
 		8B90D1DD2B46160600DA145E /* InsightsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
 		8BA110802B46E8D800777D43 /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
+		8BA110832B49CF0400777D43 /* CustomFoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoodsView.swift; sourceTree = "<group>"; };
+		8BA110852B49D06700777D43 /* CustomFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoodData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 				8B7060322B3F119D00E2AC3F /* DailyDiaryView.swift */,
 				8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */,
 				8B90D1DD2B46160600DA145E /* InsightsView.swift */,
+				8BA110832B49CF0400777D43 /* CustomFoodsView.swift */,
 				8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */,
 				8B70605B2B430E4D00E2AC3F /* CustomBrandFoodsView.swift */,
 				8B70602D2B3ED06F00E2AC3F /* Reusable Views */,
@@ -172,14 +177,13 @@
 		8B7060212B3DFA4B00E2AC3F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8B7060482B40BEF800E2AC3F /* FoodDataItem.swift */,
+				8BA110822B49CCA200777D43 /* SwiftDataItems */,
 				8B70603A2B3F6DAB00E2AC3F /* Food.swift */,
 				8B7060552B43093900E2AC3F /* JSONHandler.swift */,
 				8B70602B2B3E1FDD00E2AC3F /* NixFoodItems.swift */,
 				8B7060382B3F2E9F00E2AC3F /* TokenResponse.swift */,
 				8B70603E2B3F844D00E2AC3F /* NixNutrition.swift */,
 				8B70604F2B41F71800E2AC3F /* DailyTaskManager.swift */,
-				8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */,
 				8BA110802B46E8D800777D43 /* DateHandler.swift */,
 			);
 			path = Models;
@@ -246,6 +250,16 @@
 				8B7060632B43627200E2AC3F /* NavigationManager.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8BA110822B49CCA200777D43 /* SwiftDataItems */ = {
+			isa = PBXGroup;
+			children = (
+				8B7060482B40BEF800E2AC3F /* FoodDataItem.swift */,
+				8B90D1DB2B46150A00DA145E /* DailyNutrientData.swift */,
+				8BA110852B49D06700777D43 /* CustomFoodData.swift */,
+			);
+			path = SwiftDataItems;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B70605A2B430A1100E2AC3F /* CustomFoodsViewModel.swift in Sources */,
+				8BA110842B49CF0400777D43 /* CustomFoodsView.swift in Sources */,
 				8B70603B2B3F6DAB00E2AC3F /* Food.swift in Sources */,
 				8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */,
 				8B7060372B3F298600E2AC3F /* FatSecretService.swift in Sources */,
@@ -331,6 +346,7 @@
 				8B70605C2B430E4D00E2AC3F /* CustomBrandFoodsView.swift in Sources */,
 				8B7060252B3DFC4300E2AC3F /* Secrets.swift in Sources */,
 				8B0DB1152B4451FD006EB879 /* ConfirmationPopover.swift in Sources */,
+				8BA110862B49D06700777D43 /* CustomFoodData.swift in Sources */,
 				8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */,
 				8B7060612B433BE100E2AC3F /* AddFoodView.swift in Sources */,
 				8B7060412B408E4000E2AC3F /* CreateCustomFoodView.swift in Sources */,

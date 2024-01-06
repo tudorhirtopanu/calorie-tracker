@@ -84,19 +84,19 @@ struct InsightsView: View {
         
         
         List {
-            Button(action: {
-                if let futureDate = dh.calculateFutureDate(from: currentDate, daysForward: daysForward) {
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "dd MMM yyyy"
-                    let formattedDate = dateFormatter.string(from: futureDate)
-
-                    print("\(daysForward) days forward from today is \(formattedDate)")
-                } else {
-                    print("Failed to calculate future date.")
-                }
-            }, label: {
-                Text("get new date")
-            })
+//            Button(action: {
+//                if let futureDate = dh.calculateFutureDate(from: currentDate, daysForward: daysForward) {
+//                    let dateFormatter = DateFormatter()
+//                    dateFormatter.dateFormat = "dd MMM yyyy"
+//                    let formattedDate = dateFormatter.string(from: futureDate)
+//
+//                    print("\(daysForward) days forward from today is \(formattedDate)")
+//                } else {
+//                    print("Failed to calculate future date.")
+//                }
+//            }, label: {
+//                Text("get new date")
+//            })
             
             
             Button(action: {
@@ -105,33 +105,21 @@ struct InsightsView: View {
                 Text("Delete Data")
             })
             
-            VStack{
-                let date = dh.getDateComponents(from: Date())
-                Text(String(dh.returnDayName(day: dtm.adjustedWeekday(weekday: date.weekday))))
-                    .padding(.trailing,5)
-                HStack{
-                    Text(String(date.day))
-                        .padding(.trailing,5)
-                    Text(String(date.month))
-                        .padding(.trailing,5)
-                    Text(String(date.year))
-                        .padding(.trailing,5)
-                }
-            }
+//            VStack{
+//                let date = dh.getDateComponents(from: Date())
+//                Text(String(dh.returnDayName(day: dtm.adjustedWeekday(weekday: date.weekday))))
+//                    .padding(.trailing,5)
+//                HStack{
+//                    Text(String(date.day))
+//                        .padding(.trailing,5)
+//                    Text(String(date.month))
+//                        .padding(.trailing,5)
+//                    Text(String(date.year))
+//                        .padding(.trailing,5)
+//                }
+//            }
             
-            Text("Total Data Items "+String(currentDay))
             
-            Text("Day is \(dh.returnDayName(day:dtm.adjustedWeekday(weekday: currentDay))) -> \(String(dtm.adjustedWeekday(weekday: currentDay)))")
-            
-            ForEach(dailyData){d in
-                Text(String(d.day))
-            }
-            
-            Text("Num Items: \(daysData.count)")
-            
-            if daysData.count > 0 {
-                Text(String(daysData.first!.day))
-            }
             
             Section {
                 VStack(alignment: .leading){
@@ -155,13 +143,9 @@ struct InsightsView: View {
                                 if dayData.day != 7 {
                                     if dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate){
                                         Text(String(dayData.totalCalories))
-                                        Image(systemName: "circle.fill")
-                                            .foregroundStyle(.green)
                                         
                                     }else {
                                         Text(String(00))
-                                        Image(systemName: "circle.fill")
-                                            .foregroundStyle(.red)
                                     }
                                 } else {
                                     // MARK: Temp fix for showing 0 on sunday
@@ -172,16 +156,16 @@ struct InsightsView: View {
                             }
                             
                             
-                            Button(action: {
-                                print(dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate))
-                                print("Created on \(dayData.creationDate)")
-                                print("Date: \(futureDate)")
-                                
-                            }, label: {
-                                Text("same week?")
-                            })
-                            .padding(5)
-                            .buttonStyle(BorderlessButtonStyle())
+//                            Button(action: {
+//                                print(dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate))
+//                                print("Created on \(dayData.creationDate)")
+//                                print("Date: \(futureDate)")
+//                                
+//                            }, label: {
+//                                Text("same week?")
+//                            })
+//                            .padding(5)
+//                            .buttonStyle(BorderlessButtonStyle())
                             
 //                            Text(String(returnIndexOfDate(currentDayNum: currentDay, weekDayNum: day) - currentDay))
                             VStack{

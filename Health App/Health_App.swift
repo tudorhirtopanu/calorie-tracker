@@ -13,7 +13,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     let dtm = DailyTaskManager()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        
         return true
     }
 }
@@ -26,7 +25,7 @@ struct Health_App: App {
     var body: some Scene {
         WindowGroup {
             RootView()
-                .modelContainer(for: [FoodDataItem.self, DailyNutrientData.self])
+                .modelContainer(for: [FoodDataItem.self, DailyNutrientData.self, CustomFoodData.self])
         }
         
     }

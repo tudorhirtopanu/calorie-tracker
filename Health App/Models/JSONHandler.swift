@@ -23,6 +23,6 @@ class JSONHandler {
             print("Error reading JSON from file: \(error)")
         }
         return [] as! T
-        }
+    }
     
 }

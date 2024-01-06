@@ -21,19 +21,20 @@ struct CreateCustomFoodView: View {
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var nm:NavigationManager
     
+    @Query private var customFoodItems:[CustomFoodData]
+    
     @State var itemName:String = ""
     @State var itemCal:String = ""
     @State var itemProtein:String = ""
     @State var isMeasuredByWeight:Bool = false
+    @State var isCustomFoodSaved:Bool = false
+    
+    private func insertDataItem(item:CustomFoodData) async {
+        context.insert(item)
+    }
     
     var body: some View {
         VStack {
-            
-//            Button(action: {
-//                presentationMode.wrappedValue.dismiss()
-//            }, label: {
-//                Text("Go back")
-//            })
             
             Form{
                 
@@ -50,7 +51,7 @@ struct CreateCustomFoodView: View {
                             .frame(width: 120, alignment: .leading)
                         Spacer()
                         TextField("e.g. 123", text: $itemCal)
-                            .keyboardType(.namePhonePad)
+                            .keyboardType(.numbersAndPunctuation)
                             .onReceive(itemCal.publisher.collect()) { characters in
                                 let filtered = characters.filter { $0.isNumber }
                                 if let numericValue = Int(String(filtered)) {
@@ -67,7 +68,7 @@ struct CreateCustomFoodView: View {
                             .frame(width: 120, alignment: .leading)
                         Spacer()
                         TextField("e.g. 123", text: $itemProtein)
-                            .keyboardType(.namePhonePad)
+                            .keyboardType(.numbersAndPunctuation)
                             .onReceive(itemProtein.publisher.collect()) { characters in
                                 let filtered = characters.filter { $0.isNumber }
                                 if let numericValue = Int(String(filtered)) {
@@ -106,12 +107,47 @@ struct CreateCustomFoodView: View {
                     .disabled(itemName == "" || itemCal == "" || itemProtein == "")
                     
                 }
-                                
-                Button(action: {
+                
+                HStack {
                     
-                }, label: {
-                    Text("Add Food")
+                    
+                    Button(action: {
+                        
+                        withAnimation{
+                            isCustomFoodSaved = true
+                        }
+                        
+                        let dataItem = CustomFoodData(name: itemName, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                        Task {
+                            if isCustomFoodSaved == true {
+                                
+                                await insertDataItem(item: dataItem)
+                                
+                            }
+                            
+                        }
+                        
+                            
+                    }, label: {
+                        if isCustomFoodSaved {
+                            HStack {
+                                Text("Saved")
+                                Spacer()
+                                Image(systemName: "checkmark.circle")
+                            }
+                            .foregroundStyle(Color.green)
+                        } else {
+                            HStack {
+                                Text("Save Custom Food")
+                                Spacer()
+                                Image(systemName: "bookmark.fill")
+                            }
+                        }
+                       
                 })
+                //.disabled(itemName == "" || itemCal == "" || itemProtein == "")
+                    
+                }
                 
             }
             
@@ -122,4 +158,5 @@ struct CreateCustomFoodView: View {
 #Preview {
     CreateCustomFoodView()
         .environmentObject(NavigationManager())
+        .modelContainer(previewContainer)
 }
