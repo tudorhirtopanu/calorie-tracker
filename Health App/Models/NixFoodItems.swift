@@ -23,7 +23,7 @@ struct CommonItem: Codable {
     let locale: String
 }
 
-struct BrandedItem: Codable {
+struct BrandedItem: Codable, Hashable {
     let foodName:String
     let servingUnit:String
     let nixBrandId:String
@@ -38,7 +38,7 @@ struct BrandedItem: Codable {
     let locale:String
 }
 
-struct Photo: Codable {
+struct Photo: Codable, Hashable {
     let thumb: URL
     let highres: String?
     let isUserUploaded: Bool?
