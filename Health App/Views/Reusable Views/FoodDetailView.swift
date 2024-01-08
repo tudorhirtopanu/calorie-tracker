@@ -18,8 +18,8 @@ struct FoodDetailView: View {
     
     @State var showFoodView:Bool = false
     
-    func populateData(name:String, calories:Int, protein:Double, weight:Double) async -> Food {
-        return Food(id: 11, name: name, measuredByWeight: true, servingSizes: [ServingSizes(id: 12, name: "1 serving Size", weight: weight, calories: calories, protein: protein)])
+    func populateData(name:String, calories:Int, protein:Double, weight:Double, servingSizeName:String) async -> Food {
+        return Food(id: 11, name: name, measuredByWeight: true, servingSizes: [ServingSizes(id: 12, name: servingSizeName, weight: weight, calories: calories, protein: protein)])
     }
     
     var body: some View {
@@ -36,7 +36,7 @@ struct FoodDetailView: View {
             Task {
                 let specificItem = try await NutritionixService.shared.fetchItemInfo(itemId: itemId)
                 
-                foodItem = await populateData(name: specificItem.food_name, calories: specificItem.nf_calories, protein: Double(specificItem.nf_protein), weight: Double(specificItem.serving_weight_grams))
+                foodItem = await populateData(name: specificItem.food_name, calories: specificItem.nf_calories, protein: Double(specificItem.nf_protein ?? 0), weight: Double(specificItem.serving_weight_grams ?? 0), servingSizeName: String(specificItem.serving_qty ?? 1)+" "+(specificItem.serving_unit ?? "unknown"))
                 
                 showFoodView = true
                 
