@@ -10,6 +10,13 @@ import SwiftUI
 enum FoodSearchNav:Hashable, Identifiable{
     case addCustomFood
     case savedView
+    //case nutritionixFood
+    
+    var id: Self { self }
+}
+
+enum Nutritionix:Hashable, Identifiable{
+    case nutritionixFood
     
     var id: Self { self }
 }
@@ -22,6 +29,8 @@ struct FoodSearchView: View {
     @State private var confirmItem:Bool = false
     @State private var presentCustomFood:Bool = false
     @State private var selectedFoodItemText: String = ""
+    
+    @State var bItem:[BrandedItem] = []
     
     @FocusState private var searchIsFocused:Bool
     
@@ -75,6 +84,8 @@ struct FoodSearchView: View {
                     self.foodItems = result
                 }
                 
+                nm.showNixFoods = true
+                
             }, label: {
                 Text("Search")
             })
@@ -110,26 +121,35 @@ struct FoodSearchView: View {
             
             if let foodItems = foodItems {
                
-                ScrollView {
-                    LazyVGrid(columns:[GridItem(), GridItem()]) {
-                        
-                        ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
-                            NavigationLink(destination: FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId).environmentObject(nm),
-                                           label: {
-                                FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
-                            })
-                            .overlay(
-                                // Add a single long Divider between the columns
-                                Divider().frame(width: 1),
-                                alignment: .leading
-                            )
+                if nm.showNixFoods{
+                    ScrollView {
+                        LazyVGrid(columns:[GridItem(), GridItem()]) {
                             
-                        }
+                            ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
+                                //                            NavigationLink(destination: FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId).environmentObject(nm),
+                                //                                           label: {
+                                //                                FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
+                                //                            })
+                                NavigationLink(value: brandedItem, label: {
+                                    FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
+                                })
+//                                .navigationDestination(for: Nutritionix.self, destination: {state in
+//                                    FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId)
+//                                        .environmentObject(nm)
+//                                })
+                                .overlay(
+                                    // Add a single long Divider between the columns
+                                    Divider().frame(width: 1),
+                                    alignment: .leading
+                                )
+                                
+                            }
+                            
+                        }.listRowSeparator(.visible)
                         
-                    }.listRowSeparator(.visible)
-                    
-                    
-                    
+                        
+                        
+                    }
                 }
             }
             
@@ -143,12 +163,22 @@ struct FoodSearchView: View {
             case .savedView:
                 CustomFoodsView()
                     .environmentObject(nm)
+                
             }
                             
         }
+        .navigationDestination(for: BrandedItem.self, destination: {brandedItem in
+            FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId)
+                .environmentObject(nm)
+        })
         .padding(.horizontal)
         
     }
+}
+
+struct Exampled:Identifiable, Hashable {
+    var id:String
+    var test:String
 }
 
 #Preview {
