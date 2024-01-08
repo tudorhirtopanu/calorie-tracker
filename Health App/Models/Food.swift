@@ -8,17 +8,18 @@
 import Foundation
 
 struct Food:Identifiable, Decodable {
-    let id:Int
-    let name:String
+    var id:Int
+    var name:String
     //let image:URL?
-    let measuredByWeight:Bool
-    let servingSizes:[ServingSizes]
+    var measuredByWeight:Bool
+    var servingSizes:[ServingSizes]
 }
 
 struct ServingSizes:Identifiable, Decodable {
-    let id:Int
-    let name:String
-    let weight:Double
-    let calories:Int
-    let protein: Double
+    var id:Int
+    var name:String
+    var weight:Double
+    var calories:Int
+    var protein: Double
 }
+
