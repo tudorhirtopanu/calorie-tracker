@@ -43,6 +43,8 @@ struct SubmitFoodButton: View {
                 nm.path = NavigationPath()
                 
                 nm.presentConfirmation = true
+                
+                nm.showNixFoods = false
                                 
             }, label: {
                 VStack{
