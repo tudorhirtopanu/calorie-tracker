@@ -12,20 +12,46 @@ struct FoodDetailView: View {
     @State var text:String
     @State var itemId:String
     
+    @State var foodItem:Food?
+    
+    @EnvironmentObject var nm:NavigationManager
+    
+    @State var showFoodView:Bool = false
+    
+    func populateData(name:String, calories:Int, protein:Double, weight:Double) async -> Food {
+        return Food(id: 11, name: name, measuredByWeight: true, servingSizes: [ServingSizes(id: 12, name: "1 serving Size", weight: weight, calories: calories, protein: protein)])
+    }
+    
     var body: some View {
         VStack{
-            Text(text)
+            if showFoodView {
+                AddFoodView(foodItem: foodItem!)
+                    .environmentObject(nm)
+            } else {
+                ProgressView()
+            }
         }
         .onAppear{
+            
             Task {
-                print("Z")
                 let specificItem = try await NutritionixService.shared.fetchItemInfo(itemId: itemId)
                 
-                print(specificItem.food_name)
-                //("calories: "+String(specificItem.nf_calories))
-               // print("per grams: "+String(specificItem.serving_weight_grams))
+                foodItem = await populateData(name: specificItem.food_name, calories: specificItem.nf_calories, protein: Double(specificItem.nf_protein), weight: Double(specificItem.serving_weight_grams))
+                
+                showFoodView = true
+                
+                //print(specificItem.food_name)
+                
+//                foodItem.name = specificItem.food_name
+//                
+//                foodServingSize.calories = specificItem.nf_calories
+//                foodServingSize.name = "1 serving Size"
+//                foodServingSize.protein = Double(specificItem.nf_protein)
+//                foodServingSize.weight = Double(specificItem.serving_weight_grams)
+//                
+//                foodItem.servingSizes.append(foodServingSize)
+                
             }
-            print("passed in "+text)
         }
     }
 }
