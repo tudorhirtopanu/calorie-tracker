@@ -12,5 +12,5 @@ class NavigationManager:ObservableObject {
     
     @Published var path:NavigationPath = NavigationPath()
     @Published var presentConfirmation:Bool = false
-    
+    @Published var showNixFoods:Bool = true
 }
