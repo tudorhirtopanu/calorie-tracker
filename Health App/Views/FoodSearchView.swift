@@ -80,12 +80,6 @@ struct FoodSearchView: View {
             })
             .padding([.top, .bottom], 10)
             
-//            Button(action: {
-//                confirmItem.toggle()
-//            }, label: {
-//                Text("show popover")
-//            })
-            
             NavigationLink(value: FoodSearchNav.savedView, label: {
                 HStack{
                     Image(systemName: "fork.knife.circle")
@@ -110,7 +104,6 @@ struct FoodSearchView: View {
                     BrandButton(fileName: "Mcdonalds", image: "McdonaldsLogo", brandName: "Mcdonalds")
                         .environmentObject(nm)
                 }
-                
             }
             
             Spacer()
@@ -121,7 +114,7 @@ struct FoodSearchView: View {
                     LazyVGrid(columns:[GridItem(), GridItem()]) {
                         
                         ForEach(foodItems.branded ?? [], id: \.foodName) { brandedItem in
-                            NavigationLink(destination: FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId),
+                            NavigationLink(destination: FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId).environmentObject(nm),
                                            label: {
                                 FoodItemRow(foodName: brandedItem.foodName, imageURL: brandedItem.photo.thumb)
                             })
