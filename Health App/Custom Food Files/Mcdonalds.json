@@ -2,6 +2,7 @@
     {
         "id":0,
         "name":"Mcdonald's Fries",
+        "image":"McdonaldsLogo",
         "measuredByWeight":true,
         "servingSizes":[
             {
@@ -30,6 +31,7 @@
     {
         "id":1,
         "name":"Mcdonald's McNuggets",
+        "image":"McdonaldsLogo",
         "measuredByWeight":false,
         "servingSizes":[
             {
@@ -58,6 +60,7 @@
     {
         "id":2,
         "name":"Mcdonald's Big Mac",
+        "image":"McdonaldsLogo",
         "measuredByWeight":false,
         "servingSizes":[
             {
