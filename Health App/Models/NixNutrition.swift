@@ -13,9 +13,9 @@ struct NixNutrition: Decodable {
 
 struct NixFoods:Decodable {
     let food_name:String
-//    let photo:Photo
+    let photo:Photo
     let serving_weight_grams:Double?
-    let nf_calories:Int
+    let nf_calories:Double
     let nf_protein:Double?
     let serving_qty:Double?
     let serving_unit: String?

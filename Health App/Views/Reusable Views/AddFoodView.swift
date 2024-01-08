@@ -17,6 +17,7 @@ struct AddFoodView: View {
     @State var itemProtein:Double = -1
     @State var servingSize:String = ""
     @State var isMeasuredByWeight:Bool = false
+    @State var preWrittenFood:Bool
     
     @EnvironmentObject var nm:NavigationManager
     
@@ -28,11 +29,38 @@ struct AddFoodView: View {
                 
                 VStack{
                     
-                    Image("McdonaldsLogo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200)
-                        .padding([.top, .bottom])
+                    if preWrittenFood {
+                        Image(foodItem.image!.absoluteString)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 200)
+                            .padding([.top, .bottom])
+                    }else {
+                        AsyncImage(url: foodItem.image) { phase in
+                                    switch phase {
+                                    case .empty:
+                                        ProgressView()
+                                    case .success(let image):
+                                        image
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 200)
+                                            .padding([.top, .bottom])
+                                    case .failure:
+                                        Image(systemName: "KFCLogo") // Show a placeholder or error image on failure
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 200)
+                                            .padding([.top, .bottom])
+                                    @unknown default:
+                                        fatalError("Unhandled case, update switch statement")
+                                    }
+                                }
+                    }
+                    
+                    
+                    
+                    
                     
                     Text(foodItem.name)
                         .font(.title3)
@@ -92,34 +120,6 @@ struct AddFoodView: View {
                         }
                     })
                     
-//                    Section(content: {
-//                        
-//                        HStack {
-//                            Text("Add Custom Amount")
-//                            
-//                            Spacer()
-//                            
-//                            Image(systemName: "circle")
-//                                .frame(width:20)
-//                                .fontWeight(.thin)
-//                        }
-//                        
-//                    }, header: {
-////                        HStack {
-////                            Text("Custom Amount")
-////                            
-////                            Spacer()
-////                            
-////                            Text("KCAL")
-////                                .frame(width:40)
-////                            Text("PROT")
-////                                .frame(width:40)
-////                            Text("d")
-////                                .opacity(0)
-////                                .frame(width:20)
-////                        }
-//                    })
-                    
                     Section("Add to meal occasion"){
                         HStack{
                             Group{
@@ -154,6 +154,6 @@ struct AddFoodView: View {
 }
 
 #Preview {
-    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", measuredByWeight: true, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]))
+    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", image: AssetURL.url(for: "McdonaldsLogo")!, measuredByWeight: true, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]), preWrittenFood: false)
         .environmentObject(NavigationManager())
 }

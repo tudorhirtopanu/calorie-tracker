@@ -10,6 +10,7 @@
 		8B0DB1152B4451FD006EB879 /* ConfirmationPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1142B4451FD006EB879 /* ConfirmationPopover.swift */; };
 		8B0DB1182B446DE9006EB879 /* FoodSelectionOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1172B446DE9006EB879 /* FoodSelectionOverlay.swift */; };
 		8B0DB11A2B446FE9006EB879 /* DiaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */; };
+		8B25CD022B4CA72E004ACB8E /* AssetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B25CD012B4CA72D004ACB8E /* AssetURL.swift */; };
 		8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060112B3DE0CB00E2AC3F /* Health_App.swift */; };
 		8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */; };
 		8B7060162B3DE0CE00E2AC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		8B0DB1142B4451FD006EB879 /* ConfirmationPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationPopover.swift; sourceTree = "<group>"; };
 		8B0DB1172B446DE9006EB879 /* FoodSelectionOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSelectionOverlay.swift; sourceTree = "<group>"; };
 		8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHeader.swift; sourceTree = "<group>"; };
+		8B25CD012B4CA72D004ACB8E /* AssetURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetURL.swift; sourceTree = "<group>"; };
 		8B70600E2B3DE0CB00E2AC3F /* Health App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7060112B3DE0CB00E2AC3F /* Health_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_App.swift; sourceTree = "<group>"; };
 		8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 			children = (
 				8B7060222B3DFA7D00E2AC3F /* NutritionixService.swift */,
 				8B7060362B3F298600E2AC3F /* FatSecretService.swift */,
+				8B25CD012B4CA72D004ACB8E /* AssetURL.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			files = (
 				8B70605A2B430A1100E2AC3F /* CustomFoodsViewModel.swift in Sources */,
 				8BA110842B49CF0400777D43 /* CustomFoodsView.swift in Sources */,
+				8B25CD022B4CA72E004ACB8E /* AssetURL.swift in Sources */,
 				8B70603B2B3F6DAB00E2AC3F /* Food.swift in Sources */,
 				8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */,
 				8B7060372B3F298600E2AC3F /* FatSecretService.swift in Sources */,

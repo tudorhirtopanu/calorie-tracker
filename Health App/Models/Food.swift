@@ -10,7 +10,7 @@ import Foundation
 struct Food:Identifiable, Decodable {
     var id:Int
     var name:String
-    //let image:URL?
+    let image:URL?
     var measuredByWeight:Bool
     var servingSizes:[ServingSizes]
 }

@@ -35,7 +35,7 @@ struct CustomBrandFoodsView: View {
                 
                 ForEach(selectedFood){food in
                     
-                    NavigationLink(destination: AddFoodView(foodItem: food).environmentObject(nm), label: {
+                    NavigationLink(destination: AddFoodView(foodItem: food, preWrittenFood: true).environmentObject(nm), label: {
                         Text(food.name)
                     })
                     

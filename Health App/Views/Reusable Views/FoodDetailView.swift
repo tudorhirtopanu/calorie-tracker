@@ -18,14 +18,14 @@ struct FoodDetailView: View {
     
     @State var showFoodView:Bool = false
     
-    func populateData(name:String, calories:Int, protein:Double, weight:Double, servingSizeName:String) async -> Food {
-        return Food(id: 11, name: name, measuredByWeight: true, servingSizes: [ServingSizes(id: 12, name: servingSizeName, weight: weight, calories: calories, protein: protein)])
+    func populateData(name:String, calories:Int, protein:Double, weight:Double, servingSizeName:String, imageURL:URL) async -> Food {
+        return Food(id: 11, name: name, image: imageURL, measuredByWeight: true, servingSizes: [ServingSizes(id: 12, name: servingSizeName, weight: weight, calories: calories, protein: protein)])
     }
     
     var body: some View {
         VStack{
             if showFoodView {
-                AddFoodView(foodItem: foodItem!)
+                AddFoodView(foodItem: foodItem!, preWrittenFood: false)
                     .environmentObject(nm)
             } else {
                 ProgressView()
@@ -36,7 +36,7 @@ struct FoodDetailView: View {
             Task {
                 let specificItem = try await NutritionixService.shared.fetchItemInfo(itemId: itemId)
                 
-                foodItem = await populateData(name: specificItem.food_name, calories: specificItem.nf_calories, protein: Double(specificItem.nf_protein ?? 0), weight: Double(specificItem.serving_weight_grams ?? 0), servingSizeName: String(specificItem.serving_qty ?? 1)+" "+(specificItem.serving_unit ?? "unknown"))
+                foodItem = await populateData(name: specificItem.food_name, calories: Int(Double(specificItem.nf_calories)), protein: Double(specificItem.nf_protein ?? 0), weight: Double(specificItem.serving_weight_grams ?? 0), servingSizeName: String(specificItem.serving_qty ?? 1)+" "+(specificItem.serving_unit ?? "unknown"), imageURL: specificItem.photo.thumb)
                 
                 showFoodView = true
                 
