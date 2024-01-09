@@ -119,10 +119,10 @@ struct CreateCustomFoodView: View {
                         
                         let dataItem = CustomFoodData(name: itemName, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
                         Task {
-                            if isCustomFoodSaved == true {
+                            if isCustomFoodSaved == true && customFoodItems.contains(where: {$0.name == dataItem.name && $0.calories == dataItem.calories}) == false {
                                 
                                 await insertDataItem(item: dataItem)
-                                
+                                                                
                             }
                             
                         }
