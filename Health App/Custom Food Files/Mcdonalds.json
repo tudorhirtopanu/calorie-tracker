@@ -71,5 +71,154 @@
                 "protein":26
             }
         ]
+    },
+    {
+        "id":3,
+        "name":"Mcdonald's Cheeseburger",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":106,
+                "calories":298,
+                "protein":16
+            }
+        ]
+    },
+    {
+        "id":4,
+        "name":"Mcdonald's Cheeseburger",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":106,
+                "calories":298,
+                "protein":16
+            }
+        ]
+    },
+    {
+        "id":5,
+        "name":"Mcdonald's Double Cheeseburger",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":150,
+                "calories":438,
+                "protein":26
+            }
+        ]
+    },
+    {
+        "id":6,
+        "name":"Mcdonald's Mayo Chicken",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":109,
+                "calories":285,
+                "protein":12
+            }
+        ]
+    },
+    {
+        "id":7,
+        "name":"Mcdonald's McChicken Sandwich",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":169,
+                "calories":369,
+                "protein":17
+            }
+        ]
+    },
+    {
+        "id":8,
+        "name":"Mcdonald's Quarter Pounder with cheese",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":173,
+                "calories":507,
+                "protein":32
+            }
+        ]
+    },
+    {
+        "id":9,
+        "name":"Mcdonald's Double Quarter Pounder with cheese",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":260,
+                "calories":739,
+                "protein":53
+            }
+        ]
+    },
+    {
+        "id":710,
+        "name":"Mcdonald's Chicken Selects",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"1 Piece",
+                "weight":40,
+                "calories":118,
+                "protein":8.2
+            },
+            {
+                "id":2,
+                "name":"3 Pieces",
+                "weight":120,
+                "calories":359,
+                "protein":25
+            },
+            {
+                "id":3,
+                "name":"5 Pieces",
+                "weight":200,
+                "calories":600,
+                "protein":41.8
+            }
+        ]
+    },
+    {
+        "id":11,
+        "name":"Mcdonald's McChicken Sandwich",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":1,
+                "name":"Burger",
+                "weight":169,
+                "calories":369,
+                "protein":17
+            }
+        ]
     }
 ]
