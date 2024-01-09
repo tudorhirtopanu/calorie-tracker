@@ -29,9 +29,7 @@ struct FoodSearchView: View {
     @State private var confirmItem:Bool = false
     @State private var presentCustomFood:Bool = false
     @State private var selectedFoodItemText: String = ""
-    
-    @State var bItem:[BrandedItem] = []
-    
+        
     @FocusState private var searchIsFocused:Bool
     
     @EnvironmentObject var nm:NavigationManager
@@ -47,7 +45,22 @@ struct FoodSearchView: View {
         
         
         VStack(alignment: .leading) {
+            
             HStack {
+                
+                if searchIsFocused == true {
+                    withAnimation {
+                        Button(action:  {
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                            searchIsFocused = false
+                            textField = ""
+                        }, label: {
+                            Image(systemName: "xmark")
+                                .foregroundStyle(.gray)
+                        })
+                        
+                    }
+                }
                 
                 ZStack {
                     
@@ -59,8 +72,20 @@ struct FoodSearchView: View {
                         
                         Image(systemName: "magnifyingglass")
                             .foregroundStyle(Color.gray)
-                        TextField("Search for food ...", text: $textField)
-                            .focused($searchIsFocused)
+                        withAnimation {
+                            TextField("Search for food ...", text: $textField)
+                                .focused($searchIsFocused)
+                                .submitLabel(.search)
+                                .onSubmit {
+                                    searchIsFocused = false
+                                    
+                                    NutritionixService.shared.searchInstant2(query: textField) { result in
+                                        self.foodItems = result
+                                    }
+                                    
+                                    nm.showNixFoods = true
+                                }
+                        }
                     }
                     .padding(8)
                 }
@@ -76,40 +101,62 @@ struct FoodSearchView: View {
                 
             }
             
-            Button(action: {
-                
-                searchIsFocused = false
-                
-                NutritionixService.shared.searchInstant2(query: textField) { result in
-                    self.foodItems = result
-                }
-                
-                nm.showNixFoods = true
-                
-            }, label: {
-                Text("Search")
-            })
-            .padding([.top, .bottom], 10)
+//            Button(action: {
+//                
+//                searchIsFocused = false
+//                
+//                NutritionixService.shared.searchInstant2(query: textField) { result in
+//                    self.foodItems = result
+//                }
+//                
+//                nm.showNixFoods = true
+//                
+//            }, label: {
+//                Text("Search")
+//            })
+//            .padding([.top, .bottom], 10)
             
-            NavigationLink(value: FoodSearchNav.savedView, label: {
-                HStack{
-                    Image(systemName: "fork.knife.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30)
+            if nm.showNixFoods == true {
+                HStack {
+                    Spacer()
                     
-                    Text("Custom Foods")
+                    Button(action:  {
+                        
+                        nm.showNixFoods = false
+                        
+                        foodItems = nil
+                        
+                        textField = ""
+                    }, label: {
+                        Image(systemName: "xmark")
+                            .foregroundStyle(.gray)
+                            .fontWeight(.medium)
+                        
+                    })
+                    .padding(10)
+                    
                 }
-                .padding(10)
-                .background(.gray.opacity(0.25), in: RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
-            })
-            
-            Text("Popular Brands")
-                .font(.caption)
-                .foregroundStyle(Color.gray)
-                .padding([.bottom, .top], 5)
-            
-            if foodItems == nil {
+            }
+
+            if nm.showNixFoods == false {
+                
+                NavigationLink(value: FoodSearchNav.savedView, label: {
+                    HStack{
+                        Image(systemName: "fork.knife.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
+                        
+                        Text("Custom Foods")
+                    }
+                    .padding(10)
+                    .background(.gray.opacity(0.25), in: RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+                })
+                
+                Text("Popular Brands")
+                    .font(.caption)
+                    .foregroundStyle(Color.gray)
+                    .padding([.bottom, .top], 5)
                 
                 HStack{
                     BrandButton(fileName: "Mcdonalds", image: "McdonaldsLogo", brandName: "Mcdonalds")

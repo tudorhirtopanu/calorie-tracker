@@ -59,7 +59,7 @@ struct SubmitFoodButton: View {
                         .padding([.top, .bottom], 5)
                 }
             })
-            .foregroundStyle(Color.black)
+            .foregroundStyle(Color.primary)
             .frame(width: geo.size.width, height: geo.size.height)
             
         }

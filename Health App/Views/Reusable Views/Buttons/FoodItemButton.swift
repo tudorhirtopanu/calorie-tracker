@@ -39,7 +39,9 @@ struct FoodItemButton: View {
             HStack{
                 VStack(alignment: .leading) {
                     Text(name)
+                        .multilineTextAlignment(.leading)
                         .padding(.leading,10)
+                    
                     Text(servingSize)
                         .padding(.leading,10)
                         .font(Font.system(size: 14))
@@ -62,7 +64,7 @@ struct FoodItemButton: View {
 }
 
 #Preview {
-    FoodItemButton(name: "Pizza", calories: 400, protein: 25, servingSize: "1 Serving", isEditEnabled: .constant(false), selectItem: {})
+    FoodItemButton(name: "Mcdonalds McChicken Sandwich", calories: 400, protein: 25, servingSize: "1 Serving", isEditEnabled: .constant(false), selectItem: {})
         .padding(.horizontal)
         .modelContainer(previewContainer)
 }

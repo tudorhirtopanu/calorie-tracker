@@ -19,54 +19,102 @@ struct AddFoodView: View {
     @State var isMeasuredByWeight:Bool = false
     @State var preWrittenFood:Bool
     
+    @State var customPortionText = ""
+    @FocusState var customIsFocused:Bool
+    
+    @State var customCal:Int?
+    @State var customProtein:Double?
+    
     @EnvironmentObject var nm:NavigationManager
+    
+    private func truncateDouble(number: Double, decimalPlaces: Int) -> Double {
+        let multiplier = pow(10.0, Double(decimalPlaces))
+        return Double(Int(number * multiplier)) / multiplier
+    }
+    
+    func calculateCustomCalories(newWeight:Int) -> Int {
+        
+        let baseServing = foodItem.servingSizes.first!
+                
+        let multiplier = Double(baseServing.calories)/baseServing.weight
+        
+        let newCalories = Double(newWeight)*multiplier
+
+        return Int(newCalories)
+        
+    }
+    
+    func calculateCustomProtein(newWeight:Int) -> Double {
+        
+        let baseServing = foodItem.servingSizes.first!
+        
+        print(baseServing.weight)
+        
+        let multiplier = Double(baseServing.protein)/baseServing.weight
+        
+        let newProtein = Double(newWeight)*multiplier
+        
+        let truncatedNum = truncateDouble(number: newProtein, decimalPlaces: 1)
+        
+        return truncatedNum
+        
+    }
     
     var body: some View {
         ZStack {
             
-            Color(UIColor.secondarySystemBackground).ignoresSafeArea()
+            //Color(UIColor.secondarySystemBackground).ignoresSafeArea()
             VStack {
                 
-                VStack{
-                    
-                    if preWrittenFood {
-                        Image(foodItem.image!.absoluteString)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200)
-                            .padding([.top, .bottom])
-                    }else {
-                        AsyncImage(url: foodItem.image) { phase in
-                                    switch phase {
-                                    case .empty:
-                                        ProgressView()
-                                    case .success(let image):
-                                        image
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 200)
-                                            .padding([.top, .bottom])
-                                    case .failure:
-                                        Image(systemName: "KFCLogo") // Show a placeholder or error image on failure
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 200)
-                                            .padding([.top, .bottom])
-                                    @unknown default:
-                                        fatalError("Unhandled case, update switch statement")
-                                    }
-                                }
-                    }
-                    
-                    
-                    
-                    
-                    
-                    Text(foodItem.name)
-                        .font(.title3)
-                }
+                
                             
                 Form {
+                    
+                    Section {
+                        HStack {
+                            Spacer()
+                            VStack{
+                                
+                                if preWrittenFood {
+                                    Image(foodItem.image?.absoluteString ?? "McdonaldsLogo" )
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 200)
+                                        .padding([.top, .bottom])
+                                }else {
+                                    AsyncImage(url: foodItem.image) { phase in
+                                                switch phase {
+                                                case .empty:
+                                                    ProgressView()
+                                                case .success(let image):
+                                                    image
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 200)
+                                                        .padding([.top, .bottom])
+                                                case .failure:
+                                                    Image(systemName: "McdonaldsLogo") // Show a placeholder or error image on failure
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: 200)
+                                                        .padding([.top, .bottom])
+                                                @unknown default:
+                                                    fatalError("Unhandled case, update switch statement")
+                                                }
+                                            }
+                                }
+                                
+                                
+                                
+                                
+                                
+                                Text(foodItem.name)
+                                    .font(.title3)
+                            }
+                            
+                            Spacer()
+                        }
+                    }
                     
                     Section(content: {
                         ForEach(foodItem.servingSizes){s in
@@ -100,8 +148,55 @@ struct AddFoodView: View {
                                     
                                 }
                             })
-                            .foregroundStyle(.black)
+                            .foregroundStyle(Color.primary)
                            
+                        }
+                        
+                        // Custom size
+                        HStack {
+                            TextField("Add custom weight", text: $customPortionText)
+                                .onReceive(customPortionText.publisher.collect()) { characters in
+                                    let filtered = characters.filter { $0.isNumber }
+                                    if let numericValue = Int(String(filtered)) {
+                                        customPortionText = String(numericValue)
+                                    } else {
+                                        customPortionText = ""
+                                    }
+                                }
+                                .focused($customIsFocused)
+                                .onSubmit {
+                                    if customPortionText != "" {
+                                        customCal = calculateCustomCalories(newWeight: Int(customPortionText) ?? 888)
+                                        customProtein = calculateCustomProtein(newWeight: Int(customPortionText) ?? 888  )
+                                        
+                                        selectedServing = ServingSizes(id: 987, name: "Custom Serving \(Int(customPortionText) ?? 888)g", weight: Double(customPortionText)!, calories: customCal!, protein: customProtein ?? 10.10)
+                                    } else {
+                                        selectedServing = nil
+                                        customCal = nil
+                                        customProtein = nil
+                                    }
+                                }
+                            if let customCal = customCal {
+                                Text(String(customCal))
+                                    .frame(width:40)
+                            }
+                            
+                            if let customProtein = customProtein {
+                                Text(String(customProtein))
+                                    .frame(width:40)
+                            }
+                            
+                            if selectedServing?.id == 987 {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .frame(width:20)
+                                    .foregroundStyle(Color.accentColor)
+                            } else {
+                                
+                                Image(systemName: "circle")
+                                    .frame(width:20)
+                                    .fontWeight(.thin)
+                            }
+                            
                         }
                         
                     }, header: {
@@ -123,19 +218,19 @@ struct AddFoodView: View {
                     Section("Add to meal occasion"){
                         HStack{
                             Group{
-                                SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: itemName, foodOccasion: FoodOccasions.breakfast.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize, measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Breakfast", iconWidth: 50, foodName: foodItem.name, foodOccasion: FoodOccasions.breakfast.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown", measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize,measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize,measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: itemCal, protein: itemProtein, servingSize: servingSize,measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
                             }
                             .environmentObject(nm)
                            
@@ -143,7 +238,9 @@ struct AddFoodView: View {
                         .buttonStyle(BorderlessButtonStyle())
                         .frame(height: 120)
                         .padding([.top, .bottom],10)
-                        .disabled(itemName == "" || itemCal == -1 || itemProtein == -1)
+                        .disabled(
+                            selectedServing == nil
+                        )
                         
                     }
                     
@@ -154,6 +251,6 @@ struct AddFoodView: View {
 }
 
 #Preview {
-    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", image: AssetURL.url(for: "McdonaldsLogo")!, measuredByWeight: true, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]), preWrittenFood: false)
+    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", image: AssetURL.url(for: "McdonaldsLogo"), measuredByWeight: true, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]), preWrittenFood: false)
         .environmentObject(NavigationManager())
 }

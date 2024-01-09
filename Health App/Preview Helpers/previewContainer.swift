@@ -21,7 +21,7 @@ let previewContainer: ModelContainer = {
             let dataItem = FoodDataItem.example()
             context.insert(dataItem)
             
-            let item2 = FoodDataItem(name: "Pizza", foodOccasion: FoodOccasions.lunch.rawValue, calories: 200, protein: 20, servingSize: "1 Pizza", measuredByWeight: true)
+            let item2 = FoodDataItem(name: "Mcdonalds McChicken Sandwich", foodOccasion: FoodOccasions.lunch.rawValue, calories: 200, protein: 20, servingSize: "1 Pizza", measuredByWeight: true)
             context.insert(item2)
             
             let dailyItem = DailyNutrientData.example()
