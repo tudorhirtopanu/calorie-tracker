@@ -124,10 +124,26 @@ struct DailyDiaryView: View {
             VStack {
                 
                 HStack {
-                    
-                    Spacer()
-                    
+                                        
                     if isEditEnabled{
+                        
+                        Button(action: {
+                            
+                            DispatchQueue.main.async {
+                                withAnimation(.spring) {
+                                    isEditEnabled = false
+                                }
+                            }
+                            
+                            itemsToEdit = []
+                            
+                        }, label: {
+                            Text("Cancel")
+                        })
+                        .padding(10)
+                        
+                        Spacer()
+                        
                         Button(action: {
                             
                             for item in itemsToEdit {
