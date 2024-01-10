@@ -222,15 +222,15 @@ struct AddFoodView: View {
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: itemName, foodOccasion: FoodOccasions.lunch.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Lunch", iconWidth: 70, foodName: foodItem.name, foodOccasion: FoodOccasions.lunch.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: itemName, foodOccasion: FoodOccasions.dinner.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Dinner", iconWidth: 60, foodName: foodItem.name, foodOccasion: FoodOccasions.dinner.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
                                 
                                 Divider()
                                 
-                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: itemName, foodOccasion: FoodOccasions.snacks.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
+                                SubmitFoodButton(mealTitle: "Snacks", iconWidth: 40, foodName: foodItem.name, foodOccasion: FoodOccasions.snacks.rawValue, calories: selectedServing?.calories ?? 0, protein: selectedServing?.protein ?? 0, servingSize: selectedServing?.name ?? "Unknown",measuredByWeight: isMeasuredByWeight)
                             }
                             .environmentObject(nm)
                            
