@@ -116,8 +116,8 @@ struct CreateCustomFoodView: View {
                         withAnimation{
                             isCustomFoodSaved = true
                         }
-                        
-                        let dataItem = CustomFoodData(name: itemName, calories: Int(itemCal) ?? 0, protein: Double(itemProtein) ?? 0)
+                        // Temp fix for saved protein being multiplied by 10 as double coverted to string multiplies by 10
+                        let dataItem = CustomFoodData(name: itemName, calories: Int(itemCal) ?? 0, protein: (Double(itemProtein) ?? 0)/10)
                         Task {
                             if isCustomFoodSaved == true && customFoodItems.contains(where: {$0.name == dataItem.name && $0.calories == dataItem.calories}) == false {
                                 
