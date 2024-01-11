@@ -27,5 +27,34 @@
                 "protein": 4
             }
         ]
+    },
+    {
+        "id":1,
+        "name": "Wholemeal Bread",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small slice",
+                "weight": 25,
+                "calories":54,
+                "protein": 2.4
+            },
+            {
+                "id":1,
+                "name":"Medium slice",
+                "weight": 40,
+                "calories":87,
+                "protein": 3.8
+            },
+            {
+                "id":2,
+                "name":"Large slice",
+                "weight": 50,
+                "calories":109,
+                "protein": 4.7
+            }
+        ]
     }
 ]
