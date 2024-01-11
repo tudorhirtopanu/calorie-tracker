@@ -216,6 +216,7 @@ struct FoodSearchView: View {
             }
             
         }
+        
         .navigationDestination(for: FoodSearchNav.self) { state in
             switch state {
             case .addCustomFood:

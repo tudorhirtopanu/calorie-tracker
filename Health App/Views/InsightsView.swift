@@ -81,16 +81,33 @@ struct InsightsView: View {
     
     @State var showSettings:Bool = false
     
+    @AppStorage("CalorieGoal") var calorieGoal:Int = 2300
+    
     var body: some View {
         
         
         
         List {
             
-            
+            Section("Daily Progress"){
+                VStack {
+                    ProgressView(value: Float(calculateCalories(itemArray: todaysData)), total: Float(calorieGoal))
+                    
+                    HStack {
+                        Text("Current: \(calculateCalories(itemArray: todaysData))")
+                            .fontWeight(.medium)
+                            .font(Font.system(size: 12))
+                        Spacer()
+                        Text("Goal: \(calorieGoal)")
+                            .fontWeight(.medium)
+                            .font(Font.system(size: 12))
+                    }
+                }
+                .padding([.top])
+            }
 
-            Section {
-                VStack(alignment: .leading){
+            Section("Weekly Calories") {
+                VStack{
                     
                     ForEach(arrayOfDays, id: \.self) {day in
                         let dayData = returnDataItem(day: dtm.adjustedWeekday(weekday: day))
@@ -100,51 +117,59 @@ struct InsightsView: View {
                         HStack {
                             HStack {
                                 Text(dh.returnDayName(day:dtm.adjustedWeekday(weekday: day)))
-                                    .frame(width:100)
+                                    .frame(width:90, alignment: .leading)
                             }
                             
                             // Is Current Day
                             if dayData.day == dtm.adjustedWeekday(weekday: currentDay){
                                 Text(String(calculateCalories(itemArray: todaysData)))
+                                    .frame(width: 55, alignment: .trailing)
                             }else {
                                 
                                 if dayData.day != 7 {
                                     if dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate){
                                         Text(String(dayData.totalCalories))
+                                            .frame(width: 55, alignment: .trailing)
                                         
                                     }else {
                                         Text(String(00))
+                                            .frame(width: 55, alignment: .trailing)
                                     }
                                 } else {
                                     // MARK: Temp fix for showing 0 on sunday
                                     Text(String(0))
+                                        .frame(width: 55, alignment: .trailing)
                                 }
                                 
                                 
                             }
                             
                         }
+                        .padding([.top, .bottom], 3)
                         
                     }
                     
                 }
+                
             }
             
             Button(action: {
-                deleteData()
-            }, label: {
-                Text("Delete Data")
-            })
-            
-        }
-        .toolbar {
-            Button(action: {
                 showSettings.toggle()
             }, label: {
-                Image(systemName: "gear")
+                HStack {
+                    Image(systemName: "gear")
+                    Text("Settings")
+                }
             })
+            
+//            Button(action: {
+//                deleteData()
+//            }, label: {
+//                Text("Delete Data")
+//            })
+            
         }
-        
+
         .onChange(of: scenePhase, { oldValue, newValue in
             if newValue == .active {
                 currentDay = Calendar.current.component(.weekday, from: Date())
