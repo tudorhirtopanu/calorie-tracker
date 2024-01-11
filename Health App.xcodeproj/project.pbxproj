@@ -12,6 +12,7 @@
 		8B0DB11A2B446FE9006EB879 /* DiaryHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */; };
 		8B25CD022B4CA72E004ACB8E /* AssetURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B25CD012B4CA72D004ACB8E /* AssetURL.swift */; };
 		8B25CD062B4FFFE3004ACB8E /* Meats.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B25CD052B4FFFE3004ACB8E /* Meats.json */; };
+		8B25CD082B500BD1004ACB8E /* Grains.json in Resources */ = {isa = PBXBuildFile; fileRef = 8B25CD072B500BD1004ACB8E /* Grains.json */; };
 		8B7060122B3DE0CB00E2AC3F /* Health_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060112B3DE0CB00E2AC3F /* Health_App.swift */; };
 		8B7060142B3DE0CB00E2AC3F /* FoodSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */; };
 		8B7060162B3DE0CE00E2AC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B7060152B3DE0CE00E2AC3F /* Assets.xcassets */; };
@@ -54,6 +55,7 @@
 		8B0DB1192B446FE8006EB879 /* DiaryHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryHeader.swift; sourceTree = "<group>"; };
 		8B25CD012B4CA72D004ACB8E /* AssetURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetURL.swift; sourceTree = "<group>"; };
 		8B25CD052B4FFFE3004ACB8E /* Meats.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Meats.json; sourceTree = "<group>"; };
+		8B25CD072B500BD1004ACB8E /* Grains.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Grains.json; sourceTree = "<group>"; };
 		8B70600E2B3DE0CB00E2AC3F /* Health App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7060112B3DE0CB00E2AC3F /* Health_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Health_App.swift; sourceTree = "<group>"; };
 		8B7060132B3DE0CB00E2AC3F /* FoodSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			children = (
 				8B7060532B42FBE500E2AC3F /* Mcdonalds.json */,
 				8B25CD052B4FFFE3004ACB8E /* Meats.json */,
+				8B25CD072B500BD1004ACB8E /* Grains.json */,
 			);
 			path = "Custom Food Files";
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B25CD062B4FFFE3004ACB8E /* Meats.json in Resources */,
+				8B25CD082B500BD1004ACB8E /* Grains.json in Resources */,
 				8B7060192B3DE0CE00E2AC3F /* Preview Assets.xcassets in Resources */,
 				8B7060472B40BE2300E2AC3F /* Config.plist in Resources */,
 				8B7060162B3DE0CE00E2AC3F /* Assets.xcassets in Resources */,

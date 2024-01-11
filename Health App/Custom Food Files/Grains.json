@@ -1,0 +1,31 @@
+[
+    {
+        "id":0,
+        "name": "White Bread",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small slice",
+                "weight": 25,
+                "calories":55,
+                "protein": 2
+            },
+            {
+                "id":1,
+                "name":"Medium slice",
+                "weight": 40,
+                "calories":88,
+                "protein": 3.2
+            },
+            {
+                "id":2,
+                "name":"Large slice",
+                "weight": 50,
+                "calories":110,
+                "protein": 4
+            }
+        ]
+    }
+]

@@ -171,6 +171,10 @@ struct FoodSearchView: View {
                 HStack {
                     BrandButton(fileName: "Meats", image: "meatsImg", brandName: "Meats")
                         .environmentObject(nm)
+                        .frame(width:70)
+                    
+                    BrandButton(fileName: "Grains", image: "grainsImg", brandName: "Grains")
+                        .environmentObject(nm)
                 }
                 
             }

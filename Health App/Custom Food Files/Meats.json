@@ -27,5 +27,253 @@
                 "protein": 45.3
             }
         ]
+    },
+    {
+        "id":1,
+        "name": "Chicken Drumstick",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Average drumstick",
+                "weight": 90,
+                "calories":104,
+                "protein": 14.6
+            }
+        ]
+    },
+    {
+        "id":2,
+        "name": "Chicken Thighs (with bone)",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small",
+                "weight": 80,
+                "calories":151,
+                "protein": 13.4
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 125,
+                "calories":236,
+                "protein": 20.9
+            },
+            {
+                "id":2,
+                "name":"Large",
+                "weight": 175,
+                "calories":331,
+                "protein": 29.3
+            }
+        ]
+    },
+    {
+        "id":3,
+        "name": "Chicken Wings",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small wing",
+                "weight": 55,
+                "calories":84,
+                "protein": 9.8
+            },
+            {
+                "id":1,
+                "name":"Large wing",
+                "weight": 85,
+                "calories":129,
+                "protein": 15.1
+            },
+            {
+                "id":2,
+                "name":"100g",
+                "weight": 100,
+                "calories":152,
+                "protein": 17.8
+            }
+        ]
+    },
+    {
+        "id":4,
+        "name": "Grilled Salmon",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small fillet",
+                "weight": 82,
+                "calories":196,
+                "protein": 20.2
+            },
+            {
+                "id":1,
+                "name":"Medium fillet",
+                "weight": 120,
+                "calories":287,
+                "protein": 29.5
+            },
+            {
+                "id":3,
+                "name":"Large fillet",
+                "weight": 158,
+                "calories":378,
+                "protein": 38.9
+            }
+        ]
+    },
+    {
+        "id":5,
+        "name": "Baked Salmon",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small fillet",
+                "weight": 82,
+                "calories":190,
+                "protein": 20.7
+            },
+            {
+                "id":1,
+                "name":"Medium fillet",
+                "weight": 120,
+                "calories":278,
+                "protein": 30.2
+            },
+            {
+                "id":3,
+                "name":"Large fillet",
+                "weight": 158,
+                "calories":367,
+                "protein": 39.8
+            }
+        ]
+    },
+    {
+        "id":6,
+        "name": "Beef Mince (10% fat)",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 100,
+                "calories":206,
+                "protein": 28.7
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 140,
+                "calories":288,
+                "protein": 40.2
+            },
+            {
+                "id":3,
+                "name":"Large portion",
+                "weight": 220,
+                "calories":453,
+                "protein": 63.1
+            }
+        ]
+    },
+    {
+        "id":7,
+        "name": "Beef Mince (5% fat)",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 100,
+                "calories":168,
+                "protein": 31
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 140,
+                "calories":235,
+                "protein": 43.4
+            },
+            {
+                "id":3,
+                "name":"Large portion",
+                "weight": 220,
+                "calories":370,
+                "protein": 68.2
+            }
+        ]
+    },
+    {
+        "id":8,
+        "name": "Roasted Beef",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 50,
+                "calories":97,
+                "protein": 17
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 90,
+                "calories":174,
+                "protein": 30.6
+            },
+            {
+                "id":3,
+                "name":"Large portion",
+                "weight": 150,
+                "calories":290,
+                "protein": 51
+            }
+        ]
+    },
+    {
+        "id":9,
+        "name": "Tuna Tin (Brine)",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"100g (drained)",
+                "weight": 100,
+                "calories":109,
+                "protein": 24.9
+            }
+        ]
+    },
+    {
+        "id":10,
+        "name": "Tuna Tin (Sunflower Oil)",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"100g (drained)",
+                "weight": 100,
+                "calories":159,
+                "protein": 25.4
+            }
+        ]
     }
 ]
