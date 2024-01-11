@@ -36,7 +36,7 @@ struct BrandButton: View {
             VStack {
                 Image(image)
                     .resizable()
-                    .scaledToFill()
+                    .scaledToFit()
                     .frame(width:70, height: 70)
                 
                 Text(brandName)
@@ -50,6 +50,6 @@ struct BrandButton: View {
 
 #Preview {
     NavigationStack {
-        BrandButton(fileName: "Mcdonalds", image: "McdonaldsLogo", brandName: "Mcdonalds")
+        BrandButton(fileName: "Mcdonalds", image: "meatsImg", brandName: "Mcdonalds")
     }
 }

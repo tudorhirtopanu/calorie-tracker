@@ -4,6 +4,7 @@
 //
 //  Created by Tudor Hirtopanu on 01/01/2024.
 //
+// 108456.11121 is the default number representing that there is no weight
 
 import SwiftUI
 
@@ -59,6 +60,18 @@ struct AddFoodView: View {
         return truncatedNum
         
     }
+    
+//    func calculateCaloriesByItemCount(numberOfItems:Int) -> Int {
+//        
+//        let baseServing = foodItem.servingSizes.first!
+//        
+//
+//        
+//        return 3
+//        
+//    }
+    
+    
     
     var body: some View {
         ZStack {
@@ -128,7 +141,11 @@ struct AddFoodView: View {
                                 isMeasuredByWeight = foodItem.measuredByWeight
                             }, label: {
                                 HStack {
-                                    Text(s.name + " (\(String(Int(s.weight)))g)")
+                                    if s.weight == 108456.11121 {
+                                        Text(s.name)
+                                    }else {
+                                        Text(s.name + " (\(String(Int(s.weight)))g)")
+                                    }
                                     Spacer()
                                     Text(String(s.calories))
                                         .frame(width:40)
@@ -152,51 +169,98 @@ struct AddFoodView: View {
                            
                         }
                         
-                        // Custom size
-                        HStack {
-                            TextField("Add custom weight", text: $customPortionText)
-                                .onReceive(customPortionText.publisher.collect()) { characters in
-                                    let filtered = characters.filter { $0.isNumber }
-                                    if let numericValue = Int(String(filtered)) {
-                                        customPortionText = String(numericValue)
-                                    } else {
-                                        customPortionText = ""
+                       
+                        
+                        
+                        
+                        // If food is measured by item
+                        
+                        
+                        
+                        // If food is measured by weight and weight is not empty
+                        if foodItem.measuredByWeight == true && foodItem.servingSizes.first!.weight != 108456.11121 {
+                            // Custom size
+                            HStack {
+                                TextField("Add custom weight", text: $customPortionText)
+                                    .onReceive(customPortionText.publisher.collect()) { characters in
+                                        let filtered = characters.filter { $0.isNumber }
+                                        if let numericValue = Int(String(filtered)) {
+                                            customPortionText = String(numericValue)
+                                        } else {
+                                            customPortionText = ""
+                                        }
                                     }
-                                }
-                                .focused($customIsFocused)
-                                .onSubmit {
-                                    if customPortionText != "" {
-                                        customCal = calculateCustomCalories(newWeight: Int(customPortionText) ?? 888)
-                                        customProtein = calculateCustomProtein(newWeight: Int(customPortionText) ?? 888  )
-                                        
-                                        selectedServing = ServingSizes(id: 987, name: "Custom Serving \(Int(customPortionText) ?? 888)g", weight: Double(customPortionText)!, calories: customCal!, protein: customProtein ?? 10.10)
-                                    } else {
-                                        selectedServing = nil
-                                        customCal = nil
-                                        customProtein = nil
+                                    .focused($customIsFocused)
+                                    .onSubmit {
+                                        if customPortionText != "" {
+                                            customCal = calculateCustomCalories(newWeight: Int(customPortionText) ?? 888)
+                                            customProtein = calculateCustomProtein(newWeight: Int(customPortionText) ?? 888  )
+                                            
+                                            selectedServing = ServingSizes(id: 987, name: "Custom Serving \(Int(customPortionText) ?? 888)g", weight: Double(customPortionText)!, calories: customCal!, protein: customProtein ?? 10.10)
+                                        } else {
+                                            selectedServing = nil
+                                            customCal = nil
+                                            customProtein = nil
+                                        }
                                     }
+                                if let customCal = customCal {
+                                    Text(String(customCal))
+                                        .frame(width:40)
                                 }
-                            if let customCal = customCal {
-                                Text(String(customCal))
-                                    .frame(width:40)
-                            }
-                            
-                            if let customProtein = customProtein {
-                                Text(String(customProtein))
-                                    .frame(width:40)
-                            }
-                            
-                            if selectedServing?.id == 987 {
-                                Image(systemName: "checkmark.circle.fill")
-                                    .frame(width:20)
-                                    .foregroundStyle(Color.accentColor)
-                            } else {
                                 
-                                Image(systemName: "circle")
-                                    .frame(width:20)
-                                    .fontWeight(.thin)
+                                if let customProtein = customProtein {
+                                    Text(String(customProtein))
+                                        .frame(width:40)
+                                }
+                                
+                                if selectedServing?.id == 987 {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .frame(width:20)
+                                        .foregroundStyle(Color.accentColor)
+                                } else {
+                                    
+                                    Image(systemName: "circle")
+                                        .frame(width:20)
+                                        .fontWeight(.thin)
+                                }
+                                
                             }
-                            
+                        } else {
+                            HStack{
+                                TextField("Enter item number", text: $customPortionText)
+                                    .onReceive(customPortionText.publisher.collect()) { characters in
+                                        let filtered = characters.filter { $0.isNumber }
+                                        if let numericValue = Int(String(filtered)) {
+                                            customPortionText = String(numericValue)
+                                        } else {
+                                            customPortionText = ""
+                                        }
+                                    }
+                                    .focused($customIsFocused)
+                                    .onSubmit {
+                                        if customPortionText != "" {
+                                            customCal = foodItem.servingSizes.first!.calories * Int(customPortionText)!
+                                            customProtein = foodItem.servingSizes.first!.protein * Double(Int(customPortionText)!)
+                                            
+                                            selectedServing = ServingSizes(id: 987, name: "\(foodItem.name) x\(customPortionText)", weight: Double(customPortionText)!, calories: customCal!, protein: customProtein ?? 10.10)
+                                        } else {
+                                            selectedServing = nil
+                                            customCal = nil
+                                            customProtein = nil
+                                        }
+                                    }
+                                
+                                if selectedServing?.id == 987 {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .frame(width:20)
+                                        .foregroundStyle(Color.accentColor)
+                                } else {
+                                    
+                                    Image(systemName: "circle")
+                                        .frame(width:20)
+                                        .fontWeight(.thin)
+                                }
+                            }
                         }
                         
                     }, header: {
@@ -251,6 +315,6 @@ struct AddFoodView: View {
 }
 
 #Preview {
-    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", image: AssetURL.url(for: "McdonaldsLogo"), measuredByWeight: true, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]), preWrittenFood: false)
+    AddFoodView(foodItem: Food(id: 0, name: "Mcdonald's Fries", image: AssetURL.url(for: "McdonaldsLogo"), measuredByWeight: false, servingSizes: [ServingSizes(id: 0, name: "Small", weight: 80, calories: 236, protein: 2.3), ServingSizes(id: 1, name: "Medium", weight: 114, calories: 337, protein: 3.3), ServingSizes(id: 2, name: "Large", weight: 150, calories: 445, protein: 4.4)]), preWrittenFood: false)
         .environmentObject(NavigationManager())
 }
