@@ -56,5 +56,179 @@
                 "protein": 4.7
             }
         ]
+    },
+    {
+        "id":2,
+        "name": "White Rice",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 100,
+                "calories":131,
+                "protein": 2.8
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 150,
+                "calories":197,
+                "protein": 4.2
+            },
+            {
+                "id":2,
+                "name":"Large portion",
+                "weight": 200,
+                "calories":262,
+                "protein": 5.6
+            }
+        ]
+    },
+    {
+        "id":3,
+        "name": "White Pasta",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 120,
+                "calories":169,
+                "protein": 5.3
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 180,
+                "calories":254,
+                "protein": 7.9
+            },
+            {
+                "id":2,
+                "name":"Large portion",
+                "weight": 240,
+                "calories":338,
+                "protein": 10.6
+            }
+        ]
+    },
+    {
+        "id":4,
+        "name": "White Spaghetti",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 120,
+                "calories":169,
+                "protein": 5.3
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 180,
+                "calories":254,
+                "protein": 7.9
+            },
+            {
+                "id":2,
+                "name":"Large portion",
+                "weight": 240,
+                "calories":338,
+                "protein": 10.6
+            }
+        ]
+    },
+    {
+        "id":5,
+        "name": "Baked Potato (plain)",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small",
+                "weight": 100,
+                "calories":97,
+                "protein": 2.5
+            },
+            {
+                "id":1,
+                "name":"Medium",
+                "weight": 180,
+                "calories":175,
+                "protein": 4.5
+            },
+            {
+                "id":2,
+                "name":"Large",
+                "weight": 220,
+                "calories":213,
+                "protein": 5.5
+            }
+        ]
+    },
+    {
+        "id":6,
+        "name": "Roast Potato",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small potato",
+                "weight": 50,
+                "calories":81,
+                "protein": 1.3
+            },
+            {
+                "id":1,
+                "name":"Medium potato",
+                "weight": 85,
+                "calories":137,
+                "protein": 2.2
+            },
+            {
+                "id":2,
+                "name":"Average portion",
+                "weight": 200,
+                "calories":322,
+                "protein": 5.2
+            }
+        ]
+    },
+    {
+        "id":7,
+        "name": "Mashed Potato",
+        "image":"grainsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 100,
+                "calories":95,
+                "protein": 1.6
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 250,
+                "calories":237,
+                "protein": 3.9
+            },
+            {
+                "id":2,
+                "name":"Large portion",
+                "weight": 350,
+                "calories":332,
+                "protein": 5.5
+            }
+        ]
     }
 ]
