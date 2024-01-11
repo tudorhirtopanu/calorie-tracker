@@ -7,15 +7,22 @@
 
 import SwiftUI
 
+struct CustomValue2:Hashable {
+    let test:String
+}
+
+struct BBLabel: Hashable {
+    let fileName:String
+    let image:String
+}
+
 struct BrandButton: View {
     
     var fileName:String
     var image:String
     var brandName:String
     
-    private struct CustomValue2:Hashable {
-        let test:Int
-    }
+    
     
     @EnvironmentObject var nm:NavigationManager
     
@@ -25,7 +32,7 @@ struct BrandButton: View {
          - file name
          */
         
-        NavigationLink(value: CustomValue2(test: 1), label: {
+        NavigationLink(value: BBLabel(fileName: fileName, image: image), label: {
             VStack {
                 Image(image)
                     .resizable()
@@ -37,26 +44,6 @@ struct BrandButton: View {
                     .foregroundStyle(Color.primary)
             }
         })
-        .navigationDestination(for: CustomValue2.self, destination: { state in
-            CustomBrandFoodsView(fileToDecode: fileName)
-                .environmentObject(nm)
-        })
-        
-//        NavigationLink(destination: CustomBrandFoodsView(fileToDecode: fileName),
-//                       label: {
-//
-//                VStack {
-//                    Image(image)
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(width:70, height: 70)
-//                    
-//                    Text(brandName)
-//                        .font(Font.system(size: 18, weight: .medium))
-//                        .foregroundStyle(Color.primary)
-//                }
-//            
-//        })
         
     }
 }

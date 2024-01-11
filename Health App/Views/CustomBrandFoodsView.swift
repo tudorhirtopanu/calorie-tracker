@@ -11,6 +11,7 @@ struct CustomBrandFoodsView: View {
         
     @State var selectedFood:[Food] = []
     var fileToDecode:String
+    var image:String
     
     @EnvironmentObject var nm:NavigationManager
     
@@ -20,14 +21,14 @@ struct CustomBrandFoodsView: View {
                 
                 Section {
                     HStack {
-                        Image("McdonaldsLogo")
+                        Image(image)
                             .resizable()
                             .scaledToFit()
                             .frame(width:100)
                         
                         HStack {
                             Spacer()
-                            Text("Mcdonalds Menu")
+                            Text("\(fileToDecode) Menu")
                             Spacer()
                         }
                     }
@@ -43,7 +44,6 @@ struct CustomBrandFoodsView: View {
                 }
             }
         }.onAppear{
-            // TODO: Load JSON
             selectedFood = JSONHandler.decodeJSON([Food].self, fileName: fileToDecode)
         }
     }
@@ -51,7 +51,7 @@ struct CustomBrandFoodsView: View {
 
 #Preview {
     NavigationStack {
-        CustomBrandFoodsView(fileToDecode: "Mcdonalds")
+        CustomBrandFoodsView(fileToDecode: "Mcdonalds", image: "McdonaldsLogo")
             .environmentObject(NavigationManager())
     }
 }

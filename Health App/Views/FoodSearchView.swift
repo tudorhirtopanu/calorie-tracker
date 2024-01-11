@@ -162,6 +162,17 @@ struct FoodSearchView: View {
                     BrandButton(fileName: "Mcdonalds", image: "McdonaldsLogo", brandName: "Mcdonalds")
                         .environmentObject(nm)
                 }
+                
+                Text("Common Foods")
+                    .font(.caption)
+                    .foregroundStyle(Color.gray)
+                    .padding([.bottom, .top], 5)
+                
+                HStack {
+                    BrandButton(fileName: "Meats", image: "meatsImg", brandName: "Meats")
+                        .environmentObject(nm)
+                }
+                
             }
             
             Spacer()
@@ -217,6 +228,11 @@ struct FoodSearchView: View {
         .navigationDestination(for: BrandedItem.self, destination: {brandedItem in
             FoodDetailView(text: brandedItem.foodName, itemId: brandedItem.nixItemId)
                 .environmentObject(nm)
+        })
+        .navigationDestination(for: BBLabel.self, destination: { state in
+            
+            CustomBrandFoodsView(fileToDecode: state.fileName, image: state.image)
+                .environmentObject(nm).onAppear{print(state)}
         })
         .padding(.horizontal)
         
