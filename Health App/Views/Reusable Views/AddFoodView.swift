@@ -250,6 +250,16 @@ struct AddFoodView: View {
                                         }
                                     }
                                 
+                                if let customCal = customCal {
+                                    Text(String(customCal))
+                                        .frame(width:40)
+                                }
+                                
+                                if let customProtein = customProtein {
+                                    Text(String(customProtein))
+                                        .frame(width:40)
+                                }
+                                
                                 if selectedServing?.id == 987 {
                                     Image(systemName: "checkmark.circle.fill")
                                         .frame(width:20)
