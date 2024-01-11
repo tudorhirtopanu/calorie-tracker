@@ -117,6 +117,9 @@ struct DailyDiaryView: View {
         }
     }
     
+    @AppStorage("CalorieGoal") var calorieGoal:Int = 2300
+    @AppStorage("ProteinGoal") var proteinGoal:Double = 120
+    
     var body: some View {
         
        // var snackTotalCal =
@@ -426,9 +429,9 @@ struct DailyDiaryView: View {
                             Text("GOAL")
                             
                             Spacer()
-                            Text("3000")
+                            Text(String(calorieGoal))
                                 .frame(width:50)
-                            Text("135")
+                            Text(String(proteinGoal))
                                 .frame(width:50)
                         }
                         .foregroundStyle(Color.orange)
@@ -452,9 +455,9 @@ struct DailyDiaryView: View {
                             Text("LEFT")
                             
                             Spacer()
-                            Text(String(3000 - calculateCalories(itemArray: items)))
+                            Text(String(calorieGoal - calculateCalories(itemArray: items)))
                                 .frame(width:50)
-                            Text(String(truncateDouble(number: 135 - calculateProtein(itemArray: items), decimalPlaces: 1)))
+                            Text(String(truncateDouble(number: proteinGoal - calculateProtein(itemArray: items), decimalPlaces: 1)))
                                 .frame(width:50)
                         }
                         .foregroundStyle(Color.red)

@@ -47,6 +47,7 @@
 		8BA110812B46E8D800777D43 /* DateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110802B46E8D800777D43 /* DateHandler.swift */; };
 		8BA110842B49CF0400777D43 /* CustomFoodsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110832B49CF0400777D43 /* CustomFoodsView.swift */; };
 		8BA110862B49D06700777D43 /* CustomFoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA110852B49D06700777D43 /* CustomFoodData.swift */; };
+		8BED4A6C2B5043C60084EA3F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BED4A6B2B5043C60084EA3F /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		8BA110802B46E8D800777D43 /* DateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHandler.swift; sourceTree = "<group>"; };
 		8BA110832B49CF0400777D43 /* CustomFoodsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoodsView.swift; sourceTree = "<group>"; };
 		8BA110852B49D06700777D43 /* CustomFoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFoodData.swift; sourceTree = "<group>"; };
+		8BED4A6B2B5043C60084EA3F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				8BA110832B49CF0400777D43 /* CustomFoodsView.swift */,
 				8B7060402B408E4000E2AC3F /* CreateCustomFoodView.swift */,
 				8B70605B2B430E4D00E2AC3F /* CustomBrandFoodsView.swift */,
+				8BED4A6B2B5043C60084EA3F /* SettingsView.swift */,
 				8B70602D2B3ED06F00E2AC3F /* Reusable Views */,
 			);
 			path = Views;
@@ -345,6 +348,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BED4A6C2B5043C60084EA3F /* SettingsView.swift in Sources */,
 				8B70605A2B430A1100E2AC3F /* CustomFoodsViewModel.swift in Sources */,
 				8BA110842B49CF0400777D43 /* CustomFoodsView.swift in Sources */,
 				8B25CD022B4CA72E004ACB8E /* AssetURL.swift in Sources */,

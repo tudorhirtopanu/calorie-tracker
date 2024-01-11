@@ -79,48 +79,16 @@ struct InsightsView: View {
         
     }
     
+    @State var showSettings:Bool = false
+    
     var body: some View {
         
         
         
         List {
-//            Button(action: {
-//                if let futureDate = dh.calculateFutureDate(from: currentDate, daysForward: daysForward) {
-//                    let dateFormatter = DateFormatter()
-//                    dateFormatter.dateFormat = "dd MMM yyyy"
-//                    let formattedDate = dateFormatter.string(from: futureDate)
-//
-//                    print("\(daysForward) days forward from today is \(formattedDate)")
-//                } else {
-//                    print("Failed to calculate future date.")
-//                }
-//            }, label: {
-//                Text("get new date")
-//            })
             
             
-            Button(action: {
-                deleteData()
-            }, label: {
-                Text("Delete Data")
-            })
-            
-//            VStack{
-//                let date = dh.getDateComponents(from: Date())
-//                Text(String(dh.returnDayName(day: dtm.adjustedWeekday(weekday: date.weekday))))
-//                    .padding(.trailing,5)
-//                HStack{
-//                    Text(String(date.day))
-//                        .padding(.trailing,5)
-//                    Text(String(date.month))
-//                        .padding(.trailing,5)
-//                    Text(String(date.year))
-//                        .padding(.trailing,5)
-//                }
-//            }
-            
-            
-            
+
             Section {
                 VStack(alignment: .leading){
                     
@@ -155,40 +123,6 @@ struct InsightsView: View {
                                 
                             }
                             
-                            
-//                            Button(action: {
-//                                print(dh.isDateInCurrentWeek(currentDate: futureDate, creationDate: dayData.creationDate))
-//                                print("Created on \(dayData.creationDate)")
-//                                print("Date: \(futureDate)")
-//                                
-//                            }, label: {
-//                                Text("same week?")
-//                            })
-//                            .padding(5)
-//                            .buttonStyle(BorderlessButtonStyle())
-                            
-//                            Text(String(returnIndexOfDate(currentDayNum: currentDay, weekDayNum: day) - currentDay))
-                            VStack{
-                                
-                                
-//                                Text(String(futureDateComponents.day))
-                                
-                                
-//                                Text(String(dh.returnDayName(day: dtm.adjustedWeekday(weekday: date.weekday))))
-//                                    .padding(.trailing,5)
-//                                HStack{
-//                                    Text(String(date.day))
-//                                        .padding(.trailing,5)
-//                                        .font(Font.system(size: 12))
-//                                    Text(String(date.month))
-//                                        .padding(.trailing,5)
-//                                        .font(Font.system(size: 12))
-//                                    Text(String(date.year))
-//                                        .padding(.trailing,5)
-//                                        .font(Font.system(size: 12))
-//                                }
-                            }
-                            
                         }
                         
                     }
@@ -196,22 +130,29 @@ struct InsightsView: View {
                 }
             }
             
-        }.onChange(of: scenePhase, { oldValue, newValue in
+            Button(action: {
+                deleteData()
+            }, label: {
+                Text("Delete Data")
+            })
+            
+        }
+        .toolbar {
+            Button(action: {
+                showSettings.toggle()
+            }, label: {
+                Image(systemName: "gear")
+            })
+        }
+        
+        .onChange(of: scenePhase, { oldValue, newValue in
             if newValue == .active {
                 currentDay = Calendar.current.component(.weekday, from: Date())
                 
-//                if currentDay != 1 {
-//                    if daysData.count > 0 {
-//                        if daysData.first!.totalCalories != 0 {
-//                            for day in daysData {
-//                                day.totalCalories = 0
-//                                day.totalProtein = 0
-//                            }
-//                        }
-//                    }
-//                }
-                
             }
+        })
+        .sheet(isPresented: $showSettings, content: {
+            SettingsView()
         })
                    
         
@@ -220,6 +161,8 @@ struct InsightsView: View {
 }
 
 #Preview {
-    InsightsView()
-        .modelContainer(previewContainer)
+    NavigationStack {
+        InsightsView()
+            .modelContainer(previewContainer)
+    }
 }
