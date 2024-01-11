@@ -18,6 +18,8 @@ struct FoodDetailView: View {
     
     @State var showFoodView:Bool = false
     
+    @State private var errorMessage: String?
+    
     func populateData(name:String, calories:Int, protein:Double, weight:Double, servingSizeName:String, imageURL:URL) async -> Food {
         return Food(id: 11, name: name, image: imageURL, measuredByWeight: true, servingSizes: [ServingSizes(id: 12, name: servingSizeName, weight: weight, calories: calories, protein: protein)])
     }
@@ -29,16 +31,24 @@ struct FoodDetailView: View {
                     .environmentObject(nm)
             } else {
                 ProgressView()
+                if let errorMessage = errorMessage {
+                    Text(errorMessage)
+                }
             }
         }
         .onAppear{
             
             Task {
-                let specificItem = try await NutritionixService.shared.fetchItemInfo(itemId: itemId)
+                do {
+                    let specificItem = try await NutritionixService.shared.fetchItemInfo(itemId: itemId)
+                    
+                    foodItem = await populateData(name: specificItem.food_name, calories: Int(Double(specificItem.nf_calories)), protein: Double(specificItem.nf_protein ?? 0), weight: Double(specificItem.serving_weight_grams ?? 108456.11121), servingSizeName: String(specificItem.serving_qty ?? 1)+" "+(specificItem.serving_unit ?? "unknown"), imageURL: specificItem.photo.thumb)
+                    
+                    showFoodView = true
+                } catch {
+                    errorMessage = "The daily limit for this api has been reached"
+                }
                 
-                foodItem = await populateData(name: specificItem.food_name, calories: Int(Double(specificItem.nf_calories)), protein: Double(specificItem.nf_protein ?? 0), weight: Double(specificItem.serving_weight_grams ?? 108456.11121), servingSizeName: String(specificItem.serving_qty ?? 1)+" "+(specificItem.serving_unit ?? "unknown"), imageURL: specificItem.photo.thumb)
-                
-                showFoodView = true
                 
                 //print(specificItem.food_name)
                 
