@@ -1,0 +1,31 @@
+[
+    {
+        "id":0,
+        "name": "Chicken Breast",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small portion",
+                "weight": 100,
+                "calories":153,
+                "protein": 30.2
+            },
+            {
+                "id":1,
+                "name":"Medium portion",
+                "weight": 130,
+                "calories":199,
+                "protein": 39.3
+            },
+            {
+                "id":2,
+                "name":"Large portion",
+                "weight": 150,
+                "calories":230,
+                "protein": 45.3
+            }
+        ]
+    }
+]
