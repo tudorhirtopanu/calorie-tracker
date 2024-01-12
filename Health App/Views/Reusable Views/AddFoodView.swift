@@ -61,22 +61,19 @@ struct AddFoodView: View {
         
     }
     
-//    func calculateCaloriesByItemCount(numberOfItems:Int) -> Int {
-//        
-//        let baseServing = foodItem.servingSizes.first!
-//        
-//
-//        
-//        return 3
-//        
-//    }
-    
-    
+    func returnMeasurement(food:Food) -> String {
+        
+        if food.name.contains("Milk") || food.name.contains("Cola") {
+            return "ml"
+        } else {
+            return "g"
+        }
+        
+    }
     
     var body: some View {
         ZStack {
             
-            //Color(UIColor.secondarySystemBackground).ignoresSafeArea()
             VStack {
                 
                 
@@ -144,7 +141,7 @@ struct AddFoodView: View {
                                     if s.weight == 108456.11121 {
                                         Text(s.name)
                                     }else {
-                                        Text(s.name + " (\(String(Int(s.weight)))g)")
+                                        Text(s.name + " (\(String(Int(s.weight)))\(returnMeasurement(food: foodItem)))")
                                     }
                                     Spacer()
                                     Text(String(s.calories))
@@ -196,7 +193,7 @@ struct AddFoodView: View {
                                             customCal = calculateCustomCalories(newWeight: Int(customPortionText) ?? 888)
                                             customProtein = calculateCustomProtein(newWeight: Int(customPortionText) ?? 888  )
                                             
-                                            selectedServing = ServingSizes(id: 987, name: "Custom Serving \(Int(customPortionText) ?? 888)g", weight: Double(customPortionText)!, calories: customCal!, protein: customProtein ?? 10.10)
+                                            selectedServing = ServingSizes(id: 987, name: "Custom Serving \(Int(customPortionText) ?? 888)\(returnMeasurement(food: foodItem))", weight: Double(customPortionText)!, calories: customCal!, protein: customProtein ?? 10.10)
                                         } else {
                                             selectedServing = nil
                                             customCal = nil
