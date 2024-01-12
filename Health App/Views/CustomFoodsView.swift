@@ -39,6 +39,10 @@ struct CustomFoodsView: View {
         
     }
     
+    private func deleteItem(_ item: CustomFoodData) {
+        context.delete(item)
+    }
+    
     @EnvironmentObject var nm:NavigationManager
     
     var body: some View {
@@ -66,17 +70,22 @@ struct CustomFoodsView: View {
                     NavigationLink(destination: CreateCustomFoodView(itemName: item.name, itemCal: String(item.calories), itemProtein: String(item.protein), isCustomFoodSaved:true).environmentObject(nm), label: {
                         Text(item.name)
                     })
+                }.onDelete {indexes in
+                    for index in indexes {
+                        deleteItem(customItems[index])
+                    }
                 }
             }
             .listStyle(.plain)
             
+            
             Spacer()
             
-            Button(action: {
-                deleteFoodData()
-            }, label: {
-                Text("Delete all data")
-            })
+//            Button(action: {
+//                deleteFoodData()
+//            }, label: {
+//                Text("Delete all data")
+//            })
             
         }
         .padding(.horizontal)
