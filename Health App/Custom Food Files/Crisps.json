@@ -454,28 +454,6 @@
     },
     {
         "id":19,
-        "name": "Monster Munch Pickled Onion",
-        "image":"crispsImg",
-        "measuredByWeight":true,
-        "servingSizes": [
-            {
-                "id":0,
-                "name":"Small pack",
-                "weight": 20,
-                "calories":98,
-                "protein": 1.2
-            },
-            {
-                "id":1,
-                "name":"Large serving",
-                "weight": 100,
-                "calories":492,
-                "protein": 6
-            }
-        ]
-    },
-    {
-        "id":20,
         "name": "Monster Munch Roast Beef",
         "image":"crispsImg",
         "measuredByWeight":true,
@@ -497,7 +475,7 @@
         ]
     },
     {
-        "id":21,
+        "id":20,
         "name": "Monster Munch Flamin Hot",
         "image":"crispsImg",
         "measuredByWeight":true,
