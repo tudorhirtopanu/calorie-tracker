@@ -291,28 +291,6 @@
         ]
     },
     {
-        "id":10,
-        "name": "French Fries Salt and Vinegar",
-        "image":"crispsImg",
-        "measuredByWeight":true,
-        "servingSizes": [
-            {
-                "id":0,
-                "name":"small pack",
-                "weight": 18,
-                "calories":79,
-                "protein": 0.9
-            },
-            {
-                "id":1,
-                "name":"Large serving",
-                "weight": 100,
-                "calories":439,
-                "protein": 5
-            }
-        ]
-    },
-    {
         "id":11,
         "name": "French Fries Salt and Vinegar",
         "image":"crispsImg",
@@ -336,6 +314,28 @@
     },
     {
         "id":12,
+        "name": "French Fries Salt and Vinegar",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 18,
+                "calories":79,
+                "protein": 0.9
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":439,
+                "protein": 5
+            }
+        ]
+    },
+    {
+        "id":13,
         "name": "Pringles Original",
         "image":"crispsImg",
         "measuredByWeight":true,
@@ -357,7 +357,7 @@
         ]
     },
     {
-        "id":13,
+        "id":14,
         "name": "Pringles Sour Cream & Onion",
         "image":"crispsImg",
         "measuredByWeight":true,
@@ -379,7 +379,7 @@
         ]
     },
     {
-        "id":14,
+        "id":15,
         "name": "Pringles Salt and Vinegar",
         "image":"crispsImg",
         "measuredByWeight":true,
@@ -401,7 +401,7 @@
         ]
     },
     {
-        "id":15,
+        "id":16,
         "name": "Pom Bear Original",
         "image":"crispsImg",
         "measuredByWeight":true,
@@ -416,7 +416,7 @@
         ]
     },
     {
-        "id":15,
+        "id":17,
         "name": "Pom Bear Cheese & Onion",
         "image":"crispsImg",
         "measuredByWeight":true,
@@ -431,52 +431,8 @@
         ]
     },
     {
-        "id":16,
-        "name": "Monster Munch Pickled Onion",
-        "image":"crispsImg",
-        "measuredByWeight":true,
-        "servingSizes": [
-            {
-                "id":0,
-                "name":"Small pack",
-                "weight": 20,
-                "calories":98,
-                "protein": 1.2
-            },
-            {
-                "id":1,
-                "name":"Large serving",
-                "weight": 100,
-                "calories":492,
-                "protein": 6
-            }
-        ]
-    },
-    {
-        "id":17,
-        "name": "Monster Munch Pickled Onion",
-        "image":"crispsImg",
-        "measuredByWeight":true,
-        "servingSizes": [
-            {
-                "id":0,
-                "name":"Small pack",
-                "weight": 20,
-                "calories":98,
-                "protein": 1.2
-            },
-            {
-                "id":1,
-                "name":"Large serving",
-                "weight": 100,
-                "calories":492,
-                "protein": 6
-            }
-        ]
-    },
-    {
         "id":18,
-        "name": "Monster Munch Roast Beef",
+        "name": "Monster Munch Pickled Onion",
         "image":"crispsImg",
         "measuredByWeight":true,
         "servingSizes": [
@@ -498,6 +454,50 @@
     },
     {
         "id":19,
+        "name": "Monster Munch Pickled Onion",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 20,
+                "calories":98,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":492,
+                "protein": 6
+            }
+        ]
+    },
+    {
+        "id":20,
+        "name": "Monster Munch Roast Beef",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 20,
+                "calories":98,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":492,
+                "protein": 6
+            }
+        ]
+    },
+    {
+        "id":21,
         "name": "Monster Munch Flamin Hot",
         "image":"crispsImg",
         "measuredByWeight":true,
