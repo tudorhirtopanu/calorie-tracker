@@ -275,5 +275,93 @@
                 "protein": 25.4
             }
         ]
+    },
+    {
+        "id":11,
+        "name": "Fried Eggs",
+        "image":"meatsImg",
+        "measuredByWeight":false,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 egg",
+                "weight": 108456.11121,
+                "calories":86,
+                "protein": 6.3
+            },
+            {
+                "id":1,
+                "name":"2 eggs",
+                "weight": 108456.11121,
+                "calories":172,
+                "protein": 12.6
+            }
+        ]
+    },
+    {
+        "id":12,
+        "name": "Hard Boiled Eggs",
+        "image":"meatsImg",
+        "measuredByWeight":false,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 egg",
+                "weight": 108456.11121,
+                "calories":66,
+                "protein": 6.5
+            },
+            {
+                "id":1,
+                "name":"2 eggs",
+                "weight": 108456.11121,
+                "calories":132,
+                "protein": 13
+            }
+        ]
+    },
+    {
+        "id":13,
+        "name": "Plain Omelette",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"2 egg omelette",
+                "weight": 110,
+                "calories":226,
+                "protein": 14.7
+            },
+            {
+                "id":1,
+                "name":"3 egg omelette",
+                "weight": 165,
+                "calories":338,
+                "protein": 22
+            }
+        ]
+    },
+    {
+        "id":14,
+        "name": "Scrambled Eggs",
+        "image":"meatsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"2 eggs scrambled",
+                "weight": 120,
+                "calories":284,
+                "protein": 13.2
+            },
+            {
+                "id":1,
+                "name":"3 eggs scrambled",
+                "weight": 180,
+                "calories":427,
+                "protein": 19.8
+            }
+        ]
     }
 ]

@@ -169,7 +169,7 @@ struct FoodSearchView: View {
                     .padding([.bottom, .top], 5)
                 
                 HStack {
-                    BrandButton(fileName: "Meats", image: "meatsImg", brandName: "Meats")
+                    BrandButton(fileName: "Meats", image: "meatsImg", brandName: "Meats & Protein")
                         .environmentObject(nm)
                         .frame(width:70)
                     

@@ -1,0 +1,264 @@
+[
+    {
+        "id":0,
+        "name": "Whole Milk",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 cup",
+                "weight": 30,
+                "calories":19,
+                "protein": 1
+            },
+            {
+                "id":1,
+                "name":"1 mug",
+                "weight": 40,
+                "calories":25,
+                "protein": 1.4
+            },
+            {
+                "id":2,
+                "name":"For Cereal",
+                "weight": 125,
+                "calories":79,
+                "protein": 4.2
+            }
+        ]
+    },
+    {
+        "id":1,
+        "name": "Skimmed Milk",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 cup",
+                "weight": 30,
+                "calories":10,
+                "protein": 1.1
+            },
+            {
+                "id":1,
+                "name":"1 mug",
+                "weight": 40,
+                "calories":14,
+                "protein": 1.4
+            },
+            {
+                "id":2,
+                "name":"For Cereal",
+                "weight": 125,
+                "calories":43,
+                "protein": 4.4
+            }
+        ]
+    },
+    {
+        "id":2,
+        "name": "Semi Skimmed Milk",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 cup",
+                "weight": 30,
+                "calories":14,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"1 mug",
+                "weight": 40,
+                "calories":18,
+                "protein": 1.4
+            },
+            {
+                "id":2,
+                "name":"For Cereal",
+                "weight": 125,
+                "calories":58,
+                "protein": 4.4
+            }
+        ]
+    },
+    {
+        "id":3,
+        "name": "Butter",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Thin spread",
+                "weight": 7,
+                "calories":52,
+                "protein": 0.1
+            },
+            {
+                "id":1,
+                "name":"Medium Spread",
+                "weight": 10,
+                "calories":74,
+                "protein": 0.1
+            },
+            {
+                "id":2,
+                "name":"Thick Spread",
+                "weight": 12,
+                "calories":89,
+                "protein": 0.1
+            }
+        ]
+    },
+    {
+        "id":4,
+        "name": "Greek Style Full Fat Yoghurt",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Heaped Tablespoon",
+                "weight": 45,
+                "calories":60,
+                "protein": 2.6
+            },
+            {
+                "id":1,
+                "name":"Heaped Tablespoon",
+                "weight": 28,
+                "calories":37,
+                "protein": 1.6
+            },
+            {
+                "id":2,
+                "name":"large serving",
+                "weight": 125,
+                "calories":166,
+                "protein": 7.1
+            }
+        ]
+    },
+    {
+        "id":5,
+        "name": "Muller Corner Vanilla Chocolate Balls",
+        "image":"diaryImg",
+        "measuredByWeight":false,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 pot",
+                "weight": 124,
+                "calories":165,
+                "protein": 6.1
+            }
+        ]
+    },
+    {
+        "id":6,
+        "name": "Muller Corner Banana Chocolate Flakes",
+        "image":"diaryImg",
+        "measuredByWeight":false,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 pot",
+                "weight": 124,
+                "calories":165,
+                "protein": 6.2
+            }
+        ]
+    },
+    {
+        "id":7,
+        "name": "Cheddar Cheese",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small chunk",
+                "weight": 30,
+                "calories":125,
+                "protein": 7.6
+            },
+            {
+                "id":1,
+                "name":"1 tablespoon grated",
+                "weight": 10,
+                "calories":42,
+                "protein": 2.5
+            },
+            {
+                "id":2,
+                "name":"Medium chunk",
+                "weight": 40,
+                "calories":166,
+                "protein": 10.2
+            }
+        ]
+    },
+    {
+        "id":8,
+        "name": "Double Cream",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Tablespoon",
+                "weight": 15,
+                "calories":69,
+                "protein": 0.2
+            },
+            {
+                "id":1,
+                "name":"Small serving",
+                "weight": 30,
+                "calories":137,
+                "protein": 0.5
+            },
+            {
+                "id":2,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":458,
+                "protein": 1.5
+            }
+        ]
+    },
+    {
+        "id":9,
+        "name": "Soured Cream",
+        "image":"diaryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Tablespoon",
+                "weight": 15,
+                "calories":29,
+                "protein": 0.4
+            },
+            {
+                "id":1,
+                "name":"Small serving",
+                "weight": 30,
+                "calories":58,
+                "protein": 0.7
+            },
+            {
+                "id":2,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":192,
+                "protein": 2.4
+            }
+        ]
+    }
+]

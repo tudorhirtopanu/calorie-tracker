@@ -1,0 +1,521 @@
+[
+    {
+        "id":0,
+        "name": "Doritos Chilli Heatwave",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 30,
+                "calories":150,
+                "protein": 1.8
+            },
+            {
+                "id":1,
+                "name":"Medium pack",
+                "weight": 48,
+                "calories":240,
+                "protein": 2.9
+            },
+            {
+                "id":2,
+                "name":"Large pack",
+                "weight": 180,
+                "calories":902,
+                "protein": 11
+            }
+        ]
+    },
+    {
+        "id":1,
+        "name": "Doritos Tangy Cheese",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 30,
+                "calories":152,
+                "protein": 1.9
+            },
+            {
+                "id":1,
+                "name":"Medium pack",
+                "weight": 48,
+                "calories":242,
+                "protein": 3.1
+            },
+            {
+                "id":2,
+                "name":"Large pack",
+                "weight": 180,
+                "calories":909,
+                "protein": 11.7
+            }
+        ]
+    },
+    {
+        "id":2,
+        "name": "Doritos Cool Original",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 30,
+                "calories":151,
+                "protein": 1.7
+            },
+            {
+                "id":1,
+                "name":"Medium pack",
+                "weight": 48,
+                "calories":241,
+                "protein": 2.8
+            },
+            {
+                "id":2,
+                "name":"Large pack",
+                "weight": 180,
+                "calories":905,
+                "protein": 10.4
+            }
+        ]
+    },
+    {
+        "id":3,
+        "name": "Doritos Mild Salsa",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small serving",
+                "weight": 40,
+                "calories":14,
+                "protein": 0.6
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":35,
+                "protein": 1.4
+            }
+            
+        ]
+    },
+    {
+        "id":4,
+        "name": "Sensations Thai Sweet Chilli",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 pack",
+                "weight": 40,
+                "calories":196,
+                "protein": 2.6
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":489,
+                "protein": 6.6
+            }
+            
+        ]
+    },
+    {
+        "id":5,
+        "name": "Walkers Wotsits",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 pack",
+                "weight": 16.5,
+                "calories":82,
+                "protein": 0.9
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":494,
+                "protein": 5.4
+            }
+            
+        ]
+    },
+    {
+        "id":6,
+        "name": "Walkers Quavers",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 pack",
+                "weight": 16,
+                "calories":86,
+                "protein": 0.4
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":536,
+                "protein": 2.5
+            }
+            
+        ]
+    },
+    {
+        "id":7,
+        "name": "Walkers Ready Salted",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 25,
+                "calories":130,
+                "protein": 1.6
+            },
+            {
+                "id":1,
+                "name":"medium pack",
+                "weight": 32.5,
+                "calories":168,
+                "protein": 2.1
+            },
+            {
+                "id":2,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":518,
+                "protein": 6.4
+            }
+            
+        ]
+    },
+    {
+        "id":8,
+        "name": "Walkers Salt and Vinegar",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 25,
+                "calories":129,
+                "protein": 1.6
+            },
+            {
+                "id":1,
+                "name":"medium pack",
+                "weight": 32.5,
+                "calories":167,
+                "protein": 2
+            },
+            {
+                "id":2,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":514,
+                "protein": 6.3
+            }
+            
+        ]
+    },
+    {
+        "id":9,
+        "name": "Walkers Cheese and Onion",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 25,
+                "calories":129,
+                "protein": 1.6
+            },
+            {
+                "id":1,
+                "name":"medium pack",
+                "weight": 32.5,
+                "calories":167,
+                "protein": 2
+            },
+            {
+                "id":2,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":514,
+                "protein": 6.3
+            }
+            
+        ]
+    },
+    {
+        "id":10,
+        "name": "French Fries Ready Salted",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 18,
+                "calories":78,
+                "protein": 0.9
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":434,
+                "protein": 5
+            }
+        ]
+    },
+    {
+        "id":10,
+        "name": "French Fries Salt and Vinegar",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 18,
+                "calories":79,
+                "protein": 0.9
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":439,
+                "protein": 5
+            }
+        ]
+    },
+    {
+        "id":11,
+        "name": "French Fries Salt and Vinegar",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small pack",
+                "weight": 18,
+                "calories":79,
+                "protein": 0.9
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":439,
+                "protein": 5
+            }
+        ]
+    },
+    {
+        "id":12,
+        "name": "Pringles Original",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"small serving",
+                "weight": 30,
+                "calories":160,
+                "protein": 1.8
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":532,
+                "protein": 5.9
+            }
+        ]
+    },
+    {
+        "id":13,
+        "name": "Pringles Sour Cream & Onion",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small serving",
+                "weight": 30,
+                "calories":157,
+                "protein": 1.8
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":524,
+                "protein": 6
+            }
+        ]
+    },
+    {
+        "id":14,
+        "name": "Pringles Salt and Vinegar",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small serving",
+                "weight": 30,
+                "calories":154,
+                "protein": 1.7
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":513,
+                "protein": 5.7
+            }
+        ]
+    },
+    {
+        "id":15,
+        "name": "Pom Bear Original",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Regular pack",
+                "weight": 13,
+                "calories":65,
+                "protein": 0.5
+            }
+        ]
+    },
+    {
+        "id":15,
+        "name": "Pom Bear Cheese & Onion",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Regular pack",
+                "weight": 13,
+                "calories":68,
+                "protein": 0.5
+            }
+        ]
+    },
+    {
+        "id":16,
+        "name": "Monster Munch Pickled Onion",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 20,
+                "calories":98,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":492,
+                "protein": 6
+            }
+        ]
+    },
+    {
+        "id":17,
+        "name": "Monster Munch Pickled Onion",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 20,
+                "calories":98,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":492,
+                "protein": 6
+            }
+        ]
+    },
+    {
+        "id":18,
+        "name": "Monster Munch Roast Beef",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 20,
+                "calories":98,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":492,
+                "protein": 6
+            }
+        ]
+    },
+    {
+        "id":19,
+        "name": "Monster Munch Flamin Hot",
+        "image":"crispsImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Small pack",
+                "weight": 20,
+                "calories":98,
+                "protein": 1.2
+            },
+            {
+                "id":1,
+                "name":"Large serving",
+                "weight": 100,
+                "calories":492,
+                "protein": 6
+            }
+        ]
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "id":0,
+        "name": "Croissant",
+        "image":"pasteryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Medium",
+                "weight": 60,
+                "calories":224,
+                "protein": 5
+            },
+            {
+                "id":1,
+                "name":"Mini",
+                "weight": 35,
+                "calories":131,
+                "protein": 2.9
+            },
+            {
+                "id":2,
+                "name":"Large",
+                "weight": 90,
+                "calories":336,
+                "protein": 7.5
+            }
+        ]
+    },
+    {
+        "id":1,
+        "name": "Pain Au Chocolat",
+        "image":"pasteryImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"1 serving",
+                "weight": 79,
+                "calories":309,
+                "protein": 6.6
+            }
+        ]
+    }
+]

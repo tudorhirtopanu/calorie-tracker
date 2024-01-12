@@ -178,7 +178,7 @@
         ]
     },
     {
-        "id":710,
+        "id":10,
         "name":"Mcdonald's Chicken Selects",
         "image":"McdonaldsLogo",
         "measuredByWeight":false,
@@ -218,6 +218,80 @@
                 "weight":169,
                 "calories":369,
                 "protein":17
+            }
+        ]
+    },
+    {
+        "id":12,
+        "name":"Mcdonald's Coca Cola",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":0,
+                "name":"Small",
+                "weight":108456.11121,
+                "calories":106,
+                "protein":0
+            },
+            {
+                "id":1,
+                "name":"Medium",
+                "weight":108456.11121,
+                "calories":170,
+                "protein":0
+            },
+            {
+                "id":2,
+                "name":"Large",
+                "weight":108456.11121,
+                "calories":212,
+                "protein":0
+            }
+        ]
+    },
+    {
+        "id":13,
+        "name":"Mcdonald's Sweet Chilly Crispy Wrap",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":0,
+                "name":"Wrap",
+                "weight":108456.11121,
+                "calories":469,
+                "protein":22
+            }
+        ]
+    },
+    {
+        "id":14,
+        "name":"Mcdonald's Ceaser & Bacon Crispy Wrap",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":0,
+                "name":"Wrap",
+                "weight":108456.11121,
+                "calories":532,
+                "protein":25
+            }
+        ]
+    },
+    {
+        "id":15,
+        "name":"Mcdonald's BBQ Crispy Chicken Wrap",
+        "image":"McdonaldsLogo",
+        "measuredByWeight":false,
+        "servingSizes":[
+            {
+                "id":0,
+                "name":"Wrap",
+                "weight":108456.11121,
+                "calories":493,
+                "protein":24
             }
         ]
     }

@@ -1,0 +1,90 @@
+[
+    {
+        "id":0,
+        "name": "Kellogg's Just Right",
+        "image":"cerealImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Regular serving",
+                "weight": 40,
+                "calories":150,
+                "protein": 2.8
+            },
+            {
+                "id":1,
+                "name":"Large Serving",
+                "weight": 100,
+                "calories":376,
+                "protein": 7
+            }
+        ]
+    },
+    {
+        "id":1,
+        "name": "Krave Milk Chocolate",
+        "image":"cerealImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Regular serving",
+                "weight": 30,
+                "calories":133,
+                "protein": 2.2
+            },
+            {
+                "id":1,
+                "name":"Large Serving",
+                "weight": 100,
+                "calories":443,
+                "protein": 7.2
+            }
+        ]
+    },
+    {
+        "id":2,
+        "name": "Kellogg's Corn Flakes",
+        "image":"cerealImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Regular serving",
+                "weight": 30,
+                "calories":115,
+                "protein": 2.1
+            },
+            {
+                "id":1,
+                "name":"Large Serving",
+                "weight": 100,
+                "calories":383,
+                "protein": 7
+            }
+        ]
+    },
+    {
+        "id":3,
+        "name": "Nesquik",
+        "image":"cerealImg",
+        "measuredByWeight":true,
+        "servingSizes": [
+            {
+                "id":0,
+                "name":"Regular serving",
+                "weight": 30,
+                "calories":114,
+                "protein": 2.5
+            },
+            {
+                "id":1,
+                "name":"Large Serving",
+                "weight": 100,
+                "calories":381,
+                "protein": 8.5
+            }
+        ]
+    }
+]
