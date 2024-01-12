@@ -179,6 +179,8 @@ struct AddFoodView: View {
                             // Custom size
                             HStack {
                                 TextField("Add custom weight", text: $customPortionText)
+                                    .keyboardType(.numbersAndPunctuation)
+                                    .submitLabel(.done)
                                     .onReceive(customPortionText.publisher.collect()) { characters in
                                         let filtered = characters.filter { $0.isNumber }
                                         if let numericValue = Int(String(filtered)) {
@@ -225,6 +227,8 @@ struct AddFoodView: View {
                         } else {
                             HStack{
                                 TextField("Enter item number", text: $customPortionText)
+                                    .keyboardType(.numbersAndPunctuation)
+                                    .submitLabel(.done)
                                     .onReceive(customPortionText.publisher.collect()) { characters in
                                         let filtered = characters.filter { $0.isNumber }
                                         if let numericValue = Int(String(filtered)) {

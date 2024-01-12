@@ -15,7 +15,7 @@ struct ConfirmationPopover: View {
             Text("Food Added")
         }
         .padding()
-        .background(.gray.opacity(0.25), in: RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
+        .background(.gray.opacity(0.85), in: RoundedRectangle(cornerSize: CGSize(width: 5, height: 5)))
         
     }
 }
